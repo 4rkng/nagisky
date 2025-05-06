@@ -64,8 +64,28 @@ Thank you for your PR! Before creating a PR, please check the following:
 
 Thanks for your cooperation 🤗
 
+### Additional things for ActivityPub payload changes
+*This section is specific to misskey-dev implementation. Other fork or implementation may take different way. A significant difference is that non-"misskey-dev" extension is not described in the misskey-hub's document.*
+
+If PR includes changes to ActivityPub payload, please reflect it in [misskey-hub's document](https://github.com/misskey-dev/misskey-hub-next/blob/master/content/ns.md) by sending PR.
+
+The name of purporsed extension property (referred as "extended property" in later) to ActivityPub shall be prefixed by `_misskey_`. (i.e. `_misskey_quote`)
+
+The extended property in `packages/backend/src/core/activitypub/type.ts` **must** be declared as optional because ActivityPub payloads that comes from older Misskey or other implementation may not contain it.
+
+The extended property must be included in the context definition. Context is defined in `packages/backend/src/core/activitypub/misc/contexts.ts`.
+The key shall be same as the name of extended property, and the value shall be same as "short IRI".
+
+"Short IRI" is defined in misskey-hub's document, but usually takes form of `misskey:<name of extended property>`. (i.e. `misskey:_misskey_quote`)
+
+One should not add property that has defined before by other implementation, or add custom variant value to "well-known" property.
+
 ## Reviewers guide
 Be willing to comment on the good points and not just the things you want fixed 💯
+
+読んでおくといいやつ
+- https://blog.lacolaco.net/posts/1e2cf439b3c2/
+- https://konifar-zatsu.hatenadiary.jp/entry/2024/11/05/192421
 
 ### Review perspective
 - Scope
@@ -80,6 +100,22 @@ Be willing to comment on the good points and not just the things you want fixed 
 	- Does the test ensure the expected behavior?
 	- Are there any omissions or gaps?
 	- Does it check for anomalies?
+
+## Security Advisory
+### For reporter
+Thank you for your reporting!
+
+If you can also create a patch to fix the vulnerability, please create a PR on the private fork.
+
+> [!note]
+> There is a GitHub bug that prevents merging if a PR not following the develop branch of upstream, so please keep follow the develop branch.
+
+### For misskey-dev member
+修正PRがdevelopに追従されていないとマージできないので、マージできなかったら
+
+> Could you merge or rebase onto upstream develop branch?
+
+などと伝える。
 
 ## Deploy
 The `/deploy` command by issue comment can be used to deploy the contents of a PR to the preview environment.
@@ -116,7 +152,8 @@ You can improve our translations with your Crowdin account.
 Your changes in Crowdin are automatically submitted as a PR (with the title "New Crowdin translations") to the repository.
 The owner [@syuilo](https://github.com/syuilo) merges the PR into the develop branch before the next release.
 
-If your language is not listed in Crowdin, please open an issue.
+If your language is not listed in Crowdin, please open an issue. We will add it to Crowdin.
+For newly added languages, once the translation progress per language exceeds 70%, it will be officially introduced into Misskey and made available to users.
 
 ![Crowdin](https://d322cqt584bo4o.cloudfront.net/misskey/localized.svg)
 
@@ -160,25 +197,10 @@ pnpm dev
 command.
 
 - Server-side source files and automatically builds them if they are modified. Automatically start the server process(es).
-- Vite HMR (just the `vite` command) is available. The behavior may be different from production.
 - Service Worker is watched by esbuild.
-- The front end can be viewed by accessing `http://localhost:5173`.
-- The backend listens on the port configured with `port` in .config/default.yml.
-If you have not changed it from the default, it will be "http://localhost:3000".
-If "port" in .config/default.yml is set to something other than 3000, you need to change the proxy settings in packages/frontend/vite.config.local-dev.ts.
-
-### `MK_DEV_PREFER=backend pnpm dev`
-pnpm dev has another mode with `MK_DEV_PREFER=backend`.
-
-```
-MK_DEV_PREFER=backend pnpm dev
-```
-
-- This mode is closer to the production environment than the default mode.
-- Vite runs behind the backend (the backend will proxy Vite at /vite).
+- Vite HMR (just the `vite` command) is available. The behavior may be different from production.
+- Vite runs behind the backend (the backend will proxy Vite at /vite and /embed_vite except for websocket used for HMR).
 - You can see Misskey by accessing `http://localhost:3000` (Replace `3000` with the port configured with `port` in .config/default.yml).
-- To change the port of Vite, specify with `VITE_PORT` environment variable.
-- HMR may not work in some environments such as Windows.
 
 ## Testing
 You can run non-backend tests by executing following commands:
@@ -251,7 +273,6 @@ niraxは、Misskeyで使用しているオリジナルのフロントエンド�
 	query?: Record<string, string>;
 	loginRequired?: boolean;
 	hash?: string;
-	globalCacheKey?: string;
 	children?: RouteDef[];
 }
 ```
@@ -453,6 +474,11 @@ describe('test', () => {
 例えばGoogleが自社サービスをMap、Earth、DriveではなくGoogle Map、Google Earth、Google Driveのように命名するのと同じ
 コード上でMisskeyのドメイン固有の概念には`Mi`をprefixすることで、他のドメインの同様の概念と区別できるほか、名前の衝突を防ぐ。
 ただし、文脈上Misskeyのものを指すことが明らかであり、名前の衝突の恐れがない場合は、一時的なローカル変数に限って`Mi`を省略してもよい。
+
+### Misskey.jsの型生成
+```bash
+pnpm build-misskey-js-with-types
+```
 
 ### How to resolve conflictions occurred at pnpm-lock.yaml?
 
