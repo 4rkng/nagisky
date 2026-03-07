@@ -1,6 +1,7 @@
 /*
  * SPDX-FileCopyrightText: syuilo and misskey-project
  * SPDX-License-Identifier: AGPL-3.0-only
+ * JA-OK adds Rikuangi_Hiragi(2026.03.07ver)
  */
 
 export const languages = [
@@ -15,6 +16,7 @@ export const languages = [
 	'id-ID',
 	'it-IT',
 	'ja-JP',
+	'ja-OK',
 	'ja-KS',
 	'kab-KAB',
 	'kn-IN',
