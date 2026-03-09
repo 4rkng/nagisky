@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
 	"name": "nagisky-powerd-by-misskey",
-	"version": "2026.3.0-rk-build2",
-=======
-	"name": "misskey",
-	"version": "2026.3.1",
->>>>>>> 9c0e3e7937e4dafa41238e390b34a47dfb6956a7
+	"version": "2026.3.1-rk-build1",
 	"codename": "nasubi",
 	"repository": {
 		"type": "git",
