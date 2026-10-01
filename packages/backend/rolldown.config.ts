@@ -163,11 +163,7 @@ export default defineConfig((args) => {
 				clearScreen: false,
 			},
 			// ビルドの高速化のために、watchモードのときは外部モジュールは全てバンドルしないようにする
-<<<<<<< HEAD
-			external: isWatchMode ? /^(?!@\/|\0)[^.\/](?!:[\/\\])/ : externalModules,
-=======
 			external: isWatchMode ? allExternalModulesRegex : externalModules,
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		};
 	}
 });
