@@ -52,6 +52,8 @@ import { i18n } from '@/i18n.js';
 import { prefer } from '@/preferences.js';
 import { DI } from '@/di.js';
 import { globalEvents } from '@/events.js';
+import type { Content } from '@/components/MkLightbox.item.vue';
+import { isPreviewable, getType } from '@/utility/lightbox.js';
 
 const props = defineProps<{
 	modelValue: Misskey.entities.DriveFile[];
@@ -152,9 +154,12 @@ async function describe(file: Misskey.entities.DriveFile) {
 function showFileMenu(file: Misskey.entities.DriveFile, ev: PointerEvent | KeyboardEvent): void {
 	if (menuShowing) return;
 
+<<<<<<< HEAD
 	const isImage = file.type.startsWith('image/');
 	const isVideo = file.type.startsWith('video/');
 
+=======
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	const menuItems: MenuItem[] = [];
 
 	menuItems.push({
@@ -171,14 +176,24 @@ function showFileMenu(file: Misskey.entities.DriveFile, ev: PointerEvent | Keybo
 		action: () => { describe(file); },
 	});
 
+<<<<<<< HEAD
 	if (isImage || isVideo) {
+=======
+	if (isPreviewable(file.type)) {
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		menuItems.push({
 			text: i18n.ts.preview,
 			icon: 'ti ti-photo-search',
 			action: async () => {
+<<<<<<< HEAD
 				const constents = props.modelValue.filter(item => item.type.startsWith('image') || item.type.startsWith('video')).map(item => ({
 					id: item.id,
 					type: item.type.startsWith('video') ? 'video' as const : 'image' as const,
+=======
+				const constents = props.modelValue.filter(item => isPreviewable(item.type)).map<Content>(item => ({
+					id: item.id,
+					type: getType(item.type),
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 					url: item.url,
 					thumbnailUrl: item.thumbnailUrl,
 					width: item.properties.width,
@@ -190,6 +205,10 @@ function showFileMenu(file: Misskey.entities.DriveFile, ev: PointerEvent | Keybo
 				const { dispose } = await os.popupAsyncWithDialog(import('@/components/MkLightbox.vue').then(x => x.default), {
 					defaultIndex: constents.findIndex(content => content.id === file.id),
 					contents: constents,
+<<<<<<< HEAD
+=======
+					initiallyRevealedContentIds: [file.id],
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 				}, {
 					closed: () => dispose(),
 				});

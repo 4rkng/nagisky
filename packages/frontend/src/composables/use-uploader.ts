@@ -18,6 +18,7 @@ import { isWebpSupported } from '@/utility/isWebpSupported.js';
 import { uploadFile, UploadAbortedError } from '@/utility/drive.js';
 import type { Content } from '@/components/MkLightbox.item.vue';
 import * as os from '@/os.js';
+import { isPreviewable, getType } from '@/utility/lightbox.js';
 import { ensureSignin } from '@/i.js';
 
 export type UploaderFeatures = {
@@ -236,16 +237,27 @@ export function useUploader(options: {
 				},
 			});
 
+<<<<<<< HEAD
 			if (item.file.type.startsWith('image/') || item.file.type.startsWith('video/')) {
+=======
+			if (isPreviewable(item.file.type)) {
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 				menu.push({
 					text: i18n.ts.preview,
 					icon: 'ti ti-photo-search',
 					action: async () => {
 						const contents = items.value
+<<<<<<< HEAD
 							.filter(item => item.file.type.startsWith('image/') || item.file.type.startsWith('video/'))
 							.map<Content>(item => ({
 								id: item.id,
 								type: item.file.type.startsWith('video/') ? 'video' : 'image',
+=======
+							.filter(item => isPreviewable(item.file.type))
+							.map<Content>(item => ({
+								id: item.id,
+								type: getType(item.file.type),
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 								url: item.objectUrl,
 								thumbnail: item.thumbnail,
 								filename: getUploadName(item),

@@ -81,7 +81,14 @@ const bitmapTmp = shallowRef<CanvasImageSource | undefined>();
 
 watch([() => props.width, () => props.height, canvas], () => {
 	const ratio = props.width / props.height;
+<<<<<<< HEAD
 	if (ratio > 1) {
+=======
+	if (!Number.isFinite(ratio) || ratio <= 0) {
+		canvasWidth.value = 64;
+		canvasHeight.value = 64;
+	} else if (ratio > 1) {
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		canvasWidth.value = Math.round(64 * ratio);
 		canvasHeight.value = 64;
 	} else {

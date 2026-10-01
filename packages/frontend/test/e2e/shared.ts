@@ -115,6 +115,10 @@ export async function signupThroughUi(
 	await signupResponse;
 }
 
+<<<<<<< HEAD
+=======
+// 表示に時間がかかるのでPlaywrightのデフォルトのタイムアウトだと間に合わない
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 export async function closeUserSetupDialog(page: Page, timeout = 30_000): Promise<void> {
 	await page.locator('[data-testid="user-setup-dialog"] [data-testid="modal-window-close"]').click({ timeout });
 	await page.getByTestId('modal-dialog-ok').click();

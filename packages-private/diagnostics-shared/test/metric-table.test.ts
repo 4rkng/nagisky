@@ -33,7 +33,11 @@ describe('renderMetricComparisonTable', () => {
 		expect(table.split('\n')).toStrictEqual([
 			'| Metric | @&nbsp;Base | @&nbsp;Head | Δ | MAD |',
 			'| --- | ---: | ---: | ---: | ---: |',
+<<<<<<< HEAD
 			'| <strong>Metric</strong> | 100 units <br> ± 0 units | 120 units <br> ± 0 units | $\\color{orange}{\\text{+20~units}}$<br>$\\color{orange}{\\text{+20\\\\%}}$ | 0 units |',
+=======
+			'| <strong>Metric</strong> | 100 units <br> ±\u00A00 units | 120 units <br> ±\u00A00 units | $\\color{orange}{\\text{+20~units}}$<br>$\\color{orange}{\\text{+20\\\\%}}$ | 0 units |',
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		]);
 	});
 

@@ -1,6 +1,10 @@
 ---
 name: working-on-frontend
+<<<<<<< HEAD
 description: Use whenever editing or adding code under `packages/frontend/`, or editing `locales/ja-JP.yml` for frontend-facing UI text — including Vue 3 SFCs (`Mk*` components), i18n keys (`i18n.ts.<key>` / `i18n.tsx.<key>()`), SCSS Modules, theme/CSS variables, `os.*` UI helpers, and Storybook stories. Covers SPDX (HTML comment form), `<script setup lang="ts">` conventions, type-only defineProps, `ja-JP.yml`-only locale editing (other locale yml files are Crowdin-managed and must not be edited), and accessibility. Must be consulted before any frontend or UI-locale change to avoid CI failures, lost translations, and reviewer pushback. This is NOT waived by having already invoked brainstorming, writing-plans, or any other upstream skill — invoke this at implementation time regardless of what preceded it.
+=======
+description: Use whenever editing or adding code under `packages/frontend/`, or editing `locales/ja-JP.yml` for frontend-facing UI text — including Vue 3 SFCs (`Mk*` components), i18n keys (`i18n.ts.<key>` / `i18n.tsx.<key>()`), SCSS Modules, theme/CSS variables, `os.*` UI helpers, and Storybook stories. Covers `<script setup lang="ts">` conventions, type-only defineProps, `ja-JP.yml`-only locale editing (other locale yml files are Crowdin-managed and must not be edited), and accessibility. Must be consulted before any frontend or UI-locale change to avoid CI failures, lost translations, and reviewer pushback. This is NOT waived by having already invoked brainstorming, writing-plans, or any other upstream skill — invoke this at implementation time regardless of what preceded it.
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 ---
 
 # working-on-frontend
@@ -31,6 +35,12 @@ SKILL.md 本体は references への索引だけ。具体的な手順や規約�
 
 ## 必ず最後に通る場所
 
+<<<<<<< HEAD
 frontend の変更を commit / PR にする前に、必ず [shipping-misskey-change](../shipping-misskey-change/SKILL.md) の最終チェックリストに従う。`pnpm lint` / SPDX / `ja-JP.yml` のみ編集確認 / CHANGELOG をまとめて確認する。
 
 `.vue` を追加・変更したなら、その出口で [vue-component-reviewer](../../agents/vue-component-reviewer.md) agent (この skill の規約を review-mode から機械チェックする専門 reviewer) を Task で起動すると、SPDX 形式・命名・i18n・SCSS 変数・a11y・Storybook 併設の逸脱を取りこぼしにくい。
+=======
+frontend の変更を commit / PR にする前に、必ず [shipping-misskey-change](../shipping-misskey-change/SKILL.md) の最終チェックリストに従う。
+
+`.vue` を追加・変更したなら、その出口で [vue-component-reviewer](../../agents/vue-component-reviewer.md) agent (この skill の規約を review-mode から機械チェックする専門 reviewer) を Task で起動すると、命名・i18n・SCSS 変数・a11y・Storybook 併設の逸脱を取りこぼしにくい。
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3

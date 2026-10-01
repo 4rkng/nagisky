@@ -6,12 +6,15 @@ on:
       - master
       - develop
   pull_request:
+    branches-ignore:
+      - master
 
 jobs:
   check-spdx-license-id:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+<<<<<<< HEAD
         uses: actions/checkout@v7.0.0
       - name: Check
         run: |
@@ -78,3 +81,8 @@ jobs:
             echo "SPDX-License-Identifier is certainly described in all target files!"
             exit 0
           fi
+=======
+        uses: actions/checkout@v7.0.1
+      - name: Check
+        run: node scripts/check-spdx.mjs --ci
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3

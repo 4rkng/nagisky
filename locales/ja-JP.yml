@@ -1040,6 +1040,7 @@ caption: "キャプション"
 loggedInAsBot: "Botアカウントでログイン中"
 tools: "ツール"
 cannotLoad: "読み込めません"
+cannotPreview: "プレビューできません"
 numberOfProfileView: "プロフィール表示回数"
 like: "いいね！"
 unlike: "いいねを解除"
@@ -1335,7 +1336,7 @@ federationDisabled: "このサーバーは連合が無効化されています�
 draft: "下書き"
 draftsAndScheduledNotes: "下書きと予約投稿"
 confirmOnReact: "リアクションする際に確認する"
-reactAreYouSure: "\" {emoji} \" をリアクションしますか？"
+reactAreYouSure: '" {emoji} " をリアクションしますか？'
 markAsSensitiveConfirm: "このメディアをセンシティブとして設定しますか？"
 unmarkAsSensitiveConfirm: "このメディアのセンシティブ指定を解除しますか？"
 preferences: "環境設定"
@@ -1421,6 +1422,7 @@ append: "末尾に追加"
 prepend: "先頭に追加"
 urlPreviewSensitiveList: "サムネイルの表示を制限するURL"
 urlPreviewSensitiveListDescription: "スペースで区切るとAND指定になり、改行で区切るとOR指定になります。スラッシュで囲むと正規表現になります。一致した場合、サムネイルが表示されなくなります。"
+pixelatedZoom: "ピクセルアート拡大モード"
 
 _imageEditing:
   _vars:
@@ -1976,7 +1978,7 @@ _achievements:
       description: "実績一覧を3分以上眺め続けた"
     _iLoveMisskey:
       title: "I Love Misskey"
-      description: "\"I ❤ #Misskey\"を投稿した"
+      description: '"I ❤ #Misskey"を投稿した'
       flavor: "Misskeyを使ってくださりありがとうございます！ by 開発チーム"
     _foundTreasure:
       title: "宝探し"
@@ -3291,8 +3293,8 @@ _customEmojisManager:
     _register:
       uploadSettingTitle: "アップロード設定"
       uploadSettingDescription: "この画面で絵文字アップロードを行う際の動作を設定できます。"
-      directoryToCategoryLabel: "ディレクトリ名を\"category\"に入力する"
-      directoryToCategoryCaption: "ディレクトリをドラッグ・ドロップした時に、ディレクトリ名を\"category\"に入力します。"
+      directoryToCategoryLabel: 'ディレクトリ名を"category"に入力する'
+      directoryToCategoryCaption: 'ディレクトリをドラッグ・ドロップした時に、ディレクトリ名を"category"に入力します。'
       confirmRegisterEmojisDescription: "リストに表示されている絵文字を新たなカスタム絵文字として登録します。よろしいですか？（負荷を避けるため、一度の操作で登録可能な絵文字は{count}件までです）"
       confirmClearEmojisDescription: "編集内容を破棄し、リストに表示されている絵文字をクリアします。よろしいですか？"
       confirmUploadEmojisDescription: "ドラッグ＆ドロップされた{count}個のファイルをドライブにアップロードします。実行しますか？"

@@ -45,7 +45,11 @@ describe('renderHeapSnapshotTable', () => {
 			report([1_100_000, 1_200_000, 1_300_000]),
 		));
 
+<<<<<<< HEAD
 		expect(row).toContain('$\\text{+100 KB}$');
+=======
+		expect(row).toContain('$\\text{+100\u00A0KB}$');
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		expect(row).not.toContain('within noise');
 		expect(row).not.toContain('\\color{orange}');
 	});
@@ -56,7 +60,11 @@ describe('renderHeapSnapshotTable', () => {
 			report([1_200_000, 1_200_000, 1_200_000]),
 		));
 
+<<<<<<< HEAD
 		expect(row).toContain('$\\color{orange}{\\text{+200 KB}}$');
+=======
+		expect(row).toContain('$\\color{orange}{\\text{+200\u00A0KB}}$');
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		expect(row).toContain('$\\color{orange}{\\text{+20\\\\%}}$');
 		expect(row).not.toContain('increase');
 	});
@@ -67,7 +75,11 @@ describe('renderHeapSnapshotTable', () => {
 			report([1_050_000, 1_050_000, 1_050_000]),
 		));
 
+<<<<<<< HEAD
 		expect(row).toContain('$\\text{+50 KB}$<br>$\\text{+5\\\\%}$');
+=======
+		expect(row).toContain('$\\text{+50\u00A0KB}$<br>$\\text{+5\\\\%}$');
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		expect(row.split('|')[4]).not.toContain('\\color{');
 	});
 

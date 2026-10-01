@@ -55,7 +55,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 						<div :class="[$style.hiddenText, { [$style.withBlur]: content.type === 'video' && content.thumbnailUrl != null }]">
 							<div :class="$style.hiddenTextWrapper">
 								<b v-if="content.file?.isSensitive" style="display: block;"><i class="ti ti-eye-exclamation"></i> {{ i18n.ts.sensitive }}</b>
+<<<<<<< HEAD
 								<b v-else style="display: block;"><i class="ti" :class="content.type === 'image' ? 'ti-photo' : 'ti-movie'"></i> {{ content.type === 'image' ? i18n.ts.image : i18n.ts.video }}</b>
+=======
+								<b v-else style="display: block;"><i class="ti" :class="contentHideFileIcon"></i> {{ contentHideFileText }}</b>
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 								<span style="display: block;">{{ i18n.ts.clickToShow }}</span>
 							</div>
 						</div>
@@ -73,7 +77,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 					<template v-if="activated">
 						<img
 							v-if="content.type === 'image'"
+<<<<<<< HEAD
 							:class="$style.content"
+=======
+							:class="[$style.content, { [$style.pixelatedZoom]: pixelatedZoom }]"
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 							:src="content.url"
 							:alt="content.file?.comment ?? undefined"
 							draggable="false"
@@ -82,7 +90,11 @@ SPDX-License-Identifier: AGPL-3.0-only
 						<video
 							v-else-if="content.type === 'video'"
 							ref="videoEl"
+<<<<<<< HEAD
 							data-gallery-click-action="video"
+=======
+							data-gallery-click-action="media"
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 							:class="[$style.video, { [$style.videoSized]: videoAspectRatio != null }]"
 							:src="content.url"
 							:alt="content.file?.comment ?? undefined"
@@ -90,16 +102,48 @@ SPDX-License-Identifier: AGPL-3.0-only
 							:controls="prefer.s.useNativeUiForVideoAudioPlayer"
 							playsinline
 							@loadedmetadata="onVideoLoadedMetadata"
+<<<<<<< HEAD
 							@click.stop="onVideoClick"
 						></video>
 						<div v-if="content.type === 'video' && !prefer.s.useNativeUiForVideoAudioPlayer && !isVideoPlaying" :class="$style.playIconWrapper">
+=======
+							@click.stop="onMediaClick"
+						></video>
+						<div v-if="content.type === 'video' && !prefer.s.useNativeUiForVideoAudioPlayer && !isMediaPlaying" :class="$style.playIconWrapper">
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 							<div :class="$style.playIcon">
 								<i class="ti ti-player-play"></i>
 							</div>
 						</div>
+<<<<<<< HEAD
 					</template>
 
 					<div v-if="activated && (!originalContentLoaded || (content.type === 'video' && isVideoPlaying && !isVideoActuallyPlaying))" :class="$style.loading">
+=======
+						<div v-if="content.type === 'audio' && prefer.s.useNativeUiForVideoAudioPlayer" :class="$style.audioRoot">
+							<audio
+								ref="audioEl"
+								:src="content.url"
+								:alt="content.file?.comment ?? undefined"
+								:class="$style.audio"
+								controls
+								@loadedmetadata="originalContentLoaded = true"
+							></audio>
+						</div>
+						<XAudioVisualizer
+							v-else-if="content.type === 'audio' && !prefer.s.useNativeUiForVideoAudioPlayer"
+							ref="audioVisualizer"
+							:content="content"
+							:user="user"
+							:isPlaying="isMediaPlaying"
+							:volume="volume"
+							@click.stop="onMediaClick"
+							@loadedmetadata="originalContentLoaded = true"
+						/>
+					</template>
+
+					<div v-if="activated && (!originalContentLoaded || (isMediaControlledByMisskey && isMediaPlaying && (!isMediaReady || !isMediaActuallyPlaying)))" :class="$style.loading">
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 						<MkLoading/>
 					</div>
 				</template>
@@ -118,8 +162,13 @@ SPDX-License-Identifier: AGPL-3.0-only
 	</div>
 
 	<div :class="[$style.footer, { [$style.infoShowing]: infoShowing && !isZooming }]">
+<<<<<<< HEAD
 		<div v-if="content.type === 'video' && !hide && !prefer.s.useNativeUiForVideoAudioPlayer" :class="$style.mediaControl">
 			<MkVideoControl v-if="videoEl != null" ref="videoControl" :videoEl="videoEl"/>
+=======
+		<div v-if="isMediaControlledByMisskey && !hide" :class="$style.mediaControl">
+			<XControl v-if="mediaEl != null" ref="mediaControl" v-model:volume="volume" :externalVolumeControl="isVolumeHandledByVisualizer"/>
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		</div>
 	</div>
 </div>
@@ -140,7 +189,11 @@ type Rect = Size & {
 
 export type Content = {
 	id: string;
+<<<<<<< HEAD
 	type: 'image' | 'video';
+=======
+	type: 'image' | 'video' | 'audio';
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	url: string;
 	thumbnailUrl?: string | null;
 	width?: number | null;
@@ -177,9 +230,16 @@ export function calculateSourceTransform({
 </script>
 
 <script lang="ts" setup>
+<<<<<<< HEAD
 import { computed, nextTick, ref, useTemplateRef, markRaw, watch, provide, onBeforeUnmount } from 'vue';
 import MkVideoControl from '@/components/MkVideoControl.vue';
 import MkBlurhash from '@/components/MkBlurhash.vue';
+=======
+import { computed, nextTick, ref, useTemplateRef, markRaw, watch, provide, onBeforeUnmount, defineAsyncComponent } from 'vue';
+import MkBlurhash from '@/components/MkBlurhash.vue';
+import XControl from './MkLightbox.item.controls.vue';
+import type XAudioVisualizer__TypeReferenceOnly from './MkLightbox.item.audio-visualizer.vue';
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 import XFileInfo from './MkLightbox.item.fileinfo.vue';
 import type { MenuItem } from '@/types/menu.js';
 import { DI } from '@/di.js';
@@ -194,10 +254,18 @@ import { getFileMenu } from '@/utility/get-file-menu.js';
 
 const props = withDefaults(defineProps<{
 	content: Content;
+<<<<<<< HEAD
 	activated: boolean;
 	initiallyOpened?: boolean;
 }>(), {
 	initiallyOpened: false,
+=======
+	user?: Misskey.entities.User | null; // DriveFileのuserはnullになることがある。その場合に使用する所有者情報
+	activated: boolean;
+	initiallyRevealed?: boolean;
+}>(), {
+	initiallyRevealed: false,
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 });
 
 const emit = defineEmits<{
@@ -208,22 +276,90 @@ const emit = defineEmits<{
 	(ev: 'cancelHorizontalSwipe'): void;
 }>();
 
+<<<<<<< HEAD
 const rootEl = useTemplateRef('rootEl');
 const mainEl = useTemplateRef('mainEl');
 const videoEl = useTemplateRef('videoEl');
 const videoControl = useTemplateRef('videoControl');
 
 provide(DI.mkLightboxItemVideoEl, videoEl);
+=======
+const XAudioVisualizer = defineAsyncComponent(() => import('./MkLightbox.item.audio-visualizer.vue'));
+
+// 一回のビューワー操作内では状態を維持するためにmodelで親に伝えて親で状態を保持する
+// TODO: drivefileのproperties側にピクセルアートかどうかのフラグを立ててそちらを元にデフォルトの挙動を決めるようにする
+const pixelatedZoom = defineModel<boolean>('pixelatedZoom', { required: true });
+
+const rootEl = useTemplateRef('rootEl');
+const mainEl = useTemplateRef('mainEl');
+const videoEl = useTemplateRef('videoEl');
+const audioEl = useTemplateRef('audioEl'); // ネイティブUI時
+const audioVisualizer = useTemplateRef<InstanceType<typeof XAudioVisualizer__TypeReferenceOnly>>('audioVisualizer'); // ネイティブUIじゃない場合
+const mediaControl = useTemplateRef<InstanceType<typeof XControl>>('mediaControl');
+
+const mediaEl = computed<HTMLVideoElement | HTMLAudioElement | null>(() => {
+	if (props.content.type === 'video') {
+		return videoEl.value;
+	} else if (props.content.type === 'audio') {
+		if (prefer.s.useNativeUiForVideoAudioPlayer) {
+			return audioEl.value;
+		} else {
+			return audioVisualizer.value?.audioEl ?? null;
+		}
+	} else {
+		return null;
+	}
+});
+
+provide(DI.mkLightboxItemMediaEl, mediaEl);
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 
 const originalContentLoaded = ref(false);
 const thumbnailContentLoaded = ref(false);
 const enableTransition = ref(false);
 const infoShowing = ref(false);
 const hide = ref(true);
+<<<<<<< HEAD
 const isVideoPlaying = computed(() => videoControl.value?.isPlaying ?? false);
 const isVideoActuallyPlaying = computed(() => videoControl.value?.isActuallyPlaying ?? false);
 let canOpenAnimation = false;
 
+=======
+const isMediaControlledByMisskey = computed(() => ['video', 'audio'].includes(props.content.type) && !prefer.s.useNativeUiForVideoAudioPlayer);
+// ビジュアライザー使用時は音量の適用をGainNode側が担当する (メディア要素は100%固定にして、波形が音量レベルに依存しないようにするため)
+const isVolumeHandledByVisualizer = computed(() => props.content.type === 'audio' && !prefer.s.useNativeUiForVideoAudioPlayer);
+const volume = ref(0.25);
+const isMediaReady = computed(() => mediaControl.value?.isReady ?? false);
+const isMediaPlaying = computed(() => mediaControl.value?.isPlaying ?? false);
+const isMediaActuallyPlaying = computed(() => mediaControl.value?.isActuallyPlaying ?? false);
+let canOpenAnimation = false;
+
+const contentHideFileIcon = computed(() => {
+	switch (props.content.type) {
+		case 'image':
+			return 'ti-photo';
+		case 'video':
+			return 'ti-movie';
+		case 'audio':
+			return 'ti-music';
+		default:
+			return '';
+	}
+});
+const contentHideFileText = computed(() => {
+	switch (props.content.type) {
+		case 'image':
+			return i18n.ts.image;
+		case 'video':
+			return i18n.ts.video;
+		case 'audio':
+			return i18n.ts.audio;
+		default:
+			return '';
+	}
+});
+
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 const videoAspectRatio = ref<number | null>(
 	props.content.width != null && props.content.height != null && props.content.width > 0 && props.content.height > 0
 		? props.content.width / props.content.height
@@ -240,7 +376,11 @@ function onVideoLoadedMetadata() {
 }
 
 const headerSize = 30;
+<<<<<<< HEAD
 const footerSize = props.content.type === 'video' && !prefer.s.useNativeUiForVideoAudioPlayer ? 80 : 0;
+=======
+const footerSize = isMediaControlledByMisskey.value ? 80 : 0;
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 
 const padding = deviceKind === 'smartphone' ? {
 	top: Math.max(0, headerSize + 10),
@@ -298,8 +438,13 @@ function shouldHideInGallery(content: Content): boolean {
 	const hiddenByDefault = shouldHideFileByDefault(content.file, true);
 	if (!hiddenByDefault) return false;
 
+<<<<<<< HEAD
 	// ギャラリー起動時に最初に開いたセンシティブ画像だけは初期表示で隠さない
 	if (content.file.isSensitive && props.initiallyOpened) {
+=======
+	// 呼び出し元で既にぼかしが解除されているものは初期表示で隠さない
+	if (props.initiallyRevealed) {
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		return false;
 	}
 
@@ -479,7 +624,11 @@ const VELOCITY_WINDOW = 100;
 
 let isDragging = false;
 let isClick = false;
+<<<<<<< HEAD
 let clickAction: 'hidden' | 'video' | null = null;
+=======
+let clickAction: 'hidden' | 'media' | null = null;
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 let lastX = 0;
 let lastY = 0;
 let currentPointerId: number | null = null;
@@ -523,11 +672,19 @@ function getVelocity(now: number): { x: number; y: number } {
 	};
 }
 
+<<<<<<< HEAD
 function resolveClickAction(target: EventTarget | null): 'hidden' | 'video' | null {
 	if (!(target instanceof Element)) return null;
 
 	const action = target.closest('[data-gallery-click-action]')?.getAttribute('data-gallery-click-action');
 	if (action === 'hidden' || action === 'video') {
+=======
+function resolveClickAction(target: EventTarget | null): 'hidden' | 'media' | null {
+	if (!(target instanceof Element)) return null;
+
+	const action = target.closest('[data-gallery-click-action]')?.getAttribute('data-gallery-click-action');
+	if (action === 'hidden' || action === 'media') {
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		return action;
 	}
 
@@ -827,8 +984,13 @@ function onClick(ev: MouseEvent) {
 		return;
 	}
 
+<<<<<<< HEAD
 	if (action === 'video') {
 		onVideoClick();
+=======
+	if (action === 'media') {
+		onMediaClick();
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		return;
 	}
 
@@ -842,17 +1004,50 @@ function onClick(ev: MouseEvent) {
 	}
 }
 
+<<<<<<< HEAD
+=======
+/**
+ * play() は自動再生のブロックや、再生が始まる前の pause() によって reject することがある。
+ * いずれも再生ボタンが出たままになるだけで復帰不能ではないので、握りつぶす
+ */
+function safePlay(el: HTMLMediaElement) {
+	el.play().catch(err => {
+		if (_DEV_) console.warn('Failed to play media:', err);
+	});
+}
+
+function playWhenAvailable() {
+	if (mediaEl.value != null) {
+		safePlay(mediaEl.value);
+		return;
+	}
+
+	// オーディオビジュアライザはlazy-loadのため、この時点ではまだ要素が無い可能性がある
+	const watchStop = watch(mediaEl, (newMediaEl) => {
+		if (newMediaEl == null) return;
+		safePlay(newMediaEl);
+		watchStop();
+	});
+}
+
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 async function onHiddenClick() {
 	if (hide.value) {
 		if (props.content.file == null || await canRevealFile(props.content.file)) {
 			hide.value = false;
+<<<<<<< HEAD
 			if (props.content.type === 'video' && videoEl.value != null) {
 				videoEl.value.play();
+=======
+			if (['audio', 'video'].includes(props.content.type)) {
+				playWhenAvailable();
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 			}
 		}
 	}
 }
 
+<<<<<<< HEAD
 function onVideoClick() {
 	if (!prefer.s.useNativeUiForVideoAudioPlayer) {
 		if (videoEl.value == null) return;
@@ -861,6 +1056,16 @@ function onVideoClick() {
 			videoEl.value.play();
 		} else {
 			videoEl.value.pause();
+=======
+function onMediaClick() {
+	if (!prefer.s.useNativeUiForVideoAudioPlayer) {
+		if (mediaEl.value == null) return;
+
+		if (mediaEl.value.paused) {
+			safePlay(mediaEl.value);
+		} else {
+			mediaEl.value.pause();
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		}
 	}
 }
@@ -879,6 +1084,18 @@ function openMenu(ev: PointerEvent) {
 		type: 'divider',
 	});
 
+<<<<<<< HEAD
+=======
+	if (props.content.type === 'image') {
+		menu.push({
+			type: 'switch',
+			text: i18n.ts.pixelatedZoom,
+			icon: 'ti ti-grain',
+			ref: pixelatedZoom,
+		});
+	}
+
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	menu.push({
 		text: i18n.ts.hide,
 		icon: 'ti ti-eye-off',
@@ -899,9 +1116,13 @@ function openMenu(ev: PointerEvent) {
 }
 
 function onActive() {
+<<<<<<< HEAD
 	if (videoEl.value != null) {
 		videoEl.value.play();
 	}
+=======
+	playWhenAvailable();
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 }
 
 function onDeactive() {
@@ -909,8 +1130,13 @@ function onDeactive() {
 		isZooming.value = false;
 		resetToNeutral();
 	}
+<<<<<<< HEAD
 	if (videoEl.value != null && props.activated) {
 		videoEl.value.pause();
+=======
+	if (mediaEl.value != null && props.activated) {
+		mediaEl.value.pause();
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	}
 }
 
@@ -956,6 +1182,13 @@ defineExpose({
 	object-fit: contain;
 }
 
+<<<<<<< HEAD
+=======
+.pixelatedZoom {
+	image-rendering: pixelated;
+}
+
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 .video {
 	display: block;
 	user-select: none;
@@ -975,6 +1208,23 @@ defineExpose({
 	aspect-ratio: v-bind("videoAspectRatio ?? 16 / 9");
 }
 
+<<<<<<< HEAD
+=======
+.audioRoot {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	max-width: calc(100vw - 140px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.audio {
+	width: 100%;
+}
+
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 .loading {
 	position: absolute;
 	top: 0;

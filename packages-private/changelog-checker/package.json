@@ -10,6 +10,7 @@
 		"test:coverage": "vitest run --coverage",
 		"typecheck": "tsc --noEmit"
 	},
+<<<<<<< HEAD
   "devDependencies": {
     "@types/mdast": "4.0.4",
     "@types/node": "26.1.1",
@@ -21,4 +22,17 @@
     "unified": "11.0.5",
     "vitest": "4.1.10"
   }
+=======
+	"devDependencies": {
+		"@types/mdast": "4.0.4",
+		"@types/node": "26.4.0",
+		"@vitest/coverage-v8": "4.1.11",
+		"mdast-util-to-string": "4.0.0",
+		"remark": "15.0.1",
+		"remark-parse": "11.0.0",
+		"tsx": "4.23.13",
+		"unified": "11.0.5",
+		"vitest": "4.1.11"
+	}
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 }

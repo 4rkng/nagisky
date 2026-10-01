@@ -11,6 +11,7 @@
 	},
 	"devDependencies": {
 		"@types/estree": "1.0.9",
+<<<<<<< HEAD
 		"@types/node": "26.1.1",
 		"@typescript-eslint/eslint-plugin": "8.63.0",
 		"@typescript-eslint/parser": "8.63.0",
@@ -22,5 +23,18 @@
 		"oxc-walker": "1.0.0",
 		"rolldown": "1.1.5",
 		"vite": "8.1.4"
+=======
+		"@types/node": "26.4.0",
+		"@typescript-eslint/eslint-plugin": "8.68.0",
+		"@typescript-eslint/parser": "8.68.0",
+		"rollup": "4.63.1"
+	},
+	"dependencies": {
+		"i18n": "workspace:*",
+		"magic-string": "1.2.3",
+		"oxc-walker": "1.1.1",
+		"rolldown": "1.2.6",
+		"vite": "8.2.2"
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	}
 }

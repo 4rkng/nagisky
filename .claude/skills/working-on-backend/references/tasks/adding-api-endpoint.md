@@ -15,7 +15,10 @@
 2. 実装    : meta / paramDef / クラス本体を書く (SPDX ヘッダー付き)
 3. 配線    : endpoint-list.ts に登録 (★ 忘れると 404)
 4. 検証    : e2e テスト + lint + misskey-js 再生成
+<<<<<<< HEAD
 5. 仕上げ  : CHANGELOG エントリ (shipping-misskey-change で確認)
+=======
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 ```
 
 ---
@@ -254,12 +257,15 @@ PR に `packages/misskey-js/src/autogen/` 配下の差分が含まれていな�
 
 ---
 
+<<<<<<< HEAD
 ## 5. 仕上げフェーズ — CHANGELOG
 
 ユーザー影響がある (新機能 / 既存挙動変更) なら `CHANGELOG.md` の `## Unreleased` → `### Server` に 1 行追加する。詳細は [shipping-misskey-change スキル](../../../shipping-misskey-change/SKILL.md) に従う。
 
 ---
 
+=======
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 ## 落とし穴サマリ (PR で頻発するミス)
 
 詳細な症状 → 原因 → 修正 のフォーマット → **[knowledge/api-meta-paramdef.md](../knowledge/api-meta-paramdef.md) §落とし穴**

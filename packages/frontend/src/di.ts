@@ -19,5 +19,9 @@ export const DI = {
 	inModal: Symbol() as InjectionKey<boolean>,
 	inAppSearchMarkerId: Symbol() as InjectionKey<Ref<string | null>>,
 	inChannel: Symbol() as InjectionKey<ComputedRef<string | null> | null>, // 現在開いているチャンネルのID
+<<<<<<< HEAD
 	mkLightboxItemVideoEl: Symbol() as InjectionKey<Ref<HTMLVideoElement | null>>,
+=======
+	mkLightboxItemMediaEl: Symbol() as InjectionKey<Ref<HTMLVideoElement | HTMLAudioElement | null>>,
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 };

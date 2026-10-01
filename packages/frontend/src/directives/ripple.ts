@@ -8,7 +8,10 @@ import MkRippleEffect from '@/components/MkRippleEffect.vue';
 import { prefer } from '@/preferences.js';
 import { popup } from '@/os.js';
 
+<<<<<<< HEAD
 const handlers = new WeakMap<HTMLElement, (ev: MouseEvent) => void>();
+=======
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 const abortControllers = new WeakMap<HTMLElement, AbortController>();
 
 export const rippleDirective = {

@@ -177,8 +177,13 @@ test('renders the difference of independent medians instead of the paired median
 
 	const row = requireMetricRow(await renderReport(null, { base, head }), 'Requests');
 
+<<<<<<< HEAD
 	expect(row).toContain('100 <br> ± 0');
 	expect(row).toContain('200 <br> ± 0');
+=======
+	expect(row).toContain('100 <br> ±\u00A00');
+	expect(row).toContain('200 <br> ±\u00A00');
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	expect(row).toContain('$\\color{orange}{\\text{+100}}$<br>$\\color{orange}{\\text{+100\\\\%}}$');
 	expect(row).toContain('| 0 |');
 	expect(row.split('|')).toHaveLength(7);
@@ -251,7 +256,11 @@ test('renders a directional encoded byte delta at the absolute threshold', async
 
 	const row = requireMetricRow(await renderReport(null, { base, head }), 'Encoded network');
 
+<<<<<<< HEAD
 	expect(row).toContain('$\\color{orange}{\\text{+10 KB}}$');
+=======
+	expect(row).toContain('$\\color{orange}{\\text{+10\u00A0KB}}$');
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 });
 
 test('colours absolute and relative deltas together when the row is significant', async () => {
@@ -268,9 +277,15 @@ test('colours absolute and relative deltas together when the row is significant'
 
 	const row = requireMetricRow(await renderReport(null, { base, head }), 'Encoded network');
 
+<<<<<<< HEAD
 	expect(row).toContain('100 MB <br> ± 0 B');
 	expect(row).toContain('$\\color{orange}{\\text{+20 KB}}$<br>$\\color{orange}{\\text{+0\\\\%}}$');
 	expect(row).toContain('| 0 B |');
+=======
+	expect(row).toContain('100\u00A0MB <br> ±\u00A00\u00A0B');
+	expect(row).toContain('$\\color{orange}{\\text{+20\u00A0KB}}$<br>$\\color{orange}{\\text{+0\\\\%}}$');
+	expect(row).toContain('| 0\u00A0B |');
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	expect(row.split('|')).toHaveLength(7);
 });
 

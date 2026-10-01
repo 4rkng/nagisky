@@ -227,6 +227,7 @@ git checkout HEAD -- locales/zh-CN.yml
 
 PR 化前なら何度でもやり直せる。**マージしてしまうと Crowdin 側との整合性が崩れて手動回復が必要** になるので、PR レビュー段階で必ず `locales/*.yml` (ja-JP 以外) の diff がゼロであることを確認する。
 
+<<<<<<< HEAD
 ### CHANGELOG 記載の判定
 
 | 変更内容 | CHANGELOG 記載 |
@@ -239,6 +240,8 @@ PR 化前なら何度でもやり直せる。**マージしてしまうと Crowd
 
 書き方は [shipping-misskey-change スキル](../../../shipping-misskey-change/SKILL.md) を参照。
 
+=======
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 ## トラブルシュート
 
 i18n 周辺で踏みやすい失敗とその対処。エラー文字列で grep してたどり着けるよう整理。

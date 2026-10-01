@@ -50,6 +50,10 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts" setup>
 import { ref } from 'vue';
 import * as Misskey from 'misskey-js';
+<<<<<<< HEAD
+=======
+import type { MediaComponentExposes } from '@/types/media-component.js';
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 import bytes from '@/filters/bytes.js';
 import { i18n } from '@/i18n.js';
 import { prefer } from '@/preferences.js';
@@ -83,6 +87,13 @@ function showMenu(ev: PointerEvent) {
 function onContextmenu(ev: PointerEvent) {
 	os.contextMenu(getFileMenu(props.video, (newHide) => { hide.value = newHide; }), ev);
 }
+<<<<<<< HEAD
+=======
+
+defineExpose<MediaComponentExposes>({
+	isRevealed: () => !hide.value,
+});
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 </script>
 
 <style lang="scss" module>

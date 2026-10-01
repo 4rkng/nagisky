@@ -28,8 +28,15 @@ SPDX-License-Identifier: AGPL-3.0-only
 				<div v-for="(content, i) in contents" :key="content.url" ref="itemEl" :class="$style.item">
 					<XItem
 						:ref="(comp) => { items.set(i, comp as InstanceType<typeof XItem>); }"
+<<<<<<< HEAD
 						:content="content"
 						:initiallyOpened="i === (props.defaultIndex ?? 0)"
+=======
+						v-model:pixelatedZoom="pixelatedZoom"
+						:content="content"
+						:user="user"
+						:initiallyRevealed="props.initiallyRevealedContentIds?.includes(content.id) ?? false"
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 						:activated="activatedIndexes.has(i)"
 						@close="onItemClose"
 						@horizontalSwipe="onHorizontalSwipe"
@@ -49,6 +56,10 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <script lang="ts" setup>
 import { ref, watch, nextTick, onBeforeUnmount, onMounted, useTemplateRef } from 'vue';
+<<<<<<< HEAD
+=======
+import * as Misskey from 'misskey-js';
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 import XItem from './MkLightbox.item.vue';
 import type { Content } from './MkLightbox.item.vue';
 import type { Keymap } from '@/utility/hotkey.js';
@@ -60,6 +71,11 @@ import { focusTrap } from '@/utility/focus-trap.js';
 const props = withDefaults(defineProps<{
 	defaultIndex?: number;
 	contents: Content[];
+<<<<<<< HEAD
+=======
+	initiallyRevealedContentIds?: string[];
+	user?: Misskey.entities.User | null; // DriveFileのuserはnullになることがある。その場合に使用する所有者情報
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 }>(), {
 });
 
@@ -72,6 +88,11 @@ const activatedIndexes = ref(new Set<number>());
 const items = new Map<number, InstanceType<typeof XItem> | null>();
 const currentIndex = ref(props.defaultIndex ?? 0);
 
+<<<<<<< HEAD
+=======
+const pixelatedZoom = ref(false);
+
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 watch(currentIndex, (newIndex, oldIndex) => {
 	activatedIndexes.value.add(newIndex);
 

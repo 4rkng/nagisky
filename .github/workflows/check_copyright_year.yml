@@ -10,7 +10,11 @@ jobs:
   check_copyright_year:
     runs-on: ubuntu-latest
     steps:
+<<<<<<< HEAD
     - uses: actions/checkout@v7.0.0
+=======
+    - uses: actions/checkout@v7.0.1
+>>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
     - run: |
         if [ "$(grep Copyright COPYING | sed -e 's/.*2014-\([0-9]*\) .*/\1/g')" -ne "$(date +%Y)" ]; then
           echo "Please change copyright year!"
