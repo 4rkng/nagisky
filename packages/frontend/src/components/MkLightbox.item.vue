@@ -1304,7 +1304,8 @@ defineExpose({
 }
 
 .videoSized {
-	width: min(100cqw, calc(100cqh * v-bind("videoAspectRatio ?? 16 / 9")));
+	width:
+min(100cqw, calc(100cqh * v-bind("videoAspectRatio ?? 16 / 9")));
 	height: auto;
 	background-color: #000;
 	aspect-ratio: v-bind("videoAspectRatio ?? 16 / 9");

@@ -53,11 +53,9 @@ import style.exceeded]: props.modelValue.length > 16,
 	</div>
 </template>
 
-<script lang="ts" setup>
-import { inject } from "vue";
+<script="inject } from "vue";
 import * as Misskey from "misskey-js";
 import type { MenuItem } from "@/types/menu";
-import type { Content } from "@/components/MkLightbox.item.vue";
 import { copyToClipboard } from "@/utility/copy-to-clipboard";
 import MkDriveFileThumbnail from "@/components/MkDriveFileThumbnail.vue";
 import MkDraggable from "@/components/MkDraggable.vue";
@@ -67,6 +65,7 @@ import { i18n } from "@/i18n.js";
 import { prefer } from "@/preferences.js";
 import { DI } from "@/di.js";
 import { globalEvents } from "@/events.js";
+import type { Content } from "@/components/MkLightbox.item.vue";
 import { isPreviewable, getType } from "@/utility/lightbox.js";
 
 const props = defineProps<{
@@ -282,6 +281,7 @@ function showFileMenu(
 	menuShowing = true;
 }
 </script>
+
 
 <style lang="scss" module>
 .root {
