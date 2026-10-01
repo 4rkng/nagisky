@@ -30,12 +30,6 @@ type SentryBackendConfig = {
 	disabledIntegrations?: string[];
 };
 
-type SentryBackendConfig = {
-	options: Partial<Sentry.NodeOptions>;
-	enableNodeProfiling: boolean;
-	disabledIntegrations?: string[];
-};
-
 /**
  * 設定ファイルの型
  */
