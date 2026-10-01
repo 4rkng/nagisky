@@ -18,17 +18,10 @@
 		"mfm-js": "0.26.0",
 		"misskey-js": "workspace:*",
 		"punycode.js": "2.3.1",
-<<<<<<< HEAD
-		"shiki": "4.3.1",
-		"tinycolor2": "1.6.0",
-		"uuid": "14.0.1",
-		"vue": "3.5.39"
-=======
 		"shiki": "4.4.3",
 		"tinycolor2": "1.6.0",
 		"uuid": "14.0.2",
 		"vue": "3.5.42"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	},
 	"devDependencies": {
 		"@misskey-dev/emoji-assets": "17.0.3",
@@ -37,28 +30,6 @@
 		"@rollup/pluginutils": "5.4.0",
 		"@tabler/icons-webfont": "3.35.0",
 		"@testing-library/vue": "8.1.0",
-<<<<<<< HEAD
-		"@types/node": "26.1.1",
-		"@types/punycode.js": "npm:@types/punycode@2.1.4",
-		"@types/tinycolor2": "1.4.6",
-		"@types/ws": "8.18.1",
-		"@typescript-eslint/eslint-plugin": "8.63.0",
-		"@typescript-eslint/parser": "8.63.0",
-		"@vitest/coverage-v8": "4.1.10",
-		"@vitejs/plugin-vue": "6.0.7",
-		"@vue/runtime-core": "3.5.39",
-		"eslint-plugin-import": "2.32.0",
-		"eslint-plugin-vue": "10.9.2",
-		"intersection-observer": "0.12.2",
-		"lightningcss": "1.32.0",
-		"sass-embedded": "1.100.0",
-		"tsx": "4.23.0",
-		"typescript": "6.0.2",
-		"vite": "8.1.4",
-		"vue-component-type-helpers": "3.3.7",
-		"vue-eslint-parser": "10.4.1",
-		"vue-tsc": "3.3.7"
-=======
 		"@types/node": "26.4.0",
 		"@types/punycode.js": "npm:@types/punycode@2.1.4",
 		"@types/tinycolor2": "1.4.6",
@@ -79,6 +50,5 @@
 		"vue-component-type-helpers": "3.3.11",
 		"vue-eslint-parser": "10.4.1",
 		"vue-tsc": "3.3.11"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	}
 }
