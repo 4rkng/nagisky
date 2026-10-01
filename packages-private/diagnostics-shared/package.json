@@ -17,13 +17,7 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"devDependencies": {
-<<<<<<< HEAD
-		"@types/node": "26.1.1",
-		"typescript": "5.9.3",
-		"vitest": "4.1.10"
-=======
 		"@types/node": "26.4.0",
 		"vitest": "4.1.11"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	}
 }
