@@ -10,20 +10,12 @@
 	},
 	"dependencies": {
 		"i18n": "workspace:*",
-<<<<<<< HEAD
-		"esbuild": "0.28.1",
-=======
 		"esbuild": "0.28.2",
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		"idb-keyval": "6.3.0",
 		"misskey-js": "workspace:*"
 	},
 	"devDependencies": {
-<<<<<<< HEAD
-		"@typescript-eslint/parser": "8.63.0",
-=======
 		"@typescript-eslint/parser": "8.68.0",
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		"@typescript/lib-webworker": "npm:@types/serviceworker@0.0.74",
 		"eslint-plugin-import": "2.32.0",
 		"nodemon": "3.1.14"
