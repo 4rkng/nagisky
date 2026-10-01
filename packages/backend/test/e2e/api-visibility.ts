@@ -7,11 +7,7 @@ process.env.NODE_ENV = 'test';
 
 import * as assert from 'assert';
 import { describe, beforeAll, beforeEach, test, vi } from 'vitest';
-<<<<<<< HEAD
-import { UserToken, api, post, signup } from '../utils.js';
-=======
 import { UserToken, api, failedApiCall, post, signup } from '../utils.js';
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 import type * as misskey from 'misskey-js';
 
 const waitForPushToTlOptions = { timeout: 3000, interval: 25 };

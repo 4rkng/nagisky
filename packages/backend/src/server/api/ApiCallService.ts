@@ -246,14 +246,6 @@ export class ApiCallService implements OnApplicationShutdown {
 		const [path, cleanup] = await createTemp();
 
 		try {
-<<<<<<< HEAD
-			await stream.pipeline(multipartData.file, fs.createWriteStream(path));
-
-			// ファイルサイズが制限を超えていた場合
-			// なお truncated はストリームを読み切ってからでないと機能しないため、stream.pipeline より後にある必要がある
-			if (multipartData.file.truncated) {
-				reply.code(413);
-=======
 			const multipartError = await writeMultipartFileToTemp(multipartData.file, path);
 
 			// multipartを読み切れなかった場合
@@ -261,13 +253,10 @@ export class ApiCallService implements OnApplicationShutdown {
 			if (multipartError != null) {
 				this.logger.debug(`Failed to read the multipart request body: ${multipartError.message}`);
 				reply.code(400);
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 				reply.send();
 				return;
 			}
 
-<<<<<<< HEAD
-=======
 			// ファイルサイズが制限を超えていた場合
 			// truncated はストリームを読み切ってからでないと機能しないため、書き出しより後にある必要がある
 			if (multipartData.file.truncated) {
@@ -276,7 +265,6 @@ export class ApiCallService implements OnApplicationShutdown {
 				return;
 			}
 
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 			const fields = {} as Record<string, unknown>;
 			for (const [k, v] of Object.entries(multipartData.fields)) {
 				fields[k] = typeof v === 'object' && 'value' in v ? v.value : undefined;

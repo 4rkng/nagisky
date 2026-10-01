@@ -21,11 +21,7 @@ import { LoggerService } from '@/core/LoggerService.js';
 import type Logger from '@/logger.js';
 import { bindThis } from '@/decorators.js';
 import { isMimeImage } from '@/misc/is-mime-image.js';
-<<<<<<< HEAD
-import type { Prediction } from '@/core/AiService.js';
-=======
 import type { Prediction } from '@/core/SensitiveMediaDetectionService.js';
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 
 export type FileInfo = {
 	size: number;
@@ -270,11 +266,7 @@ export class FileInfoService {
 						fs.promises.unlink(path);
 					}
 				}
-<<<<<<< HEAD
-				const predictions = await this.aiService.detectSensitiveMany(frameBuffers);
-=======
 				const predictions = await this.sensitiveMediaDetectionService.detectSensitiveMany(frameBuffers);
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 				const results = predictions.filter((x): x is Prediction[] => x != null).map(x => judgePrediction(x));
 				// 判定に成功したフレームが 0 件のとき（接続先未設定・通信失敗等）は、
 				// Math.ceil(0) との比較が 0 >= 0 で真になり全動画がセンシティブ扱いになってしまうため、

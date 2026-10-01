@@ -9,12 +9,8 @@ import { dirname, resolve } from 'node:path';
 import { type FastifyServerOptions } from 'fastify';
 import type * as Sentry from '@sentry/node';
 import type * as SentryVue from '@sentry/vue';
-<<<<<<< HEAD
-import type { RedisOptions } from 'ioredis';
-=======
 import type { RedisOptions as IoRedisRedisOptions } from 'ioredis';
 import type { RedisOptions as BullMqRedisOptions } from 'bullmq';
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 import type { AccessLogConfiguration, LogFormat, LogLevelSetting } from './logging/types.js';
 
 type RedisOptionsRequiredFields = {
@@ -224,19 +220,11 @@ export type Config = {
 	mediaProxy: string;
 	externalMediaProxyEnabled: boolean;
 	videoThumbnailGenerator: string | null;
-<<<<<<< HEAD
-	redis: RedisOptions & RedisOptionsSource;
-	redisForPubsub: RedisOptions & RedisOptionsSource;
-	redisForJobQueue: RedisOptions & RedisOptionsSource;
-	redisForTimelines: RedisOptions & RedisOptionsSource;
-	redisForReactions: RedisOptions & RedisOptionsSource;
-=======
 	redis: RedisOptionsResolved;
 	redisForPubsub: RedisOptionsResolved;
 	redisForJobQueue: RedisOptionsResolved;
 	redisForTimelines: RedisOptionsResolved;
 	redisForReactions: RedisOptionsResolved;
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	sentryForBackend: SentryBackendConfig | undefined;
 	sentryForFrontend: {
 		options: Partial<SentryVue.BrowserOptions> & { dsn: string };

@@ -152,13 +152,8 @@ describe('FileServerService', () => {
 		const sensitiveMediaDetectionService = {
 			detectSensitive: async () => null,
 			detectSensitiveMany: async (sources: Buffer[]) => sources.map(() => null),
-<<<<<<< HEAD
-		} as unknown as AiService;
-		const fileInfoService = new FileInfoService(aiService, loggerService);
-=======
 		} as unknown as SensitiveMediaDetectionService;
 		const fileInfoService = new FileInfoService(sensitiveMediaDetectionService, loggerService);
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		const httpRequestService = new HttpRequestService(config);
 		const downloadService = new DownloadService(config, httpRequestService, loggerService);
 		const imageProcessingService = new ImageProcessingService();

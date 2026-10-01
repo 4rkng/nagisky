@@ -216,10 +216,7 @@ describe('CleanRemoteNotesProcessorService', () => {
 				deletedCount: 2,
 				oldest: idService.parse(remoteNotes[3].id).date.getTime(),
 				newest: idService.parse(remoteNotes[2].id).date.getTime(),
-<<<<<<< HEAD
-=======
 				cursor: null,
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 				skipped: false,
 				transientErrors: 0,
 			});
@@ -870,8 +867,6 @@ describe('CleanRemoteNotesProcessorService', () => {
 	//               WHERE note_reaction."noteId" = note."id"
 	//               AND "user"."host" IS NULL)
 	// i.e. only reactions from local users (host IS NULL) prevent deletion.
-<<<<<<< HEAD
-=======
 
 	// region cursor persistence
 	// 1回の実行で走査しきれないサーバーのために、走査位置をRedisへ保存して次回に引き継ぐ
@@ -948,7 +943,6 @@ describe('CleanRemoteNotesProcessorService', () => {
 		}, 30 * 1000);
 	});
 
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	describe('advanced - note_reaction', () => {
 		// ローカルユーザーがリアクションしたノートは削除されない
 		test('should not delete note that is reacted by a local user', async () => {
@@ -1222,10 +1216,7 @@ describe('CleanRemoteNotesProcessorService', () => {
 				deletedCount: 0,
 				oldest: null,
 				newest: null,
-<<<<<<< HEAD
-=======
 				cursor: null,
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 				skipped: false,
 				transientErrors: 0,
 			});

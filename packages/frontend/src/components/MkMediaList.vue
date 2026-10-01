@@ -4,85 +4,101 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <template>
-<div :class="$style.root">
-	<XBanner v-for="media in medias.nonPreviewable" :key="media.id" :media="media"/>
-	<div v-if="count > 0" :class="$style.container">
-		<div
-			ref="gallery"
-			:class="[
-				$style.medias,
-				...(prefer.s.showMediaListByGridInWideArea ? [$style.gridInWideArea] : []),
-				count === 1 ? [$style.n1, {
-					[$style.n116_9]: prefer.s.mediaListWithOneImageAppearance === '16_9',
-					[$style.n11_1]: prefer.s.mediaListWithOneImageAppearance === '1_1',
-					[$style.n12_3]: prefer.s.mediaListWithOneImageAppearance === '2_3',
-				}] : count === 2 ? $style.n2 : count === 3 ? $style.n3 : count === 4 ? $style.n4 : $style.nMany,
-			]"
-		>
-<<<<<<< HEAD
-			<template v-for="media in mediaList.filter(media => previewable(media))">
-				<XVideo
-					v-if="media.type.startsWith('video')"
-					:key="`video:${media.id}`"
-=======
-			<template v-for="media in medias.previewable">
-				<XAudio
-					v-if="media.type.startsWith('audio')"
-					:key="`audio:${media.id}`"
-					:class="$style.media"
-					:audio="media"
-					@mediaClick="onMediaClick(media)"
-				/>
-				<XVideo
-					v-if="media.type.startsWith('video')"
-					:key="`video:${media.id}`"
-					:ref="(comp) => { mediaComponents.set(media.id, comp as InstanceType<typeof XVideo> | null); }"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-					:class="$style.media"
-					:video="media"
-					@mediaClick="onMediaClick(media)"
-				/>
-				<XImage
-					v-else-if="media.type.startsWith('image')"
-					:key="`image:${media.id}`"
-<<<<<<< HEAD
-=======
-					:ref="(comp) => { mediaComponents.set(media.id, comp as InstanceType<typeof XImage> | null); }"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-					:marker="`${markerId}:${media.id}`"
-					:disableImageLink="true"
-					:class="$style.media"
-					:image="media"
-					:raw="raw"
-					@mediaClick="onMediaClick(media)"
-				/>
-			</template>
+	<div :class="$style.root">
+		<XBanner
+			v-for="media in medias.nonPreviewable"
+			:key="media.id"
+			:media="media"
+		/>
+		<div v-if="count > 0" :class="$style.container">
+			<div
+				ref="gallery"
+				:class="[
+					$style.medias,
+					...(prefer.s.showMediaListByGridInWideArea
+						? [$style.gridInWideArea]
+						: []),
+					count === 1
+						? [
+								$style.n1,
+								{
+									[$style.n116_9]:
+										prefer.s.mediaListWithOneImageAppearance === '16_9',
+									[$style.n11_1]:
+										prefer.s.mediaListWithOneImageAppearance === '1_1',
+									[$style.n12_3]:
+										prefer.s.mediaListWithOneImageAppearance === '2_3',
+								},
+							]
+						: count === 2
+							? $style.n2
+							: count === 3
+								? $style.n3
+								: count === 4
+									? $style.n4
+									: $style.nMany,
+				]"
+			>
+				<template v-for="media in medias.previewable">
+					<XAudio
+						v-if="media.type.startsWith('audio')"
+						:key="`audio:${media.id}`"
+						:class="$style.media"
+						:audio="media"
+						@mediaClick="onMediaClick(media)"
+					/>
+					<XVideo
+						v-if="media.type.startsWith('video')"
+						:key="`video:${media.id}`"
+						:ref="
+							(comp) => {
+								mediaComponents.set(
+									media.id,
+									comp as InstanceType<typeof XVideo> | null,
+								);
+							}
+						"
+						:class="$style.media"
+						:video="media"
+						@mediaClick="onMediaClick(media)"
+					/>
+					<XImage
+						v-else-if="media.type.startsWith('image')"
+						:key="`image:${media.id}`"
+						:ref="
+							(comp) => {
+								mediaComponents.set(
+									media.id,
+									comp as InstanceType<typeof XImage> | null,
+								);
+							}
+						"
+						:marker="`${markerId}:${media.id}`"
+						:disableImageLink="true"
+						:class="$style.media"
+						:image="media"
+						:raw="raw"
+						@mediaClick="onMediaClick(media)"
+					/>
+				</template>
+			</div>
 		</div>
 	</div>
-</div>
 </template>
 
 <script lang="ts" setup>
-import { computed, markRaw, onMounted, onUnmounted, useTemplateRef } from 'vue';
-import * as Misskey from 'misskey-js';
-<<<<<<< HEAD
-import { FILE_TYPE_BROWSERSAFE } from '@@/js/const.js';
-import type { Content } from '@/components/MkLightbox.item.vue';
-=======
-import type { Content } from '@/components/MkLightbox.item.vue';
-import type { MediaComponentExposes } from '@/types/media-component.js';
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-import XBanner from '@/components/MkMediaBanner.vue';
-import XAudio from '@/components/MkMediaAudio.vue';
-import XImage from '@/components/MkMediaImage.vue';
-import XVideo from '@/components/MkMediaVideo.vue';
-import * as os from '@/os.js';
-import { prefer } from '@/preferences.js';
-<<<<<<< HEAD
-=======
-import { isPreviewable, getType } from '@/utility/lightbox.js';
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-import { genId } from '@/utility/id.js';
+import { computed, markRaw, onMounted, onUnmounted, useTemplateRef } from "vue";
+import * as Misskey from "misskey-js";
+import type { Content } from "@/components/MkLightbox.item.vue";
+import type { MediaComponentExposes } from "@/types/media-component.js";
+import XBanner from "@/components/MkMediaBanner.vue";
+import XAudio from "@/components/MkMediaAudio.vue";
+import XImage from "@/components/MkMediaImage.vue";
+import XVideo from "@/components/MkMediaVideo.vue";
+import * as os from "@/os.js";
+import { prefer } from "@/preferences.js";
+import { isPreviewable, getType } from "@/utility/lightbox.js";
+import { genId } from "@/utility/id.js";
 
 const props = defineProps<{
 	mediaList: Misskey.entities.DriveFile[];
@@ -90,10 +106,7 @@ const props = defineProps<{
 	raw?: boolean;
 }>();
 
-const gallery = useTemplateRef('gallery');
-<<<<<<< HEAD
-const count = computed(() => props.mediaList.filter(media => previewable(media)).length);
-=======
+const gallery = useTemplateRef("gallery");
 const medias = computed(() => {
 	const previewable: Misskey.entities.DriveFile[] = [];
 	const nonPreviewable: Misskey.entities.DriveFile[] = [];
@@ -112,7 +125,6 @@ const medias = computed(() => {
 });
 const mediaComponents = new Map<string, MediaComponentExposes | null>();
 const count = computed(() => medias.value.previewable.length);
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 const markerId = genId();
 
 async function calcAspectRatio() {
@@ -120,28 +132,32 @@ async function calcAspectRatio() {
 
 	const img = props.mediaList[0];
 
-	if (props.mediaList.length !== 1 || !(img.properties.width && img.properties.height)) {
-		gallery.value.style.aspectRatio = '';
+	if (
+		props.mediaList.length !== 1 ||
+		!(img.properties.width && img.properties.height)
+	) {
+		gallery.value.style.aspectRatio = "";
 		return;
 	}
 
 	const ratioMax = (ratio: number) => {
-		if (img.properties.width == null || img.properties.height == null) return '';
+		if (img.properties.width == null || img.properties.height == null)
+			return "";
 		return `${Math.max(ratio, img.properties.width / img.properties.height).toString()} / 1`;
 	};
 
 	switch (prefer.s.mediaListWithOneImageAppearance) {
-		case '16_9':
+		case "16_9":
 			gallery.value.style.aspectRatio = ratioMax(16 / 9);
 			break;
-		case '1_1':
+		case "1_1":
 			gallery.value.style.aspectRatio = ratioMax(1 / 1);
 			break;
-		case '2_3':
+		case "2_3":
 			gallery.value.style.aspectRatio = ratioMax(2 / 3);
 			break;
 		default:
-			gallery.value.style.aspectRatio = '';
+			gallery.value.style.aspectRatio = "";
 			break;
 	}
 }
@@ -153,23 +169,12 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-<<<<<<< HEAD
-});
-
-const previewable = (file: Misskey.entities.DriveFile): boolean => {
-	if (file.type === 'image/svg+xml') return true; // svgのwebpublic/thumbnailはpngなのでtrue
-	// FILE_TYPE_BROWSERSAFEに適合しないものはブラウザで表示するのに不適切
-	return (file.type.startsWith('video') || file.type.startsWith('image')) && FILE_TYPE_BROWSERSAFE.includes(file.type);
-};
-
-=======
 	mediaComponents.clear();
 });
 
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 function onMediaClick(file: Misskey.entities.DriveFile) {
 	if (prefer.s.imageNewTab) {
-		window.open(file.url, '_blank');
+		window.open(file.url, "_blank");
 		return;
 	}
 	openGallery(file.id);
@@ -177,31 +182,23 @@ function onMediaClick(file: Misskey.entities.DriveFile) {
 
 async function openGallery(id?: string) {
 	if (id == null) {
-<<<<<<< HEAD
-		const firstImage = props.mediaList.find(media => previewable(media));
-=======
 		const firstImage = medias.value.previewable[0];
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		if (firstImage == null) return;
 		id = firstImage.id;
 	}
 
 	const getElementByMarker = (marker: string) => {
 		if (gallery.value == null) return null;
-		const found = gallery.value.querySelector(`[data-marker="${marker}"]`) as HTMLElement | null;
+		const found = gallery.value.querySelector(
+			`[data-marker="${marker}"]`,
+		) as HTMLElement | null;
 		if (found == null) return null;
 		return markRaw(found);
 	};
 
-<<<<<<< HEAD
-	const contents = props.mediaList.filter(media => previewable(media)).map<Content>(media => ({
-		id: media.id,
-		type: media.type.startsWith('video') ? 'video' : 'image',
-=======
-	const contents = medias.value.previewable.map<Content>(media => ({
+	const contents = medias.value.previewable.map<Content>((media) => ({
 		id: media.id,
 		type: getType(media.type),
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		url: media.url,
 		thumbnailUrl: media.thumbnailUrl,
 		width: media.properties.width,
@@ -211,24 +208,22 @@ async function openGallery(id?: string) {
 		sourceElement: getElementByMarker(`${markerId}:${media.id}`),
 	}));
 
-<<<<<<< HEAD
-	const { dispose } = await os.popupAsyncWithDialog(import('@/components/MkLightbox.vue').then(x => x.default), {
-		defaultIndex: contents.findIndex(conten => conten.id === id),
-		contents: contents,
-=======
 	const initiallyRevealedContentIds = contents
-		.filter(content => mediaComponents.get(content.id)?.isRevealed() === true)
-		.map(content => content.id);
+		.filter((content) => mediaComponents.get(content.id)?.isRevealed() === true)
+		.map((content) => content.id);
 
-	const { dispose } = await os.popupAsyncWithDialog(import('@/components/MkLightbox.vue').then(x => x.default), {
-		defaultIndex: contents.findIndex(conten => conten.id === id),
-		contents: contents,
-		initiallyRevealedContentIds,
-		user: props.user,
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-	}, {
-		closed: () => dispose(),
-	});
+	const { dispose } = await os.popupAsyncWithDialog(
+		import("@/components/MkLightbox.vue").then((x) => x.default),
+		{
+			defaultIndex: contents.findIndex((conten) => conten.id === id),
+			contents: contents,
+			initiallyRevealedContentIds,
+			user: props.user,
+		},
+		{
+			closed: () => dispose(),
+		},
+	);
 }
 
 defineExpose({
@@ -258,11 +253,7 @@ defineExpose({
 
 		// default but fallback (expand)
 		min-height: 64px;
-		max-height: clamp(
-			64px,
-			50cqh,
-			min(360px, 50vh)
-		);
+		max-height: clamp(64px, 50cqh, min(360px, 50vh));
 
 		&.n116_9 {
 			min-height: initial;
@@ -270,7 +261,7 @@ defineExpose({
 			aspect-ratio: 16 / 9; // fallback
 		}
 
-		&.n11_1{
+		&.n11_1 {
 			min-height: initial;
 			max-height: initial;
 			aspect-ratio: 1 / 1; // fallback

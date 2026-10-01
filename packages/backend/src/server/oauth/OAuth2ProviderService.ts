@@ -11,15 +11,6 @@ import ipaddr from 'ipaddr.js';
 import fastifyCors from '@fastify/cors';
 import { verifyChallenge } from 'pkce-challenge';
 import { permissions as kinds } from 'misskey-js';
-import {
-	AccessDeniedError,
-	InvalidGrantError,
-	InvalidRequestError,
-	InvalidScopeError,
-	OAuthProviderError,
-	UnsupportedGrantTypeError,
-	UnsupportedResponseTypeError,
-} from './errors.js';
 import { secureRndstr } from '@/misc/secure-rndstr.js';
 import { HttpRequestService } from '@/core/HttpRequestService.js';
 import type { Config } from '@/config.js';
@@ -35,6 +26,15 @@ import Logger from '@/logger.js';
 import { StatusError } from '@/misc/status-error.js';
 import { HtmlTemplateService } from '@/server/web/HtmlTemplateService.js';
 import { OAuthPage } from '@/server/web/views/oauth.js';
+import {
+	AccessDeniedError,
+	InvalidGrantError,
+	InvalidRequestError,
+	InvalidScopeError,
+	OAuthProviderError,
+	UnsupportedGrantTypeError,
+	UnsupportedResponseTypeError,
+} from './errors.js';
 import type { FastifyInstance, FastifyReply } from 'fastify';
 
 // TODO: Consider migrating to @node-oauth/oauth2-server once
@@ -536,85 +536,10 @@ export class OAuth2ProviderService implements OnApplicationShutdown {
 	public async createServer(fastify: FastifyInstance): Promise<void> {
 		registerFormBodyParser(fastify);
 
-<<<<<<< HEAD
-		fastify.get('/authorize', async (request, reply) => {
-			let validatedRedirectUri: string | undefined;
-			let state: string | undefined;
-
-			try {
-				const seed = await this.#resolveAuthorizationRequest(request.query as OAuthRequestParameters);
-				const { clientInfo } = seed;
-				validatedRedirectUri = seed.redirectUri;
-				state = seed.state;
-				const authorizationRequest = this.#finalizeAuthorizationRequest(seed);
-
-				const transactionId = secureRndstr(128);
-				this.#authorizationTransactionCache.set(transactionId, {
-					client: clientInfo,
-					request: authorizationRequest,
-				});
-
-				this.#logger.info(`Rendering authorization page for "${clientInfo.name}"`);
-
-				applyNoStore(reply);
-				return await HtmlTemplateService.replyHtml(reply, OAuthPage({
-					...await this.htmlTemplateService.getCommonData(),
-					transactionId,
-					clientName: clientInfo.name,
-					clientLogo: clientInfo.logo ?? undefined,
-					scope: authorizationRequest.scopes,
-				}));
-			} catch (error) {
-				const OAuthProviderError = normalizeOAuthProviderError(error);
-				if (validatedRedirectUri && OAuthProviderError.allow_redirect && OAuthProviderError.error !== 'unsupported_response_type') {
-					redirectWithQuery(reply, validatedRedirectUri, appendIssuer({
-						error: OAuthProviderError.error,
-						...(state ? { state } : {}),
-					}, this.config.url));
-					return;
-				}
-
-				sendOAuthProviderError(reply, OAuthProviderError);
-			}
-		});
-
-		fastify.post('/decision', async (request, reply) => {
-			try {
-				const body = toRequestParameters(request.body);
-				const transactionId = firstValue(body.transaction_id);
-				if (!transactionId) {
-					throw new InvalidRequestError('Missing transaction ID');
-				}
-
-				const transaction = this.#authorizationTransactionCache.get(transactionId);
-				if (!transaction) {
-					throw createForbiddenAccessDenied('Invalid or expired transaction ID');
-				}
-				this.#authorizationTransactionCache.delete(transactionId);
-
-				const cancel = !!firstValue(body.cancel);
-				this.#logger.info(`Received the decision. Cancel: ${cancel}`);
-				if (cancel) {
-					redirectWithQuery(reply, transaction.request.redirectUri, appendIssuer({
-						error: 'access_denied',
-						...(transaction.request.state ? { state: transaction.request.state } : {}),
-					}, this.config.url));
-					return;
-				}
-
-				const loginToken = firstValue(body.login_token);
-				if (!loginToken) {
-					throw new InvalidRequestError('No user');
-				}
-
-				this.#logger.info(`Checking the user before sending authorization code to ${transaction.client.id}`);
-				const user = await this.#findUserByLoginToken(loginToken);
-
-=======
 		fastify.addHook('onRequest', (request, reply, done) => {
 			// クリックジャッキング防止のためiFrameの中に入れられないようにする
 			reply.header('X-Frame-Options', 'DENY');
-			reply.header('Content-Security-Policy', "frame-ancestors 'none'");
+			reply.header('Content-Security-Policy', 'frame-ancestors \'none\'');
 			done();
 		});
 
@@ -691,7 +616,6 @@ export class OAuth2ProviderService implements OnApplicationShutdown {
 				this.#logger.info(`Checking the user before sending authorization code to ${transaction.client.id}`);
 				const user = await this.#findUserByLoginToken(loginToken);
 
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 				this.#logger.info(`Sending authorization code on behalf of user ${user.id} to ${transaction.client.id} through ${transaction.request.redirectUri}, with scope: [${transaction.request.scopes}]`);
 
 				const code = secureRndstr(128);

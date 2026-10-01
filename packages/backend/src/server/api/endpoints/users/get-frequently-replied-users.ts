@@ -76,19 +76,6 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 			});
 
 			// Fetch recent notes
-<<<<<<< HEAD
-			const recentNotes = await this.notesRepository.find({
-				where: {
-					userId: user.id,
-					replyId: Not(IsNull()),
-				},
-				order: {
-					id: -1,
-				},
-				take: 1000,
-				select: { replyId: true },
-			});
-=======
 			const recentNotesQuery = this.notesRepository.createQueryBuilder('note')
 				.select(['note.id', 'note.replyId'])
 				.where('note.userId = :userId', { userId: user.id })
@@ -104,7 +91,6 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 			}
 
 			const recentNotes = await recentNotesQuery.getMany();
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 
 			// 投稿が少なかったら中断
 			if (recentNotes.length === 0) {
@@ -112,14 +98,6 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 			}
 
 			// TODO ミュートを考慮
-<<<<<<< HEAD
-			const replyTargetNotes = await this.notesRepository.find({
-				where: {
-					id: In(recentNotes.map(p => p.replyId)),
-				},
-				select: { userId: true },
-			});
-=======
 			const replyTargetNotesQuery = this.notesRepository.createQueryBuilder('note')
 				.select(['note.id', 'note.userId'])
 				.where('note.id IN (:...replyIds)', { replyIds: recentNotes.map(p => p.replyId) });
@@ -127,7 +105,6 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 			this.queryService.generateVisibilityQuery(replyTargetNotesQuery, me);
 
 			const replyTargetNotes = await replyTargetNotesQuery.getMany();
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 
 			const repliedUsers: any = {};
 

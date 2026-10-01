@@ -49,11 +49,7 @@ jobs:
         ports:
           - 56312:6379
       meilisearch:
-<<<<<<< HEAD
-        image: getmeili/meilisearch:v1.49.0
-=======
         image: getmeili/meilisearch:v1.53.1
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
         ports:
           - 57712:7700
         env:
@@ -61,48 +57,35 @@ jobs:
           MEILI_ENV: development
 
     steps:
-<<<<<<< HEAD
-    - uses: actions/checkout@v7.0.0
-      with:
-        submodules: true
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v6.0.9
-    - name: Install FFmpeg
-      run: |
-=======
-    - uses: actions/checkout@v7.0.1
-      with:
-        submodules: true
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v6.0.10
-    - name: Install FFmpeg
-      run: |
-        sudo apt update
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-        sudo apt install -y ffmpeg
-    - name: Use Node.js
-      uses: actions/setup-node@v7.0.0
-      with:
-        node-version-file: ${{ matrix.node-version-file }}
-        cache: 'pnpm'
-    - run: pnpm i --frozen-lockfile
-    - name: Check pnpm-lock.yaml
-      run: git diff --exit-code pnpm-lock.yaml
-    - name: Copy Configure
-      run: cp .github/misskey/test.yml .config
-    - name: Build
-      run: pnpm build
-    - name: Test
-      run: pnpm --filter backend ${{ matrix.coverage && 'test-and-coverage' || 'test' }}
-    - name: Upload to Codecov
-<<<<<<< HEAD
-=======
-      if: ${{ matrix.coverage }}
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-      uses: codecov/codecov-action@v7
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        files: ./packages/backend/coverage/coverage-final.json
+      - uses: actions/checkout@v7.0.1
+        with:
+          submodules: true
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6.0.10
+      - name: Install FFmpeg
+        run: |
+          sudo apt update
+          sudo apt install -y ffmpeg
+      - name: Use Node.js
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version-file: ${{ matrix.node-version-file }}
+          cache: "pnpm"
+      - run: pnpm i --frozen-lockfile
+      - name: Check pnpm-lock.yaml
+        run: git diff --exit-code pnpm-lock.yaml
+      - name: Copy Configure
+        run: cp .github/misskey/test.yml .config
+      - name: Build
+        run: pnpm build
+      - name: Test
+        run: pnpm --filter backend ${{ matrix.coverage && 'test-and-coverage' || 'test' }}
+      - name: Upload to Codecov
+        if: ${{ matrix.coverage }}
+        uses: codecov/codecov-action@v7
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./packages/backend/coverage/coverage-final.json
 
   e2e:
     name: E2E tests (backend)
@@ -132,24 +115,16 @@ jobs:
           - 56312:6379
 
     steps:
-<<<<<<< HEAD
-      - uses: actions/checkout@v7.0.0
-        with:
-          submodules: true
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6.0.9
-=======
       - uses: actions/checkout@v7.0.1
         with:
           submodules: true
       - name: Setup pnpm
         uses: pnpm/action-setup@v6.0.10
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
       - name: Use Node.js
         uses: actions/setup-node@v7.0.0
         with:
           node-version-file: ${{ matrix.node-version-file }}
-          cache: 'pnpm'
+          cache: "pnpm"
       - run: pnpm i --frozen-lockfile
       - name: Check pnpm-lock.yaml
         run: git diff --exit-code pnpm-lock.yaml
@@ -160,10 +135,7 @@ jobs:
       - name: Test
         run: pnpm --filter backend ${{ matrix.coverage && 'test-and-coverage:e2e' || 'test:e2e' }}
       - name: Upload to Codecov
-<<<<<<< HEAD
-=======
         if: ${{ matrix.coverage }}
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
         uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -188,19 +160,11 @@ jobs:
           POSTGRES_HOST_AUTH_METHOD: trust
 
     steps:
-<<<<<<< HEAD
-      - uses: actions/checkout@v7.0.0
-        with:
-          submodules: true
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6.0.9
-=======
       - uses: actions/checkout@v7.0.1
         with:
           submodules: true
       - name: Setup pnpm
         uses: pnpm/action-setup@v6.0.10
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
       - name: Get current date
         id: current-date
         run: echo "today=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
@@ -208,7 +172,7 @@ jobs:
         uses: actions/setup-node@v7.0.0
         with:
           node-version-file: ${{ matrix.node-version-file }}
-          cache: 'pnpm'
+          cache: "pnpm"
       - run: pnpm i --frozen-lockfile
       - name: Check pnpm-lock.yaml
         run: git diff --exit-code pnpm-lock.yaml

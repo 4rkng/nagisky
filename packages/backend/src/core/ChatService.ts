@@ -899,20 +899,9 @@ export class ChatService {
 			throw new Error('too many reactions');
 		}
 
-<<<<<<< HEAD
-		const room = message.toRoomId ? await this.chatRoomsRepository.findOneByOrFail({ id: message.toRoomId }) : null;
-
-		if (room) {
-			if (!(await this.isRoomMember(room, userId))) {
-				throw new Error('cannot react to others message');
-			}
-		}
-
-=======
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		await this.chatMessagesRepository.createQueryBuilder().update()
 			.set({
-				reactions: () => `array_append("reactions", :pair)`,
+				reactions: () => 'array_append("reactions", :pair)',
 			})
 			.where('id = :id', { id: message.id })
 			.setParameter('pair', `${userId}/${reaction}`)
@@ -964,7 +953,7 @@ export class ChatService {
 
 		await this.chatMessagesRepository.createQueryBuilder().update()
 			.set({
-				reactions: () => `array_remove("reactions", :pair)`,
+				reactions: () => 'array_remove("reactions", :pair)',
 			})
 			.where('id = :id', { id: message.id })
 			.setParameter('pair', `${userId}/${reaction}`)

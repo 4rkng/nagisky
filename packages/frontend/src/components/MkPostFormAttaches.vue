@@ -4,56 +4,69 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <template>
-<div v-show="props.modelValue.length != 0" :class="$style.root">
-	<MkDraggable
-		:modelValue="props.modelValue"
-		:class="$style.files"
-		direction="horizontal"
-		withGaps
-		@update:modelValue="v => emit('update:modelValue', v)"
-	>
-		<template #default="{ item }">
-			<div
-				:class="$style.file"
-				role="button"
-				tabindex="0"
-				@click="showFileMenu(item, $event)"
-				@keydown.space.enter="showFileMenu(item, $event)"
-				@contextmenu.prevent.stop="showFileMenu(item, $event)"
-			>
-				<!-- pointer-eventsをnoneにしておかないとiOSなどでドラッグしたときに画像の方に判定が持ってかれる -->
-				<MkDriveFileThumbnail style="pointer-events: none;" :data-id="item.id" :class="$style.thumbnail" :file="item" fit="cover"/>
-				<div v-if="item.isSensitive" :class="$style.sensitive" style="pointer-events: none;">
-					<i class="ti ti-eye-exclamation" style="margin: auto;"></i>
+	<div v-show="props.modelValue.length != 0" :class="$style.root">
+		<MkDraggable
+			:modelValue="props.modelValue"
+			:class="$style.files"
+			direction="horizontal"
+			withGaps
+			@update:modelValue="(v) => emit('update:modelValue', v)"
+		>
+			<template #default="{ item }">
+				<div
+					:class="$style.file"
+					role="button"
+					tabindex="0"
+					@click="showFileMenu(item, $event)"
+					@keydown.space.enter="showFileMenu(item, $event)"
+					@contextmenu.prevent.stop="showFileMenu(item, $event)"
+				>
+					<!-- pointer-eventsをnoneにしておかないとiOSなどでドラッグしたときに画像の方に判定が持ってかれる -->
+					<MkDriveFileThumbnail
+						style="pointer-events: none"
+						:data-id="item.id"
+						:class="$style.thumbnail"
+						:file="item"
+						fit="cover"
+					/>
+					<div
+						v-if="item.isSensitive"
+						:class="$style.sensitive"
+						style="pointer-events: none"
+					>
+						<i class="ti ti-eye-exclamation" style="margin: auto"></i>
+					</div>
 				</div>
-			</div>
-		</template>
-	</MkDraggable>
-	<p
-		:class="[$style.remain, {
-			[$style.exceeded]: props.modelValue.length > 16,
-		}]"
-	>
-		{{ props.modelValue.length }}/16
-	</p>
-</div>
+			</template>
+		</MkDraggable>
+		<p
+			:class="[
+				$style.remain,
+				{
+					[$type { Content } from '@/components/MkLightbox.item.vue';
+import style.exceeded]: props.modelValue.length > 16,
+				},
+			]"
+		>
+			{{ props.modelValue.length }}/16
+		</p>
+	</div>
 </template>
 
-<script lang="ts" setup>
-import { inject } from 'vue';
-import * as Misskey from 'misskey-js';
-import type { MenuItem } from '@/types/menu';
-import { copyToClipboard } from '@/utility/copy-to-clipboard';
-import MkDriveFileThumbnail from '@/components/MkDriveFileThumbnail.vue';
-import MkDraggable from '@/components/MkDraggable.vue';
-import * as os from '@/os.js';
-import { misskeyApi } from '@/utility/misskey-api.js';
-import { i18n } from '@/i18n.js';
-import { prefer } from '@/preferences.js';
-import { DI } from '@/di.js';
-import { globalEvents } from '@/events.js';
-import type { Content } from '@/components/MkLightbox.item.vue';
-import { isPreviewable, getType } from '@/utility/lightbox.js';
+import { inject } from "vue";
+import * as Misskey from "misskey-js";
+import type { MenuItem } from "@/types/menu";
+import { copyToClipboard } from "@/utility/copy-to-clipboard";
+import MkDriveFileThumbnail from "@/components/MkDriveFileThumbnail.vue";
+import MkDraggable from "@/components/MkDraggable.vue";
+import * as os from "@/os.js";
+import { misskeyApi } from "@/utility/misskey-api.js";
+import { i18n } from "@/i18n.js";
+import { prefer } from "@/preferences.js";
+import { DI } from "@/di.js";
+import { globalEvents } from "@/events.js";
+import type { Content } from "@/components/MkLightbox.item.vue";
+import { isPreviewable, getType } from "@/utility/lightbox.js";
 
 const props = defineProps<{
 	modelValue: Misskey.entities.DriveFile[];
@@ -63,10 +76,14 @@ const props = defineProps<{
 const mock = inject(DI.mock, false);
 
 const emit = defineEmits<{
-	(ev: 'update:modelValue', value: Misskey.entities.DriveFile[]): void;
-	(ev: 'detach', id: string): void;
-	(ev: 'changeSensitive', file: Misskey.entities.DriveFile, isSensitive: boolean): void;
-	(ev: 'changeName', file: Misskey.entities.DriveFile, newName: string): void;
+	(ev: "update:modelValue", value: Misskey.entities.DriveFile[]): void;
+	(ev: "detach", id: string): void;
+	(
+		ev: "changeSensitive",
+		file: Misskey.entities.DriveFile,
+		isSensitive: boolean,
+	): void;
+	(ev: "changeName", file: Misskey.entities.DriveFile, newName: string): void;
 }>();
 
 let menuShowing = false;
@@ -77,7 +94,7 @@ function detachMedia(id: string) {
 	if (props.detachMediaFn) {
 		props.detachMediaFn(id);
 	} else {
-		emit('detach', id);
+		emit("detach", id);
 	}
 }
 
@@ -87,29 +104,29 @@ async function detachAndDeleteMedia(file: Misskey.entities.DriveFile) {
 	detachMedia(file.id);
 
 	const { canceled } = await os.confirm({
-		type: 'warning',
+		type: "warning",
 		text: i18n.tsx.driveFileDeleteConfirm({ name: file.name }),
 	});
 	if (canceled) return;
 
-	await os.apiWithDialog('drive/files/delete', {
+	await os.apiWithDialog("drive/files/delete", {
 		fileId: file.id,
 	});
 
-	globalEvents.emit('driveFilesDeleted', [file]);
+	globalEvents.emit("driveFilesDeleted", [file]);
 }
 
 function toggleSensitive(file: Misskey.entities.DriveFile) {
 	if (mock) {
-		emit('changeSensitive', file, !file.isSensitive);
+		emit("changeSensitive", file, !file.isSensitive);
 		return;
 	}
 
-	misskeyApi('drive/files/update', {
+	misskeyApi("drive/files/update", {
 		fileId: file.id,
 		isSensitive: !file.isSensitive,
 	}).then(() => {
-		emit('changeSensitive', file, !file.isSensitive);
+		emit("changeSensitive", file, !file.isSensitive);
 	});
 }
 
@@ -122,11 +139,11 @@ async function rename(file: Misskey.entities.DriveFile) {
 		minLength: 1,
 	});
 	if (canceled) return;
-	misskeyApi('drive/files/update', {
+	misskeyApi("drive/files/update", {
 		fileId: file.id,
 		name: result,
 	}).then(() => {
-		emit('changeName', file, result);
+		emit("changeName", file, result);
 		file.name = result;
 	});
 }
@@ -134,112 +151,133 @@ async function rename(file: Misskey.entities.DriveFile) {
 async function describe(file: Misskey.entities.DriveFile) {
 	if (mock) return;
 
-	const { dispose } = await os.popupAsyncWithDialog(import('@/components/MkFileCaptionEditWindow.vue').then(x => x.default), {
-		default: file.comment !== null ? file.comment : '',
-		file: file,
-	}, {
-		done: caption => {
-			let comment = caption.length === 0 ? null : caption;
-			misskeyApi('drive/files/update', {
-				fileId: file.id,
-				comment: comment,
-			}).then(() => {
-				file.comment = comment;
-			});
+	const { dispose } = await os.popupAsyncWithDialog(
+		import("@/components/MkFileCaptionEditWindow.vue").then((x) => x.default),
+		{
+			default: file.comment !== null ? file.comment : "",
+			file: file,
 		},
-		closed: () => dispose(),
-	});
-}
-
-function showFileMenu(file: Misskey.entities.DriveFile, ev: PointerEvent | KeyboardEvent): void {
-	if (menuShowing) return;
-
-<<<<<<< HEAD
-	const isImage = file.type.startsWith('image/');
-	const isVideo = file.type.startsWith('video/');
-
-=======
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-	const menuItems: MenuItem[] = [];
-
-	menuItems.push({
-		text: i18n.ts.renameFile,
-		icon: 'ti ti-forms',
-		action: () => { rename(file); },
-	}, {
-		text: file.isSensitive ? i18n.ts.unmarkAsSensitive : i18n.ts.markAsSensitive,
-		icon: file.isSensitive ? 'ti ti-eye-exclamation' : 'ti ti-eye',
-		action: () => { toggleSensitive(file); },
-	}, {
-		text: i18n.ts.describeFile,
-		icon: 'ti ti-text-caption',
-		action: () => { describe(file); },
-	});
-
-<<<<<<< HEAD
-	if (isImage || isVideo) {
-=======
-	if (isPreviewable(file.type)) {
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-		menuItems.push({
-			text: i18n.ts.preview,
-			icon: 'ti ti-photo-search',
-			action: async () => {
-<<<<<<< HEAD
-				const constents = props.modelValue.filter(item => item.type.startsWith('image') || item.type.startsWith('video')).map(item => ({
-					id: item.id,
-					type: item.type.startsWith('video') ? 'video' as const : 'image' as const,
-=======
-				const constents = props.modelValue.filter(item => isPreviewable(item.type)).map<Content>(item => ({
-					id: item.id,
-					type: getType(item.type),
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-					url: item.url,
-					thumbnailUrl: item.thumbnailUrl,
-					width: item.properties.width,
-					height: item.properties.height,
-					filename: item.name,
-					file: item,
-					//sourceElement: TODO
-				}));
-				const { dispose } = await os.popupAsyncWithDialog(import('@/components/MkLightbox.vue').then(x => x.default), {
-					defaultIndex: constents.findIndex(content => content.id === file.id),
-					contents: constents,
-<<<<<<< HEAD
-=======
-					initiallyRevealedContentIds: [file.id],
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-				}, {
-					closed: () => dispose(),
+		{
+			done: (caption) => {
+				let comment = caption.length === 0 ? null : caption;
+				misskeyApi("drive/files/update", {
+					fileId: file.id,
+					comment: comment,
+				}).then(() => {
+					file.comment = comment;
 				});
 			},
-		});
-	}
+			closed: () => dispose(),
+		},
+	);
+}
 
-	menuItems.push({
-		type: 'divider',
-	}, {
-		text: i18n.ts.attachCancel,
-		icon: 'ti ti-circle-x',
-		action: () => { detachMedia(file.id); },
-	}, {
-		text: i18n.ts.deleteFile,
-		icon: 'ti ti-trash',
-		danger: true,
-		action: () => { detachAndDeleteMedia(file); },
-	});
+function showFileMenu(
+	file: Misskey.entities.DriveFile,
+	ev: PointerEvent | KeyboardEvent,
+): void {
+	if (menuShowing) return;
 
-	if (prefer.s.devMode) {
-		menuItems.push({ type: 'divider' }, {
-			icon: 'ti ti-hash',
-			text: i18n.ts.copyFileId,
+	const menuItems: MenuItem[] = [];
+
+	menuItems.push(
+		{
+			text: i18n.ts.renameFile,
+			icon: "ti ti-forms",
 			action: () => {
-				copyToClipboard(file.id);
+				rename(file);
+			},
+		},
+		{
+			text: file.isSensitive
+				? i18n.ts.unmarkAsSensitive
+				: i18n.ts.markAsSensitive,
+			icon: file.isSensitive ? "ti ti-eye-exclamation" : "ti ti-eye",
+			action: () => {
+				toggleSensitive(file);
+			},
+		},
+		{
+			text: i18n.ts.describeFile,
+			icon: "ti ti-text-caption",
+			action: () => {
+				describe(file);
+			},
+		},
+	);
+
+	if (isPreviewable(file.type)) {
+		menuItems.push({
+			text: i18n.ts.preview,
+			icon: "ti ti-photo-search",
+			action: async () => {
+				const constents = props.modelValue
+					.filter((item) => isPreviewable(item.type))
+					.map<Content>((item) => ({
+						id: item.id,
+						type: getType(item.type),
+						url: item.url,
+						thumbnailUrl: item.thumbnailUrl,
+						width: item.properties.width,
+						height: item.properties.height,
+						filename: item.name,
+						file: item,
+						//sourceElement: TODO
+					}));
+				const { dispose } = await os.popupAsyncWithDialog(
+					import("@/components/MkLightbox.vue").then((x) => x.default),
+					{
+						defaultIndex: constents.findIndex(
+							(content) => content.id === file.id,
+						),
+						contents: constents,
+						initiallyRevealedContentIds: [file.id],
+					},
+					{
+						closed: () => dispose(),
+					},
+				);
 			},
 		});
 	}
 
-	os.popupMenu(menuItems, ev.currentTarget ?? ev.target).then(() => menuShowing = false);
+	menuItems.push(
+		{
+			type: "divider",
+		},
+		{
+			text: i18n.ts.attachCancel,
+			icon: "ti ti-circle-x",
+			action: () => {
+				detachMedia(file.id);
+			},
+		},
+		{
+			text: i18n.ts.deleteFile,
+			icon: "ti ti-trash",
+			danger: true,
+			action: () => {
+				detachAndDeleteMedia(file);
+			},
+		},
+	);
+
+	if (prefer.s.devMode) {
+		menuItems.push(
+			{ type: "divider" },
+			{
+				icon: "ti ti-hash",
+				text: i18n.ts.copyFileId,
+				action: () => {
+					copyToClipboard(file.id);
+				},
+			},
+		);
+	}
+
+	os.popupMenu(menuItems, ev.currentTarget ?? ev.target).then(
+		() => (menuShowing = false),
+	);
 	menuShowing = true;
 }
 </script>
@@ -283,7 +321,7 @@ function showFileMenu(file: Misskey.entities.DriveFile, ev: PointerEvent | Keybo
 	top: 0;
 	left: 0;
 	z-index: 2;
-	background: rgba(17, 17, 17, .7);
+	background: rgba(17, 17, 17, 0.7);
 	color: #fff;
 }
 

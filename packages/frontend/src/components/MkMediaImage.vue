@@ -4,23 +4,34 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <template>
-<div :class="[hide ? $style.hidden : $style.visible, (image.isSensitive && prefer.s.highlightSensitiveMedia) && $style.sensitive]" @click="onClick" @contextmenu.stop="onContextmenu">
+<div
+	:class="[
+		hide ? $style.hidden : $style.visible,
+		image.isSensitive && prefer.s.highlightSensitiveMedia && $style.sensitive,
+	]"
+	@click="onClick"
+	@contextmenu.stop="onContextmenu"
+>
 	<component
 		:is="disableImageLink ? 'div' : 'a'"
-		v-bind="disableImageLink ? {
-			title: image.name,
-			class: $style.imageContainer,
-		} : {
-			title: image.name,
-			class: $style.imageContainer,
-			href: image.url,
-			style: 'cursor: zoom-in;'
-		}"
+		v-bind="
+			disableImageLink
+				? {
+					title: image.name,
+					class: $style.imageContainer,
+				}
+				: {
+					title: image.name,
+					class: $style.imageContainer,
+					href: image.url,
+					style: 'cursor: zoom-in;',
+				}
+		"
 	>
 		<MkImgWithBlurhash
 			v-if="prefer.s.enableHighQualityImagePlaceholders"
 			:hash="image.blurhash"
-			:src="(prefer.s.dataSaver.media && hide) ? null : url"
+			:src="prefer.s.dataSaver.media && hide ? null : url"
 			:forceBlurhash="hide"
 			:cover="hide || cover"
 			:alt="image.comment || image.name"
@@ -49,20 +60,64 @@ SPDX-License-Identifier: AGPL-3.0-only
 	<template v-if="hide">
 		<div :class="$style.hiddenText">
 			<div :class="$style.hiddenTextWrapper">
-				<b v-if="image.isSensitive" style="display: block;"><i class="ti ti-eye-exclamation"></i> {{ i18n.ts.sensitive }}{{ prefer.s.dataSaver.media ? ` (${i18n.ts.image}${image.size ? ' ' + bytes(image.size) : ''})` : '' }}</b>
-				<b v-else style="display: block;"><i class="ti ti-photo"></i> {{ prefer.s.dataSaver.media && image.size ? bytes(image.size) : i18n.ts.image }}</b>
-				<span v-if="controls" style="display: block;">{{ i18n.ts.clickToShow }}</span>
+				<b v-if="image.isSensitive" style="display: block"><i class="ti ti-eye-exclamation"></i> {{ i18n.ts.sensitive
+				}}{{
+					prefer.s.dataSaver.media
+						? ` (${i18n.ts.image}${image.size ? " " + bytes(image.size) : ""})`
+						: ""
+				}}</b>
+				<b v-else style="display: block"><i class="ti ti-photo"></i>
+					{{
+						prefer.s.dataSaver.media && image.size
+							? bytes(image.size)
+							: i18n.ts.image
+					}}</b>
+				<span v-if="controls" style="display: block">{{
+					i18n.ts.clickToShow
+				}}</span>
 			</div>
 		</div>
 	</template>
 	<template v-else-if="controls">
 		<div :class="$style.indicators">
-			<div v-if="['image/gif', 'image/apng'].includes(image.type)" :class="$style.indicator">GIF</div>
+			<div
+				v-if="['image/gif', 'image/apng'].includes(image.type)"
+				:class="$style.indicator"
+			>
+				GIF
+			</div>
 			<div v-if="image.comment" :class="$style.indicator">ALT</div>
-			<div v-if="image.isSensitive" :class="$style.indicator" style="color: var(--MI_THEME-warn);" :title="i18n.ts.sensitive"><i class="ti ti-eye-exclamation"></i></div>
+			<div
+				v-if="image.isSensitive"
+				:class="$style.indicator"
+				style="color: var(--MI_THEME-warn)"
+				:title="i18n.ts.sensitive"
+			>
+				<i class="ti ti-eye-exclamation"></i>
+			</div>
 		</div>
-		<button :class="[$style.menu, $style.menuBottom]" class="_button" @click.stop="showMenu"><i class="ti ti-dots" style="vertical-align: middle;" aria-hidden="true"></i></button>
-		<button :class="[$style.menu, $style.menuTop]" class="_button" @click.stop="hide = true"><i class="ti ti-eye-off" style="vertical-align: middle;" aria-hidden="true"></i></button>
+		<button
+			:class="[$style.menu, $style.menuBottom]"
+			class="_button"
+			@click.stop="showMenu"
+		>
+			<i
+				class="ti ti-dots"
+				style="vertical-align: middle"
+				aria-hidden="true"
+			></i>
+		</button>
+		<button
+			:class="[$style.menu, $style.menuTop]"
+			class="_button"
+			@click.stop="hide = true"
+		>
+			<i
+				class="ti ti-eye-off"
+				style="vertical-align: middle"
+				aria-hidden="true"
+			></i>
+		</button>
 	</template>
 </div>
 </template>
@@ -70,31 +125,34 @@ SPDX-License-Identifier: AGPL-3.0-only
 <script lang="ts" setup>
 import { watch, ref, computed } from 'vue';
 import * as Misskey from 'misskey-js';
-<<<<<<< HEAD
-=======
 import type { MediaComponentExposes } from '@/types/media-component.js';
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 import { getStaticImageUrl } from '@/utility/media-proxy.js';
 import bytes from '@/filters/bytes.js';
 import MkImgWithBlurhash from '@/components/MkImgWithBlurhash.vue';
 import { i18n } from '@/i18n.js';
 import * as os from '@/os.js';
 import { prefer } from '@/preferences.js';
-import { shouldHideFileByDefault, canRevealFile } from '@/utility/sensitive-file.js';
+import {
+	shouldHideFileByDefault,
+	canRevealFile,
+} from '@/utility/sensitive-file.js';
 import { getFileMenu } from '@/utility/get-file-menu.js';
 
-const props = withDefaults(defineProps<{
-	image: Misskey.entities.DriveFile;
-	raw?: boolean;
-	cover?: boolean;
-	disableImageLink?: boolean;
-	controls?: boolean;
-	marker?: string;
-}>(), {
-	cover: false,
-	disableImageLink: false,
-	controls: true,
-});
+const props = withDefaults(
+	defineProps<{
+		image: Misskey.entities.DriveFile;
+		raw?: boolean;
+		cover?: boolean;
+		disableImageLink?: boolean;
+		controls?: boolean;
+		marker?: string;
+	}>(),
+	{
+		cover: false,
+		disableImageLink: false,
+		controls: true,
+	},
+);
 
 const emit = defineEmits<{
 	(event: 'mediaClick', ev: PointerEvent): void;
@@ -102,11 +160,12 @@ const emit = defineEmits<{
 
 const hide = ref(true);
 
-const url = computed(() => (props.raw || prefer.s.loadRawImages)
-	? props.image.url
-	: prefer.s.disableShowingAnimatedImages
-		? getStaticImageUrl(props.image.url)
-		: props.image.thumbnailUrl!,
+const url = computed(() =>
+	props.raw || prefer.s.loadRawImages
+		? props.image.url
+		: prefer.s.disableShowingAnimatedImages
+			? getStaticImageUrl(props.image.url)
+			: props.image.thumbnailUrl!,
 );
 
 async function onClick(ev: PointerEvent) {
@@ -128,19 +187,33 @@ async function onClick(ev: PointerEvent) {
 }
 
 // Plugin:register_note_view_interruptor を使って書き換えられる可能性があるためwatchする
-watch(() => props.image, (newImage) => {
-	hide.value = shouldHideFileByDefault(newImage);
-}, {
-	deep: true,
-	immediate: true,
-});
+watch(
+	() => props.image,
+	(newImage) => {
+		hide.value = shouldHideFileByDefault(newImage);
+	},
+	{
+		deep: true,
+		immediate: true,
+	},
+);
 
 function showMenu(ev: PointerEvent) {
-	os.popupMenu(getFileMenu(props.image, (newHide) => { hide.value = newHide; }), (ev.currentTarget ?? ev.target ?? undefined) as HTMLElement | undefined);
+	os.popupMenu(
+		getFileMenu(props.image, (newHide) => {
+			hide.value = newHide;
+		}),
+		(ev.currentTarget ?? ev.target ?? undefined) as HTMLElement | undefined,
+	);
 }
 
 function onContextmenu(ev: PointerEvent) {
-	os.contextMenu(getFileMenu(props.image, (newHide) => { hide.value = newHide; }), ev);
+	os.contextMenu(
+		getFileMenu(props.image, (newHide) => {
+			hide.value = newHide;
+		}),
+		ev,
+	);
 }
 
 defineExpose<MediaComponentExposes>({
@@ -196,14 +269,32 @@ defineExpose<MediaComponentExposes>({
 	background-size: 16px 16px;
 }
 
-html[data-color-scheme=dark] .visible {
+html[data-color-scheme="dark"] .visible {
 	--c: rgb(255 255 255 / 2%);
-	background-image: linear-gradient(45deg, var(--c) 16.67%, var(--MI_THEME-bg) 16.67%, var(--MI_THEME-bg) 50%, var(--c) 50%, var(--c) 66.67%, var(--MI_THEME-bg) 66.67%, var(--MI_THEME-bg) 100%);
+	background-image: linear-gradient(
+		45deg,
+		var(--c) 16.67%,
+		var(--MI_THEME-bg) 16.67%,
+		var(--MI_THEME-bg) 50%,
+		var(--c) 50%,
+		var(--c) 66.67%,
+		var(--MI_THEME-bg) 66.67%,
+		var(--MI_THEME-bg) 100%
+	);
 }
 
-html[data-color-scheme=light] .visible {
+html[data-color-scheme="light"] .visible {
 	--c: rgb(0 0 0 / 2%);
-	background-image: linear-gradient(45deg, var(--c) 16.67%, var(--MI_THEME-bg) 16.67%, var(--MI_THEME-bg) 50%, var(--c) 50%, var(--c) 66.67%, var(--MI_THEME-bg) 66.67%, var(--MI_THEME-bg) 100%);
+	background-image: linear-gradient(
+		45deg,
+		var(--c) 16.67%,
+		var(--MI_THEME-bg) 16.67%,
+		var(--MI_THEME-bg) 50%,
+		var(--c) 50%,
+		var(--c) 66.67%,
+		var(--MI_THEME-bg) 66.67%,
+		var(--MI_THEME-bg) 100%
+	);
 }
 
 .menu {
@@ -247,7 +338,7 @@ html[data-color-scheme=light] .visible {
 	top: 10px;
 	left: 10px;
 	pointer-events: none;
-	opacity: .5;
+	opacity: 0.5;
 	gap: 6px;
 }
 

@@ -132,26 +132,6 @@ function normalizeString(value: string, maxBytes: number): string {
 	return value.slice(0, end) + suffix;
 }
 
-<<<<<<< HEAD
-/** 指定した後置文字列を含めて上限に収まる接頭辞の長さを二分探索します。 */
-function findMaxPrefixLength(value: string, suffix: string, maxBytes: number): number {
-	let lower = 0;
-	let upper = value.length;
-	while (lower < upper) {
-		const middle = Math.ceil((lower + upper) / 2);
-		if (byteLength(value.slice(0, middle) + suffix) <= maxBytes) {
-			lower = middle;
-		} else {
-			upper = middle - 1;
-		}
-	}
-	// UTF-16のサロゲート対を途中で切らないよう、必要なら1文字戻します。
-	if (lower > 0 && lower < value.length) {
-		const code = value.charCodeAt(lower - 1);
-		if (code >= 0xd800 && code <= 0xdbff) lower--;
-	}
-	return lower;
-=======
 function charUtf8Len(codePoint: number): number {
 	return codePoint < 0x80 ? 1
 		: codePoint < 0x800 ? 2
@@ -175,7 +155,6 @@ function findMaxPrefixLength(value: string, suffix: string, maxBytes: number) {
 		prefixLength += charUtf16Len(cp);
 	}
 	return prefixLength;
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 }
 
 /** 特殊な値に対しても、エラー判定で例外を発生させないようにします。 */

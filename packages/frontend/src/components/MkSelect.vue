@@ -4,74 +4,101 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <template>
-<div>
-	<div :class="$style.label" @click="focus"><slot name="label"></slot></div>
-	<div
-		ref="container"
-		tabindex="0"
-		:class="[$style.input, { [$style.inline]: inline, [$style.disabled]: disabled, [$style.focused]: focused || opening }]"
-		@focus="focused = true"
-		@blur="focused = false"
-		@mousedown.prevent="show"
-		@keydown.space.enter="show"
-	>
-		<div ref="prefixEl" :class="$style.prefix"><slot name="prefix"></slot></div>
+	<div>
+		<div :class="$style.label" @click="focus"><slot name="label"></slot></div>
 		<div
-			ref="inputEl"
-			v-adaptive-border
-			tabindex="-1"
-			:class="$style.inputCore"
-			:disabled="disabled"
-			:required="required"
-			:readonly="readonly"
-			:placeholder="placeholder"
-			@mousedown.prevent="() => {}"
-			@keydown.prevent="() => {}"
+			ref="container"
+			tabindex="0"
+			:class="[
+				$style.input,
+				{
+					[$style.inline]: inline,
+					[$style.disabled]: disabled,
+					[$style.focused]: focused || opening,
+				},
+			]"
+			@focus="focused = true"
+			@blur="focused = false"
+			@mousedown.prevent="show"
+			@keydown.space.enter="show"
 		>
-			<div style="pointer-events: none;">{{ currentValueText ?? '' }}</div>
-			<div style="display: none;">
-				<slot></slot>
+			<div ref="prefixEl" :class="$style.prefix">
+				<slot name="prefix"></slot>
+			</div>
+			<div
+				ref="inputEl"
+				v-adaptive-border
+				tabindex="-1"
+				:class="$style.inputCore"
+				:disabled="disabled"
+				:required="required"
+				:readonly="readonly"
+				:placeholder="placeholder"
+				@mousedown.prevent="() => {}"
+				@keydown.prevent="() => {}"
+			>
+				<div style="pointer-events: none">{{ currentValueText ?? "" }}</div>
+				<div style="display: none">
+					<slot></slot>
+				</div>
+			</div>
+			<div ref="suffixEl" :class="$style.suffix">
+				<i
+					class="ti ti-chevron-down"
+					:class="[$style.chevron, { [$style.chevronOpening]: opening }]"
+				></i>
 			</div>
 		</div>
-		<div ref="suffixEl" :class="$style.suffix"><i class="ti ti-chevron-down" :class="[$style.chevron, { [$style.chevronOpening]: opening }]"></i></div>
+		<div :class="$style.caption"><slot name="caption"></slot></div>
 	</div>
-	<div :class="$style.caption"><slot name="caption"></slot></div>
-</div>
 </template>
 
 <script lang="ts">
-import type { OptionValue } from '@/types/option-value.js';
+import type { OptionValue } from "@/types/option-value.js";
 
 export type ItemOption<T extends OptionValue = OptionValue> = {
-	type?: 'option';
+	type?: "option";
 	value: T;
 	label: string;
 	caption?: string;
 };
 
 export type ItemGroup<T extends OptionValue = OptionValue> = {
-	type: 'group';
+	type: "group";
 	label?: string;
 	items: ItemOption<T>[];
 };
 
-export type MkSelectItem<T extends OptionValue = OptionValue> = ItemOption<T> | ItemGroup<T>;
+export type MkSelectItem<T extends OptionValue = OptionValue> =
+	ItemOption<T> | ItemGroup<T>;
 
 export type GetMkSelectValueType<T extends MkSelectItem> = T extends ItemGroup
-	? T['items'][number]['value']
+	? T["items"][number]["value"]
 	: T extends ItemOption
-		? T['value']
+		? T["value"]
 		: never;
 
-export type GetMkSelectValueTypesFromDef<T extends MkSelectItem[]> = T[number] extends MkSelectItem
-	? GetMkSelectValueType<T[number]>
-	: never;
+export type GetMkSelectValueTypesFromDef<T extends MkSelectItem[]> =
+	T[number] extends MkSelectItem ? GetMkSelectValueType<T[number]> : never;
 </script>
 
-<script lang="ts" setup generic="const ITEMS extends MkSelectItem[], MODELT extends OptionValue">
-import { onMounted, onUnmounted, nextTick, ref, watch, computed, toRefs, useTemplateRef } from 'vue';
-import type { MenuItem } from '@/types/menu.js';
-import * as os from '@/os.js';
+<script
+	lang="ts"
+	setup
+	generic="const ITEMS extends MkSelectItem[], MODELT extends OptionValue"
+>
+import {
+	onMounted,
+	onUnmounted,
+	nextTick,
+	ref,
+	watch,
+	computed,
+	toRefs,
+	useTemplateRef,
+} from "vue";
+import type { MenuItem } from "@/types/menu.js";
+import * as os from "@/os.js";
 
 const props = defineProps<{
 	items: ITEMS;
@@ -85,11 +112,10 @@ const props = defineProps<{
 	large?: boolean;
 }>();
 
-type ModelTChecked = MODELT & (
-	MODELT extends GetMkSelectValueTypesFromDef<ITEMS>
+type ModelTChecked = MODELT &
+	(MODELT extends GetMkSelectValueTypesFromDef<ITEMS>
 		? unknown
-		: 'Error: The type of model does not match the type of items.'
-);
+		: "Error: The type of model does not match the type of items.");
 
 const model = defineModel<ModelTChecked>({ required: true });
 
@@ -97,23 +123,16 @@ const { autofocus } = toRefs(props);
 const focused = ref(false);
 const opening = ref(false);
 const currentValueText = ref<string | null>(null);
-const inputEl = useTemplateRef('inputEl');
-const prefixEl = useTemplateRef('prefixEl');
-const suffixEl = useTemplateRef('suffixEl');
-const container = useTemplateRef('container');
-const height =
-	props.small ? 33 :
-	props.large ? 39 :
-	36;
+const inputEl = useTemplateRef("inputEl");
+const prefixEl = useTemplateRef("prefixEl");
+const suffixEl = useTemplateRef("suffixEl");
+const container = useTemplateRef("container");
+const height = props.small ? 33 : props.large ? 39 : 36;
 
 const focus = () => container.value?.focus();
 
 // このコンポーネントが作成された時、非表示状態である場合がある
-<<<<<<< HEAD
-// 非表示状態だと要素の幅などは0になってしまうので、定期的に計算する
-=======
 // 非表示状態だと要素の幅などは0になってしまうので、ResizeObserverでサイズの変化を監視して計算する
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 const updatePadding = (entries: ResizeObserverEntry[]) => {
 	if (inputEl.value == null) return;
 
@@ -121,9 +140,9 @@ const updatePadding = (entries: ResizeObserverEntry[]) => {
 		const width = entry.borderBoxSize[0].inlineSize;
 		if (width === 0) continue;
 		if (entry.target === prefixEl.value) {
-			inputEl.value.style.paddingLeft = width + 'px';
+			inputEl.value.style.paddingLeft = width + "px";
 		} else if (entry.target === suffixEl.value) {
-			inputEl.value.style.paddingRight = width + 'px';
+			inputEl.value.style.paddingRight = width + "px";
 		}
 	}
 };
@@ -147,27 +166,31 @@ onUnmounted(() => {
 	paddingObserver = null;
 });
 
-watch([model, () => props.items], () => {
-	let found: ItemOption | null = null;
-	for (const item of props.items) {
-		if (item.type === 'group') {
-			for (const option of item.items) {
-				if (option.value === model.value) {
-					found = option;
+watch(
+	[model, () => props.items],
+	() => {
+		let found: ItemOption | null = null;
+		for (const item of props.items) {
+			if (item.type === "group") {
+				for (const option of item.items) {
+					if (option.value === model.value) {
+						found = option;
+						break;
+					}
+				}
+			} else {
+				if (item.value === model.value) {
+					found = item;
 					break;
 				}
 			}
-		} else {
-			if (item.value === model.value) {
-				found = item;
-				break;
-			}
 		}
-	}
-	if (found) {
-		currentValueText.value = found.label;
-	}
-}, { immediate: true, deep: true });
+		if (found) {
+			currentValueText.value = found.label;
+		}
+	},
+	{ immediate: true, deep: true },
+);
 
 function show() {
 	if (opening.value || props.disabled || props.readonly) return;
@@ -178,10 +201,10 @@ function show() {
 	const menu: MenuItem[] = [];
 
 	for (const item of props.items) {
-		if (item.type === 'group') {
+		if (item.type === "group") {
 			if (item.label != null) {
 				menu.push({
-					type: 'label',
+					type: "label",
 					text: item.label,
 				});
 			}

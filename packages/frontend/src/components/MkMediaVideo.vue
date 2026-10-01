@@ -4,69 +4,103 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <template>
-<div
-	ref="playerEl"
-	tabindex="0"
-	:class="[
-		$style.root,
-		(video.isSensitive && prefer.s.highlightSensitiveMedia) && $style.sensitive,
-	]"
-	@contextmenu.stop="onContextmenu"
->
-	<button v-if="hide" :class="$style.hidden" @click="reveal">
-		<div :class="$style.hiddenTextWrapper">
-			<b v-if="video.isSensitive" style="display: block;"><i class="ti ti-eye-exclamation"></i> {{ i18n.ts.sensitive }}{{ prefer.s.dataSaver.media ? ` (${i18n.ts.video}${video.size ? ' ' + bytes(video.size) : ''})` : '' }}</b>
-			<b v-else style="display: block;"><i class="ti ti-movie"></i> {{ prefer.s.dataSaver.media && video.size ? bytes(video.size) : i18n.ts.video }}</b>
-			<span style="display: block;">{{ i18n.ts.clickToShow }}</span>
-		</div>
-	</button>
-
-	<div v-else :class="$style.videoRoot" @click="emit('mediaClick', $event)">
-		<img
-			v-if="video.thumbnailUrl"
-			:class="$style.video"
-			:src="video.thumbnailUrl"
-			:alt="video.comment ?? undefined"
-		/>
-		<video
-			v-else
-			:class="$style.video"
-			:alt="video.comment"
-			preload="metadata"
-		>
-			<source :src="video.url">
-		</video>
-		<div :class="$style.playIconWrapper">
-			<div :class="$style.playIcon">
-				<i class="ti ti-player-play"></i>
+	<div
+		ref="playerEl"
+		tabindex="0"
+		:class="[
+			$style.root,
+			video.isSensitive && prefer.s.highlightSensitiveMedia && $style.sensitive,
+		]"
+		@contextmenu.stop="onContextmenu"
+	>
+		<button v-if="hide" :class="$style.hidden" @click="reveal">
+			<div :class="$style.hiddenTextWrapper">
+				<b v-if="video.isSensitive" style="display: block"
+					><i class="ti ti-eye-exclamation"></i> {{ i18n.ts.sensitive
+					}}{{
+						prefer.s.dataSaver.media
+							? ` (${i18n.ts.video}${video.size ? " " + bytes(video.size) : ""})`
+							: ""
+					}}</b
+				>
+				<b v-else style="display: block"
+					><i class="ti ti-movie"></i>
+					{{
+						prefer.s.dataSaver.media && video.size
+							? bytes(video.size)
+							: i18n.ts.video
+					}}</b
+				>
+				<span style="display: block">{{ i18n.ts.clickToShow }}</span>
 			</div>
+		</button>
+
+		<div v-else :class="$style.videoRoot" @click="emit('mediaClick', $event)">
+			<img
+				v-if="video.thumbnailUrl"
+				:class="$style.video"
+				:src="video.thumbnailUrl"
+				:alt="video.comment ?? undefined"
+			/>
+			<video
+				v-else
+				:class="$style.video"
+				:alt="video.comment"
+				preload="metadata"
+			>
+				<source :src="video.url" />
+			</video>
+			<div :class="$style.playIconWrapper">
+				<div :class="$style.playIcon">
+					<i class="ti ti-player-play"></i>
+				</div>
+			</div>
+			<button
+				:class="[$style.menu, $style.menuBottom]"
+				class="_button"
+				@click.stop="showMenu"
+			>
+				<i
+					class="ti ti-dots"
+					style="vertical-align: middle"
+					aria-hidden="true"
+				></i>
+			</button>
+			<button
+				:class="[$style.menu, $style.menuTop]"
+				class="_button"
+				@click.stop="hide = true"
+			>
+				<i
+					class="ti ti-eye-off"
+					style="vertical-align: middle"
+					aria-hidden="true"
+				></i>
+			</button>
 		</div>
-		<button :class="[$style.menu, $style.menuBottom]" class="_button" @click.stop="showMenu"><i class="ti ti-dots" style="vertical-align: middle;" aria-hidden="true"></i></button>
-		<button :class="[$style.menu, $style.menuTop]" class="_button" @click.stop="hide = true"><i class="ti ti-eye-off" style="vertical-align: middle;" aria-hidden="true"></i></button>
 	</div>
-</div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import * as Misskey from 'misskey-js';
-<<<<<<< HEAD
-=======
-import type { MediaComponentExposes } from '@/types/media-component.js';
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-import bytes from '@/filters/bytes.js';
-import { i18n } from '@/i18n.js';
-import { prefer } from '@/preferences.js';
-import * as os from '@/os.js';
-import { getFileMenu } from '@/utility/get-file-menu.js';
-import { shouldHideFileByDefault, canRevealFile } from '@/utility/sensitive-file.js';
+import { ref } from "vue";
+import * as Misskey from "misskey-js";
+import type { MediaComponentExposes } from "@/types/media-component.js";
+import bytes from "@/filters/bytes.js";
+import { i18n } from "@/i18n.js";
+import { prefer } from "@/preferences.js";
+import * as os from "@/os.js";
+import { getFileMenu } from "@/utility/get-file-menu.js";
+import {
+	shouldHideFileByDefault,
+	canRevealFile,
+} from "@/utility/sensitive-file.js";
 
 const props = defineProps<{
 	video: Misskey.entities.DriveFile;
 }>();
 
 const emit = defineEmits<{
-	(event: 'mediaClick', ev: PointerEvent): void;
+	(event: "mediaClick", ev: PointerEvent): void;
 }>();
 
 // eslint-disable-next-line vue/no-setup-props-reactivity-loss
@@ -81,19 +115,26 @@ async function reveal() {
 }
 
 function showMenu(ev: PointerEvent) {
-	os.popupMenu(getFileMenu(props.video, (newHide) => { hide.value = newHide; }), (ev.currentTarget ?? ev.target ?? undefined) as HTMLElement | undefined);
+	os.popupMenu(
+		getFileMenu(props.video, (newHide) => {
+			hide.value = newHide;
+		}),
+		(ev.currentTarget ?? ev.target ?? undefined) as HTMLElement | undefined,
+	);
 }
 
 function onContextmenu(ev: PointerEvent) {
-	os.contextMenu(getFileMenu(props.video, (newHide) => { hide.value = newHide; }), ev);
+	os.contextMenu(
+		getFileMenu(props.video, (newHide) => {
+			hide.value = newHide;
+		}),
+		ev,
+	);
 }
-<<<<<<< HEAD
-=======
 
 defineExpose<MediaComponentExposes>({
 	isRevealed: () => !hide.value,
 });
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 </script>
 
 <style lang="scss" module>
