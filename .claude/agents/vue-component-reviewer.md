@@ -1,10 +1,6 @@
 ---
 name: vue-component-reviewer
-<<<<<<< HEAD
-description: Misskey frontend の Vue 3 SFC (packages/frontend/src/components/ / pages/ の *.vue) 変更を機械レビューする。SPDX (HTML コメント)・Mk* 命名・i18n.ts/tsx・SCSS 変数・os.* 経由・a11y・Storybook 併設 (*.stories.impl.ts) を検査。frontend の .vue を変更した PR レビューで呼ぶ。
-=======
 description: Misskey frontend の Vue 3 SFC (packages/frontend/src/components/ / pages/ の *.vue) 変更を機械レビューする。Mk* 命名・i18n.ts/tsx・SCSS 変数・os.* 経由・a11y・Storybook 併設 (*.stories.impl.ts) を検査。frontend の .vue を変更した PR レビューで呼ぶ。
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 tools: Read, Grep, Glob, Bash
 ---
 
@@ -38,24 +34,7 @@ BASE=$(git merge-base origin/develop HEAD)
 
 ## チェックリスト
 
-<<<<<<< HEAD
-### 1. SPDX ヘッダー (Critical)
-
-`.vue` ファイル冒頭は **HTML コメント形式** で必須:
-
-```html
-<!--
-SPDX-FileCopyrightText: syuilo and misskey-project
-SPDX-License-Identifier: AGPL-3.0-only
--->
-```
-
-`/* ... */` (TS 形式) は禁止 (CI の `spdx` ジョブはコメント形式ではなく SPDX 文字列の有無のみを検査するため、形式が違っても CI は通るが、規約違反として指摘する)。形式の根拠は references/knowledge 側を参照。
-
-### 2. 命名規約 (Major)
-=======
 ### 1. 命名規約 (Major)
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 
 - 共有 / 再利用コンポーネント (`packages/frontend/src/components/` 配下、サブディレクトリ含む) は `Mk` プレフィックス必須 (例: `MkButton.vue`, `global/MkAvatar.vue`, `grid/MkGrid.vue`)。
 - ページ固有のものは `pages/` 配下に置き、`Mk` プレフィックスは不要。

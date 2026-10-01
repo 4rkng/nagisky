@@ -12,12 +12,12 @@
 
 ## ファイル配置
 
-| 配置先 | 用途 | 命名 |
-|---|---|---|
-| `packages/frontend/src/components/Mk<Name>.vue` | 通常の共有 UI コンポーネント | `Mk<Name>.vue` |
+| 配置先                                                 | 用途                                                                                                                                                               | 命名                                                     |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------- |
+| `packages/frontend/src/components/Mk<Name>.vue`        | 通常の共有 UI コンポーネント                                                                                                                                       | `Mk<Name>.vue`                                           |
 | `packages/frontend/src/components/global/Mk<Name>.vue` | `components/index.ts` で Vue グローバルコンポーネント登録 (`app.component`) され、import 無しで全テンプレートから使える基本部品 (`MkA` / `MkAvatar` / `MkAcct` 等) | `Mk<Name>.vue` (サブディレクトリ内でも `Mk` prefix 必須) |
-| `packages/frontend/src/components/grid/Mk<Name>.vue` | テーブル/グリッド系の部品セット | 同上 |
-| `packages/frontend/src/pages/<Name>.vue` | 単一ページ専用の UI (再利用しない) | `Mk` prefix **不要** |
+| `packages/frontend/src/components/grid/Mk<Name>.vue`   | テーブル/グリッド系の部品セット                                                                                                                                    | 同上                                                     |
+| `packages/frontend/src/pages/<Name>.vue`               | 単一ページ専用の UI (再利用しない)                                                                                                                                 | `Mk` prefix **不要**                                     |
 
 迷ったら「他の `Mk*.vue` から import される可能性があるか?」で判定する。Yes なら `components/`、No なら `pages/`。
 
@@ -56,32 +56,35 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <template>
-<div :class="[$style.root, $style[`variant_${variant}`]]">
-	<slot></slot>
-	<button
-		v-if="closable"
-		class="_button"
-		:class="$style.close"
-		:aria-label="i18n.ts.close"
-		@click="emit('close')"
-	>
-		<i class="ti ti-x"></i>
-	</button>
-</div>
+	<div :class="[$style.root, $style[`variant_${variant}`]]">
+		<slot></slot>
+		<button
+			v-if="closable"
+			class="_button"
+			:class="$style.close"
+			:aria-label="i18n.ts.close"
+			@click="emit('close')"
+		>
+			<i class="ti ti-x"></i>
+		</button>
+	</div>
 </template>
 
 <script lang="ts" setup>
-import { i18n } from '@/i18n.js';
+import { i18n } from "@/i18n.js";
 
-const props = withDefaults(defineProps<{
-	variant?: 'info' | 'warn' | 'danger';
-	closable?: boolean;
-}>(), {
-	variant: 'info',
-});
+const props = withDefaults(
+	defineProps<{
+		variant?: "info" | "warn" | "danger";
+		closable?: boolean;
+	}>(),
+	{
+		variant: "info",
+	},
+);
 
 const emit = defineEmits<{
-	(ev: 'close'): void;
+	(ev: "close"): void;
 }>();
 </script>
 
@@ -119,15 +122,15 @@ const emit = defineEmits<{
 
 ## `<script>` / `<style>` 規約サマリ
 
-| 項目 | 規約 | 新規不可 |
-|---|---|---|
+| 項目                | 規約                                                         | 新規不可                             |
+| ------------------- | ------------------------------------------------------------ | ------------------------------------ |
 | `<script>` 開始タグ | `<script lang="ts" setup>` または `<script setup lang="ts">` | `<script>` (lang 無し) / Options API |
-| Props 定義 | `defineProps<{ ... }>()` (type-only) | runtime object 形式 |
-| Emits 定義 | `defineEmits<{ (ev: 'click'): void }>()` (type-only) | runtime array 形式 |
-| `<style>` 開始タグ | `<style lang="scss" module>`、参照は `:class="$style.foo"` | `<style scoped>` (module なし) |
-| CSS 値 | `var(--MI_THEME-...)` / `var(--MI-...)` | `#fff` / `rgb(...)` のハードコード |
-| グローバル class | `_button` / `_panel` / `_selectable` 等を活用 | — |
-| アイコン | Tabler icons クラス `<i class="ti ti-info-circle">` | インライン SVG / 別アイコンセット |
+| Props 定義          | `defineProps<{ ... }>()` (type-only)                         | runtime object 形式                  |
+| Emits 定義          | `defineEmits<{ (ev: 'click'): void }>()` (type-only)         | runtime array 形式                   |
+| `<style>` 開始タグ  | `<style lang="scss" module>`、参照は `:class="$style.foo"`   | `<style scoped>` (module なし)       |
+| CSS 値              | `var(--MI_THEME-...)` / `var(--MI-...)`                      | `#fff` / `rgb(...)` のハードコード   |
+| グローバル class    | `_button` / `_panel` / `_selectable` 等を活用                | —                                    |
+| アイコン            | Tabler icons クラス `<i class="ti ti-info-circle">`          | インライン SVG / 別アイコンセット    |
 
 詳細・テンプレート集は → [knowledge/component-conventions.md](../knowledge/component-conventions.md) / [knowledge/scss-modules.md](../knowledge/scss-modules.md)。
 
@@ -174,13 +177,6 @@ pnpm --filter frontend storybook-dev    # localhost:6006
 pnpm --filter frontend test
 ```
 
-<<<<<<< HEAD
-## CHANGELOG エントリ
-
-ユーザーから見える変更 (新規コンポーネントが新しい UI として露出する、既存 UI の挙動を変える) なら、`CHANGELOG.md` に追記する。判定方法と書式は [shipping-misskey-change スキル](../../../shipping-misskey-change/SKILL.md) で確認。
-
-=======
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 ## 既存コンポーネントとの整合性
 
 - 似た用途の既存 `Mk*` を 1-2 個読んで、props 命名 (`primary` / `danger` / `small` 等の形容詞、`onClose` ではなく `emit('close')` 等) を揃える

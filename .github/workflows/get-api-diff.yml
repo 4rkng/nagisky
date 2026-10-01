@@ -25,41 +25,33 @@ jobs:
             ref: refs/pull/${{ github.event.number }}/merge
 
     steps:
-<<<<<<< HEAD
-    - uses: actions/checkout@v7.0.0
-=======
-    - uses: actions/checkout@v7.0.1
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-      with:
-        ref: ${{ matrix.ref }}
-        submodules: true
-    - name: Setup pnpm
-<<<<<<< HEAD
-      uses: pnpm/action-setup@v6.0.9
-=======
-      uses: pnpm/action-setup@v6.0.10
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
-    - name: Use Node.js
-      uses: actions/setup-node@v7.0.0
-      with:
-        node-version-file: '.node-version'
-        cache: 'pnpm'
-    - run: pnpm i --frozen-lockfile
-    - name: Check pnpm-lock.yaml
-      run: git diff --exit-code pnpm-lock.yaml
-    - name: Copy Configure
-      run: cp .config/example.yml .config/default.yml
-    - name: Build
-      run: pnpm build
-    - name: Generate API JSON
-      run: pnpm --filter backend generate-api-json
-    - name: Copy API.json
-      run: cp packages/backend/built/api.json ${{ matrix.api-json-name }}
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v7
-      with:
-        name: api-artifact-${{ matrix.api-json-name }}
-        path: ${{ matrix.api-json-name }}
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ matrix.ref }}
+          submodules: true
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6.0.10
+      - name: Use Node.js
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version-file: ".node-version"
+          cache: "pnpm"
+      - run: pnpm i --frozen-lockfile
+      - name: Check pnpm-lock.yaml
+        run: git diff --exit-code pnpm-lock.yaml
+      - name: Copy Configure
+        run: cp .config/example.yml .config/default.yml
+      - name: Build
+        run: pnpm build
+      - name: Generate API JSON
+        run: pnpm --filter backend generate-api-json
+      - name: Copy API.json
+        run: cp packages/backend/built/api.json ${{ matrix.api-json-name }}
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: api-artifact-${{ matrix.api-json-name }}
+          path: ${{ matrix.api-json-name }}
 
   save-pr-number:
     runs-on: ubuntu-latest

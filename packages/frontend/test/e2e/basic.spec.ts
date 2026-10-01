@@ -85,12 +85,9 @@ test.describe('After setup instance', () => {
 		await visitHome(page);
 
 		await page.getByTestId('signup').click();
-<<<<<<< HEAD
-=======
 		await page.getByTestId('signup-rules-continue').waitFor({ state: 'visible' });
 		test.expect(await page.getByTestId('signup-rules-continue').isDisabled()).toBeTruthy();
 
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		await locateMkSwitch(page, 'signup-rules-notes-agree').click();
 		await page.getByTestId('modal-dialog-ok').click();
 		test.expect(await page.getByTestId('signup-rules-continue').isDisabled()).toBeFalsy();
@@ -199,10 +196,6 @@ test.describe('After user setup', () => {
 		await registerUser('alice', 'alice1234');
 		await signIn(page, 'alice', 'alice1234');
 
-<<<<<<< HEAD
-		// 表示に時間がかかるのでデフォルト秒数だとタイムアウトする
-=======
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		await closeUserSetupDialog(page);
 	});
 

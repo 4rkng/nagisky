@@ -58,14 +58,14 @@ pnpm --filter i18n generate
 ## ステップ 3: frontend での参照
 
 ```ts
-import { i18n } from '@/i18n.js';
+import { i18n } from "@/i18n.js";
 ```
 
-| 用途 | 書き方 |
-|---|---|
-| 単純文字列 | `i18n.ts.save` |
-| ネスト | `i18n.ts._settings.general` |
-| パラメータ付き | `i18n.tsx.greeting({ name: userName })` |
+| 用途               | 書き方                                                     |
+| ------------------ | ---------------------------------------------------------- |
+| 単純文字列         | `i18n.ts.save`                                             |
+| ネスト             | `i18n.ts._settings.general`                                |
+| パラメータ付き     | `i18n.tsx.greeting({ name: userName })`                    |
 | Vue テンプレート内 | `{{ i18n.ts.save }}` / `{{ i18n.tsx.greeting({ name }) }}` |
 
 `i18n.ts` は型付き文字列、`i18n.tsx` は `{name}` プレースホルダを埋め込む関数 (パラメータ付きキーのみ存在。ICU MessageFormat ではなく単純な文字列置換)。
@@ -88,11 +88,6 @@ git diff --name-only develop -- 'locales/*.yml' | grep -v '^locales/ja-JP\.yml$'
 
 **注意:** `grep -v 'ja-JP.yml'` を **diff 本文** に当てると ja-JP.yml 単体の変更でも `+追加行` が素通りして必ず非空になる。`--name-only` でファイル名だけに絞ってから完全一致で除外するのが正しい。
 
-<<<<<<< HEAD
-ユーザー影響のある UI 変更を伴う場合は [shipping-misskey-change スキル](../../../shipping-misskey-change/SKILL.md) で CHANGELOG エントリの判定をする。
-
-=======
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 ## 例: 「ノートを削除しますか？」確認ダイアログを追加する
 
 1. `locales/ja-JP.yml`:
@@ -102,18 +97,19 @@ git diff --name-only develop -- 'locales/*.yml' | grep -v '^locales/ja-JP\.yml$'
    ```
 2. `pnpm --filter i18n generate` (または `pnpm dev` で watch 中)
 3. SFC:
+
    ```vue
    <script setup lang="ts">
-   import { i18n } from '@/i18n.js';
-   import * as os from '@/os.js';
+   import { i18n } from "@/i18n.js";
+   import * as os from "@/os.js";
 
    async function onDelete() {
-     const { canceled } = await os.confirm({
-       type: 'warning',
-       text: i18n.ts._notes.deleteConfirm,
-     });
-     if (canceled) return;
-     // 削除処理
+   	const { canceled } = await os.confirm({
+   		type: "warning",
+   		text: i18n.ts._notes.deleteConfirm,
+   	});
+   	if (canceled) return;
+   	// 削除処理
    }
    </script>
    ```

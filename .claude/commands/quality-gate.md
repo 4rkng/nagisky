@@ -14,24 +14,16 @@ project-level notice: see .claude/THIRD_PARTY_LICENSES.md (Misskey 内サード�
 
 Imported into Misskey .claude/ on 2026-05-10. Pipeline 概念 (lint → typecheck → test) は upstream ECC 版から借用 (MIT)。実コマンド層は Misskey の pnpm + tsc + ESLint + Vitest に固定し、formatter (Prettier/Biome) フェーズは削除した。
 
-<<<<<<< HEAD
-note: 元 ECC 版は言語自動判定 + format/lint/type のジェネリック版だったが、Misskey 専用に pnpm + tsc + ESLint + Vitest の組み合わせに固定。重い test:e2e / test:fed は含まない (CI 側で実行される)。
-=======
 note: 元 ECC 版は言語自動判定 + format/lint/type のジェネリック版だったが、Misskey 専用に pnpm + tsc + ESLint + Vitest の組み合わせに固定。
 重い test:e2e / test:fed は含めず、変更内容または明示依頼に応じて個別実行する。
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 -->
 
 # /quality-gate — Misskey 広域品質検証
 
 `/quality-gate [scope]`
 
-<<<<<<< HEAD
-完了前の **軽量** 品質チェック。重い E2E / 連合テスト (test:e2e / test:fed / Playwright) は CI 側で実行されるため、本コマンドには含めない。
-=======
 package または repo 全体の状態が必要なときに任意で使う。
 完了時に必須の変更ファイル lint は [shipping-misskey-change](../skills/shipping-misskey-change/SKILL.md) が担当する。
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 
 ## Scope
 
@@ -115,21 +107,12 @@ Other tests: SKIPPED (repo scope の対象外)
 
 ## 関連 skill / コマンド
 
-<<<<<<< HEAD
-- [`shipping-misskey-change` スキル](../skills/shipping-misskey-change/SKILL.md) — commit / PR 直前の最終チェックリスト (misskey-js 再生成 / SPDX / CHANGELOG 等)
-=======
 - [`shipping-misskey-change` スキル](../skills/shipping-misskey-change/SKILL.md) — commit / PR 直前の最終チェックリスト
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 - [`shipping-misskey-change/references/tasks/regenerate-misskey-js.md`](../skills/shipping-misskey-change/references/tasks/regenerate-misskey-js.md) — API 変更時の `pnpm build-misskey-js-with-types` 実行手順
 - [.github/copilot-instructions.md §Validation コマンド](../../.github/copilot-instructions.md) — pnpm コマンド一覧 (Copilot / Codex 向けに再掲)
 
 ## 元 ECC 版との差分
 
 - ジェネリックな言語自動判定を排除し、Misskey 固定 pipeline に。
-<<<<<<< HEAD
-- formatter フェーズなし (Misskey は ESLint --fix のみ採用)。
-- e2e / federation / Playwright は重いため除外し CI 側に委譲。
-=======
 - formatter フェーズなし (変更ファイル lint は ESLint `--quiet`)。
 - e2e / federation / Playwright は scope に自動追加せず、変更内容または明示依頼に応じて個別実行。
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3

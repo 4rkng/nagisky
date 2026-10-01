@@ -23,7 +23,10 @@
 - 引数あり → `i18n.tsx.<key>(...)` (関数呼び出し)
 
   ```ts
-  os.alert({ type: 'info', text: i18n.tsx.unfollowConfirm({ name: user.username }) });
+  os.alert({
+  	type: "info",
+  	text: i18n.tsx.unfollowConfirm({ name: user.username }),
+  });
   ```
 
   YAML 側に `{name}` 形式のプレースホルダが含まれているキーは **`i18n.tsx`** からしか呼べない。誤って `i18n.ts.unfollowConfirm` と書くと値がフォーマット前の関数になってそのまま表示される。
@@ -32,14 +35,14 @@
 
 ```vue
 <script lang="ts" setup>
-import { i18n } from '@/i18n.js';
-import * as os from '@/os.js';
+import { i18n } from "@/i18n.js";
+import * as os from "@/os.js";
 
 const props = defineProps<{ name: string }>();
 
 async function onDelete() {
 	const { canceled } = await os.confirm({
-		type: 'warning',
+		type: "warning",
 		text: i18n.tsx.driveFileDeleteConfirm({ name: props.name }), // 引数あり
 	});
 	if (canceled) return;
@@ -48,13 +51,13 @@ async function onDelete() {
 </script>
 ```
 
-| 用途 | 書き方 |
-|---|---|
-| 単純文字列 | `i18n.ts.save` |
-| ネスト | `i18n.ts._settings.general` |
-| パラメータ付き (1 個) | `i18n.tsx.unfollowConfirm({ name })` |
-| パラメータ付き (複数) | `i18n.tsx.monthAndDay({ month, day })` |
-| Vue テンプレート内 | `{{ i18n.ts.save }}` / `{{ i18n.tsx.unfollowConfirm({ name }) }}` |
+| 用途                  | 書き方                                                            |
+| --------------------- | ----------------------------------------------------------------- |
+| 単純文字列            | `i18n.ts.save`                                                    |
+| ネスト                | `i18n.ts._settings.general`                                       |
+| パラメータ付き (1 個) | `i18n.tsx.unfollowConfirm({ name })`                              |
+| パラメータ付き (複数) | `i18n.tsx.monthAndDay({ month, day })`                            |
+| Vue テンプレート内    | `{{ i18n.ts.save }}` / `{{ i18n.tsx.unfollowConfirm({ name }) }}` |
 
 ## 実装パターン
 
@@ -71,6 +74,7 @@ driveAboutTip: "ドライブでは、過去に...<br>\nノートに添付する�
 ```
 
 参照側:
+
 ```vue
 <div v-html="i18n.tsx.poweredByMisskeyDescription({ name: 'Misskey' })" />
 ```
@@ -87,26 +91,32 @@ driveAboutTip: "ドライブでは、過去に...<br>\nノートに添付する�
 出典: [packages/frontend/src/components/MkPoll.vue](../../../../../packages/frontend/src/components/MkPoll.vue) の `_poll` 動的キー
 
 ```ts
-const timer = computed(() => i18n.tsx._poll[
-  remaining.value >= 86400 ? 'remainingDays' :
-  remaining.value >= 3600 ? 'remainingHours' :
-  remaining.value >= 60  ? 'remainingMinutes' : 'remainingSeconds'
-]({
-  s: Math.floor(remaining.value % 60),
-  m: Math.floor(remaining.value / 60) % 60,
-  h: Math.floor(remaining.value / 3600) % 24,
-  d: Math.floor(remaining.value / 86400),
-}));
+const timer = computed(() =>
+	i18n.tsx._poll[
+		remaining.value >= 86400
+			? "remainingDays"
+			: remaining.value >= 3600
+				? "remainingHours"
+				: remaining.value >= 60
+					? "remainingMinutes"
+					: "remainingSeconds"
+	]({
+		s: Math.floor(remaining.value % 60),
+		m: Math.floor(remaining.value / 60) % 60,
+		h: Math.floor(remaining.value / 3600) % 24,
+		d: Math.floor(remaining.value / 86400),
+	}),
+);
 ```
 
 対応する yml (各キーで実際に使うプレースホルダは違って良い):
 
 ```yaml
 _poll:
-  remainingDays: "終了まであと{d}日{h}時間"      # {d} {h}
-  remainingHours: "終了まであと{h}時間{m}分"     # {h} {m}
-  remainingMinutes: "終了まであと{m}分{s}秒"     # {m} {s}
-  remainingSeconds: "終了まであと{s}秒"          # {s}
+  remainingDays: "終了まであと{d}日{h}時間" # {d} {h}
+  remainingHours: "終了まであと{h}時間{m}分" # {h} {m}
+  remainingMinutes: "終了まであと{m}分{s}秒" # {m} {s}
+  remainingSeconds: "終了まであと{s}秒" # {s}
 ```
 
 ポイント:
@@ -129,7 +139,7 @@ _poll:
 ### ネスト + パラメータ複合
 
 ```vue
-{{ i18n.tsx._uploader.maxFileSizeIsX({ x: maxSize + 'MB' }) }}
+{{ i18n.tsx._uploader.maxFileSizeIsX({ x: maxSize + "MB" }) }}
 {{ i18n.tsx._auth.shareAccess({ name: appName }) }}
 ```
 
@@ -140,7 +150,7 @@ _poll:
 出典: [packages/frontend/src/components/MkSignupDialog.rules.vue](../../../../../packages/frontend/src/components/MkSignupDialog.rules.vue)
 
 ```ts
-i18n.tsx.iHaveReadXCarefullyAndAgree({ x: i18n.ts.serverRules })
+i18n.tsx.iHaveReadXCarefullyAndAgree({ x: i18n.ts.serverRules });
 ```
 
 ### 三項演算子で ts / tsx を切り替え
@@ -153,11 +163,12 @@ i18n.tsx.iHaveReadXCarefullyAndAgree({ x: i18n.ts.serverRules })
 
 ## Crowdin 安全策 (既存キーのリネーム / 復旧)
 
-ja-JP.yml 以外の locales/*.yml は **Crowdin の自動配信先**。手動編集や source 側の不用意な操作で他言語の翻訳資産が失われる。
+ja-JP.yml 以外の locales/\*.yml は **Crowdin の自動配信先**。手動編集や source 側の不用意な操作で他言語の翻訳資産が失われる。
 
 ### 同期メカニズム
 
 [crowdin.yml](../../../../../crowdin.yml):
+
 ```yaml
 files:
   - source: /locales/ja-JP.yml
@@ -184,7 +195,7 @@ files:
 # 旧キー (まだ残す)
 _settings:
   theme: "テーマ"
-# 新キー (追加)
+  # 新キー (追加)
   appearance: "外観"
 ```
 
@@ -210,6 +221,7 @@ git diff --name-only develop -- 'locales/*.yml' | grep -v '^locales/ja-JP\.yml$'
 `grep -v 'ja-JP.yml'` を diff 本文に当てる書き方は、ja-JP.yml 単体の変更でも追加行 (`+`) が素通りして必ず非空になるため使わない。**ファイル名にだけ grep を当てる** こと。
 
 - **他言語 yml が変更されていたら即 revert**:
+
   ```bash
   git restore --source=develop -- locales/en-US.yml locales/<lang>.yml
   ```
@@ -227,21 +239,6 @@ git checkout HEAD -- locales/zh-CN.yml
 
 PR 化前なら何度でもやり直せる。**マージしてしまうと Crowdin 側との整合性が崩れて手動回復が必要** になるので、PR レビュー段階で必ず `locales/*.yml` (ja-JP 以外) の diff がゼロであることを確認する。
 
-<<<<<<< HEAD
-### CHANGELOG 記載の判定
-
-| 変更内容 | CHANGELOG 記載 |
-|---|---|
-| 新規画面追加と一緒に新キー追加 | 必要 (`### Client` に Feat/Enhance) |
-| 既存文言の改善 (誤字脱字以外) | 必要 (`### Client` に Enhance) |
-| 誤字脱字・微妙な言い回し修正 | 不要 |
-| キーのリネーム (UI 変化なし) | 不要 |
-| キー削除 (画面から消える) | 必要 (`### Client` に Feat / 機能削除) |
-
-書き方は [shipping-misskey-change スキル](../../../shipping-misskey-change/SKILL.md) を参照。
-
-=======
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 ## トラブルシュート
 
 i18n 周辺で踏みやすい失敗とその対処。エラー文字列で grep してたどり着けるよう整理。
@@ -249,6 +246,7 @@ i18n 周辺で踏みやすい失敗とその対処。エラー文字列で grep 
 ### 型エラー: `Property '<key>' does not exist on type 'Locale'`
 
 **症状**:
+
 ```
 packages/frontend/src/components/MkXxx.vue
 > i18n.ts.newKey
@@ -268,12 +266,14 @@ packages/frontend/src/components/MkXxx.vue
 ### 型エラー: ts/tsx の取り違え
 
 **症状 A** (パラメータ無しキーを tsx で呼ぶ):
+
 ```
 i18n.tsx.save({...})
 > Property 'save' does not exist on type 'Tsx<Locale>'.
 ```
 
 **症状 B** (パラメータ付きキーを ts で参照、関数化されたまま使う):
+
 ```vue
 {{ i18n.ts.unfollowConfirm }}
 <!-- 画面に "{name}のフォローを解除しますか？" が {name} 未置換のまま出る -->
@@ -283,9 +283,9 @@ i18n.tsx.save({...})
 
 **対処**: パラメータ有無は yml の `{...}` 記法で決まる。
 
-| yml の値 | ts | tsx |
-|---|---|---|
-| `"保存"` | `i18n.ts.save` ✅ | (キー存在せず) ❌ |
+| yml の値                             | ts                                                           | tsx                                     |
+| ------------------------------------ | ------------------------------------------------------------ | --------------------------------------- |
+| `"保存"`                             | `i18n.ts.save` ✅                                            | (キー存在せず) ❌                       |
 | `"{name}のフォローを解除しますか？"` | `i18n.ts.unfollowConfirm` → `{name}` 未置換の文字列のまま ❌ | `i18n.tsx.unfollowConfirm({ name })` ✅ |
 
 ### 実行時警告: `Unexpected locale key: <key>`
@@ -374,9 +374,10 @@ withOneFile: "1個のファイル"
 ```
 
 ```ts
-const text = files.length === 1
-  ? i18n.ts.withOneFile
-  : i18n.tsx.withNFiles({ n: files.length });
+const text =
+	files.length === 1
+		? i18n.ts.withOneFile
+		: i18n.tsx.withNFiles({ n: files.length });
 ```
 
 #### 2. 切替パターン (動的キー)

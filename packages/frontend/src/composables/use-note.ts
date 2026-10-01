@@ -3,11 +3,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-<<<<<<< HEAD
-import { ref, computed } from 'vue';
-=======
 import { ref } from 'vue';
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 import type { Ref } from 'vue';
 import * as mfm from 'mfm-js';
 import * as Misskey from 'misskey-js';
@@ -17,11 +13,7 @@ import { host } from '@@/js/config.js';
 import { pleaseLogin } from '@/utility/please-login.js';
 import type { OpenOnRemoteOptions } from '@/utility/please-login.js';
 import { checkWordMute } from '@/utility/check-word-mute.js';
-<<<<<<< HEAD
-import { misskeyApi, misskeyApiGet } from '@/utility/misskey-api.js';
-=======
 import { misskeyApi } from '@/utility/misskey-api.js';
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 import * as sound from '@/utility/sound.js';
 import * as os from '@/os.js';
 import { reactionPicker } from '@/utility/reaction-picker.js';
@@ -45,10 +37,7 @@ import { notePage } from '@/filters/note.js';
 import type { DI as DIType } from '@/di.js';
 import type { ExtractInjectedType } from '@/types/misc.js';
 import type { MenuItem } from '@/types/menu.js';
-<<<<<<< HEAD
-=======
 import type { WordMuteResult } from '@/utility/check-word-mute.js';
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 
 export interface UseNoteProps {
 	note: Misskey.entities.Note;
@@ -74,38 +63,6 @@ export interface UseNoteOptions {
 	currentAntenna?: Ref<Misskey.entities.Antenna | null> | null;
 }
 
-<<<<<<< HEAD
-export function calculateMuteStatus<
-	CheckOnly extends boolean,
-	CheckForSensitiveMedia extends boolean,
-	ReturnTypeA = CheckOnly extends true ? boolean : Array<string | string[]> | false | 'sensitiveMute',
-	ReturnTypeB = CheckForSensitiveMedia extends true ? ReturnTypeA : Exclude<ReturnTypeA, 'sensitiveMute'>,
->(
-	noteToCheck: Misskey.entities.Note,
-	user: typeof $i,
-	mutedWords: Array<string | string[]> | null,
-	checkForSensitiveMedia: CheckForSensitiveMedia,
-	checkOnly: CheckOnly = false as CheckOnly,
-): ReturnTypeB {
-	if (mutedWords != null) {
-		const result = checkWordMute(noteToCheck, user, mutedWords);
-		if (Array.isArray(result)) return checkOnly ? (result.length > 0) as ReturnTypeB : result as ReturnTypeB;
-
-		const replyResult = noteToCheck.reply && checkWordMute(noteToCheck.reply, user, mutedWords);
-		if (Array.isArray(replyResult)) return checkOnly ? (replyResult.length > 0) as ReturnTypeB : replyResult as ReturnTypeB;
-
-		const renoteResult = noteToCheck.renote && checkWordMute(noteToCheck.renote, user, mutedWords);
-		if (Array.isArray(renoteResult)) return checkOnly ? (renoteResult.length > 0) as ReturnTypeB : renoteResult as ReturnTypeB;
-	}
-
-	if (checkOnly) return false as ReturnTypeB;
-
-	if (checkForSensitiveMedia && noteToCheck.files?.some((v) => v.isSensitive)) {
-		return 'sensitiveMute' as ReturnTypeB;
-	}
-
-	return false as ReturnTypeB;
-=======
 export function checkNoteWordMute(
 	noteToCheck: Misskey.entities.Note,
 	user: typeof $i,
@@ -134,7 +91,6 @@ export function checkBuiltinSoftMute(
 	}
 
 	return false;
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 }
 
 /** MkNote, MkNoteDetailedの共通ロジック */
@@ -151,11 +107,7 @@ export function useNote(
 
 	// プラグインの割り込み処理
 	let rawNote = deepClone(props.note);
-<<<<<<< HEAD
-	const hideByPlugin = ref(false);
-=======
 	let hideByPlugin = false;
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 	const noteViewInterruptors = getPluginHandlers('note_view_interruptor');
 
 	if (noteViewInterruptors.length > 0) {
@@ -163,28 +115,19 @@ export function useNote(
 		for (const interruptor of noteViewInterruptors) {
 			try {
 				result = interruptor.handler(result!) as Misskey.entities.Note | null;
-<<<<<<< HEAD
-=======
 
 				// nullになった場合（非表示）はこれ以上やることがないのでループを抜ける
 				if (result == null) {
 					break;
 				}
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 			} catch (err) {
 				console.error(err);
 			}
 		}
 		if (result == null) {
-<<<<<<< HEAD
-			hideByPlugin.value = true;
-		} else {
-			rawNote = result as Misskey.entities.Note;
-=======
 			hideByPlugin = true;
 		} else {
 			rawNote = result;
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		}
 	}
 
@@ -206,25 +149,6 @@ export function useNote(
 	const translation = ref<Misskey.entities.NotesTranslateResponse | null>(null);
 
 	// ミュート判定
-<<<<<<< HEAD
-	const muted = ref($i ? calculateMuteStatus(appearNote, $i, $i.mutedWords, inTimeline && !tl_withSensitive.value) : false);
-	const hardMuted = ref(props.withHardMute && $i ? calculateMuteStatus(appearNote, $i, $i.hardMutedWords, inTimeline && !tl_withSensitive.value, true) : false);
-
-	// 計算プロパティ (Computed)
-	const isMyRenote = computed(() => $i && ($i.id === rawNote.userId));
-	const parsed = computed(() => appearNote.text ? mfm.parse(appearNote.text) : null);
-	const urls = computed(() => parsed.value ? extractUrlFromMfm(parsed.value).filter((url) => appearNote.renote?.url !== url && appearNote.renote?.uri !== url) : null);
-	const isLong = computed(() => shouldCollapsed(appearNote, urls.value ?? []));
-	const collapsed = ref(appearNote.cw == null && isLong.value);
-	const showTicker = computed(() => (prefer.s.instanceTicker === 'always') || (prefer.s.instanceTicker === 'remote' && appearNote.user.instance));
-	const canRenote = computed(() => ['public', 'home'].includes(appearNote.visibility) || (appearNote.visibility === 'followers' && appearNote.userId === $i?.id));
-	const renoteCollapsed = ref(prefer.s.collapseRenotes && isRenote && (($i && ($i.id === rawNote.userId || $i.id === appearNote.userId)) || ($appearNote.myReaction != null)));
-
-	const pleaseLoginContext = computed<OpenOnRemoteOptions>(() => ({
-		type: 'lookup',
-		url: `https://${host}/notes/${appearNote.id}`,
-	}));
-=======
 	// mutedはミュート解除の操作で書き換わるのでrefだが、hardMutedは解除できないのでリアクティブにしない
 	const muted = ref($i ? checkNoteWordMute(appearNote, $i, $i.mutedWords) || checkBuiltinSoftMute(appearNote, inTimeline && !tl_withSensitive.value) : false);
 	const hardMuted = props.withHardMute && $i ? checkNoteWordMute(appearNote, $i, $i.hardMutedWords) : false;
@@ -244,7 +168,6 @@ export function useNote(
 		type: 'lookup',
 		url: `https://${host}/notes/${appearNote.id}`,
 	};
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 
 	// グローバルイベントの監視
 	useGlobalEvent('noteDeleted', (noteId) => {
@@ -276,16 +199,9 @@ export function useNote(
 
 		if (appearNote.reactionAcceptance === 'likeOnly' && els.reactButton != null) {
 			useTooltip(els.reactButton, async (showing) => {
-<<<<<<< HEAD
-				const reactions = await misskeyApiGet('notes/reactions', {
-					noteId: appearNote.id,
-					limit: 10,
-					_cacheKey_: $appearNote.reactionCount,
-=======
 				const reactions = await misskeyApi('notes/reactions', {
 					noteId: appearNote.id,
 					limit: 10,
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 				});
 				const users = reactions.map(x => x.user);
 				if (users.length < 1 || els.reactButton!.value == null) return;
@@ -305,11 +221,7 @@ export function useNote(
 	// 共通アクション関数群
 	async function renote() {
 		if (props.mock) return;
-<<<<<<< HEAD
-		const isLoggedIn = await pleaseLogin({ openOnRemote: pleaseLoginContext.value });
-=======
 		const isLoggedIn = await pleaseLogin({ openOnRemote: pleaseLoginContext });
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		if (!isLoggedIn) return;
 		showMovedDialog();
 		if (els.renoteButton == null) return;
@@ -324,11 +236,7 @@ export function useNote(
 
 	async function reply() {
 		if (props.mock) return;
-<<<<<<< HEAD
-		const isLoggedIn = await pleaseLogin({ openOnRemote: pleaseLoginContext.value });
-=======
 		const isLoggedIn = await pleaseLogin({ openOnRemote: pleaseLoginContext });
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		if (!isLoggedIn) return;
 		os.post({
 			reply: appearNote,
@@ -338,13 +246,8 @@ export function useNote(
 		});
 	}
 
-<<<<<<< HEAD
-	async function react(customCallback?: (reaction: string) => void) {
-		const isLoggedIn = await pleaseLogin({ openOnRemote: pleaseLoginContext.value });
-=======
 	async function react(createReactionMock?: (reaction: string) => void) {
 		const isLoggedIn = await pleaseLogin({ openOnRemote: pleaseLoginContext });
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		if (!isLoggedIn) return;
 		showMovedDialog();
 
@@ -378,11 +281,7 @@ export function useNote(
 				}
 				sound.playMisskeySfx('reaction');
 				if (props.mock) {
-<<<<<<< HEAD
-					if (customCallback) customCallback(reaction);
-=======
 					if (createReactionMock) createReactionMock(reaction);
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 					return;
 				}
 				misskeyApi('notes/reactions/create', {
@@ -400,11 +299,7 @@ export function useNote(
 
 	async function reactViaMfmEmoji(reaction: string) {
 		if (props.mock) return;
-<<<<<<< HEAD
-		const isLoggedIn = await pleaseLogin({ openOnRemote: pleaseLoginContext.value });
-=======
 		const isLoggedIn = await pleaseLogin({ openOnRemote: pleaseLoginContext });
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		if (!isLoggedIn) return;
 		showMovedDialog();
 		sound.playMisskeySfx('reaction');
@@ -482,11 +377,7 @@ export function useNote(
 
 	async function showRenoteMenu() {
 		if (props.mock) return;
-<<<<<<< HEAD
-		const isLoggedIn = await pleaseLogin({ openOnRemote: pleaseLoginContext.value });
-=======
 		const isLoggedIn = await pleaseLogin({ openOnRemote: pleaseLoginContext });
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		if (!isLoggedIn) return;
 
 		const getUnrenote = () => ({
@@ -517,11 +408,7 @@ export function useNote(
 		menuItems.push(getCopyNoteLinkMenu(rawNote, i18n.ts.copyLinkRenote));
 		menuItems.push({ type: 'divider' });
 
-<<<<<<< HEAD
-		if (isMyRenote.value) {
-=======
 		if (isMyRenote) {
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 			menuItems.push(getUnrenote());
 			os.popupMenu(menuItems, els.renoteTime?.value);
 		} else {
@@ -555,11 +442,7 @@ export function useNote(
 		collapsed,
 		renoteCollapsed,
 
-<<<<<<< HEAD
-		// 計算プロパティ
-=======
 		// 導出値
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 		isMyRenote,
 		parsed,
 		urls,

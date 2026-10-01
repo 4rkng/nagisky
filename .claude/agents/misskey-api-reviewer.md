@@ -1,10 +1,6 @@
 ---
 name: misskey-api-reviewer
-<<<<<<< HEAD
-description: Misskey backend の REST API エンドポイント (packages/backend/src/server/api/endpoints/) 追加・変更を機械レビューする。endpoint-list 登録漏れ・misskey-js 再生成漏れ・meta/paramDef/UUID/SPDX を検査。backend API を変更した PR レビューで呼ぶ。
-=======
 description: Misskey backend の REST API エンドポイント (packages/backend/src/server/api/endpoints/) 追加・変更を機械レビューする。endpoint-list 登録漏れ・misskey-js 再生成漏れ・meta/paramDef/UUID を検査。backend API を変更した PR レビューで呼ぶ。
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 tools: Read, Grep, Glob, Bash
 ---
 
@@ -89,7 +85,7 @@ grep -rn "id: '<生成された UUID>'" packages/backend/src/server/api/endpoint
 最も忘れやすい。**忘れると 404**。[endpoint-list.ts](../../packages/backend/src/server/api/endpoint-list.ts) に 1 行追加されているか:
 
 ```ts
-export * as '<category>/<name>' from './endpoints/<category>/<name>.js';
+export * as "<category>/<name>" from "./endpoints/<category>/<name>.js";
 ```
 
 新規エンドポイントを抽出し、各々が `endpoint-list.ts` に存在するか grep で確認する:

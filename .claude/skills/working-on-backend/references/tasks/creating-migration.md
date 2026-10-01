@@ -12,10 +12,10 @@
 
 ## どの方式を使うか決める
 
-| 状況 | 方式 |
-|---|---|
-| エンティティ (`packages/backend/src/models/*.ts`) を `@Column` / `@Index` / `@Entity` 等で先に変更し、差分から自動生成したい | `typeorm migration:generate` (本ファイルの "A. 差分から自動生成") |
-| 手書き SQL / データ移行 / `CREATE INDEX CONCURRENTLY` など、エンティティ差分では表現できない変更 | `typeorm migration:create` で空雛形を作る (本ファイルの "B. 空雛形を作る") |
+| 状況                                                                                                                         | 方式                                                                       |
+| ---------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| エンティティ (`packages/backend/src/models/*.ts`) を `@Column` / `@Index` / `@Entity` 等で先に変更し、差分から自動生成したい | `typeorm migration:generate` (本ファイルの "A. 差分から自動生成")          |
+| 手書き SQL / データ移行 / `CREATE INDEX CONCURRENTLY` など、エンティティ差分では表現できない変更                             | `typeorm migration:create` で空雛形を作る (本ファイルの "B. 空雛形を作る") |
 
 迷ったら **まずエンティティを変更 → `migration:generate`** が原則。既存 migration (`packages/backend/migration/*.js`) のほぼすべてが `queryRunner.query(\`SQL...\`)` の raw SQL なので、CLI 出力でも手書きでもスタイルは揃う。
 
@@ -35,15 +35,15 @@
  */
 
 export class PascalCaseName1234567890123 {
-    name = 'PascalCaseName1234567890123'
+	name = "PascalCaseName1234567890123";
 
-    async up(queryRunner) {
-        // 前進マイグレーション
-    }
+	async up(queryRunner) {
+		// 前進マイグレーション
+	}
 
-    async down(queryRunner) {
-        // up を完全に巻き戻す
-    }
+	async down(queryRunner) {
+		// up を完全に巻き戻す
+	}
 }
 ```
 
@@ -153,23 +153,14 @@ pnpm migrate
 
 新規ファイルを書くときは、変更パターンが近い既存ファイルを **必ずひとつ開いて並べて書く**。スタイルが激しくズレた PR は差し戻されやすい。
 
-| パターン | 参照ファイル |
-|---|---|
-| インデックス追加 + 関数定義 | [migration/1767169026317-birthday-index.js](../../../../../packages/backend/migration/1767169026317-birthday-index.js) |
-| 列追加のみ | [migration/1766652173085-add-category-to-avatar-decorations.js](../../../../../packages/backend/migration/1766652173085-add-category-to-avatar-decorations.js) |
-| テーブル新規作成 + FK | [migration/1761569941833-add-channel-muting.js](../../../../../packages/backend/migration/1761569941833-add-channel-muting.js) |
+| パターン                    | 参照ファイル                                                                                                                                                   |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| インデックス追加 + 関数定義 | [migration/1767169026317-birthday-index.js](../../../../../packages/backend/migration/1767169026317-birthday-index.js)                                         |
+| 列追加のみ                  | [migration/1766652173085-add-category-to-avatar-decorations.js](../../../../../packages/backend/migration/1766652173085-add-category-to-avatar-decorations.js) |
+| テーブル新規作成 + FK       | [migration/1761569941833-add-channel-muting.js](../../../../../packages/backend/migration/1761569941833-add-channel-muting.js)                                 |
 
 ---
 
-<<<<<<< HEAD
-## CHANGELOG (ユーザー影響がある場合)
-
-スキーマ変更がユーザーに見える挙動を生む場合のみ、`CHANGELOG.md` に追記する。内部リファクタや純粋なインデックス追加は不要。詳細は [shipping-misskey-change スキル](../../../shipping-misskey-change/SKILL.md) で確認。
-
----
-
-=======
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 ## 提出前セルフレビューチェックリスト
 
 完了前に以下を上から確認する (各項目を TodoWrite 化してよい):
@@ -180,7 +171,3 @@ pnpm migrate
 - [ ] `up()` の各文に対応する巻き戻しが `down()` にあり、**`down()` が空でない** (難ケースは [knowledge/typeorm-patterns.md](../knowledge/typeorm-patterns.md) を確認済み)
 - [ ] `pnpm --filter backend check-migrations` が **0 件 (pending DDL なし)** で通る
 - [ ] (可能なら) `pnpm migrate` → `pnpm revert` → `pnpm migrate` が通る
-<<<<<<< HEAD
-- [ ] ユーザーに見える変更なら CHANGELOG 追記 → [shipping-misskey-change](../../../shipping-misskey-change/SKILL.md)
-=======
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
