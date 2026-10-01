@@ -9,13 +9,8 @@ reset: "Reset"
 notifications: "Notifikasi"
 username: "Nama Pengguna"
 password: "Kata sandi"
-<<<<<<< HEAD
-initialPasswordForSetup: "Kata sandi untuk memulai konfigurasi awal"
-initialPasswordIsIncorrect: "Kata sandi untuk memulai konfigurasi awal salah."
-=======
 initialPasswordForSetup: "Kata sandi untuk konfigurasi awal"
 initialPasswordIsIncorrect: "Kata sandi untuk konfigurasi awal salah."
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 initialPasswordForSetupDescription: "Jika Anda memasang Misskey sendiri, gunakan kata sandi yang Anda masukkan di berkas konfigurasi.\nJika Anda menggunakan layanan hosting Misskey, gunakan kata sandi yang diberikan.\nJika Anda belum mengatur kata sandi, biarkan kosong dan lanjutkan."
 forgotPassword: "Lupa Kata Sandi"
 fetchingAsApObject: "Mengambil data dari Fediverse..."
@@ -25,15 +20,9 @@ cancel: "Batalkan"
 noThankYou: "Tidak, terima kasih."
 enterUsername: "Masukkan nama pengguna"
 renotedBy: "Direnote oleh {user}"
-<<<<<<< HEAD
-noNotes: "Tidak ada catatan"
-noNotifications: "Tidak ada notifikasi"
-instance: "Instansi"
-=======
 noNotes: "Belum ada catatan"
 noNotifications: "Belum ada notifikasi"
 instance: "Server"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 settings: "Pengaturan"
 notificationSettings: "Atur Notifikasi"
 basicSettings: "Pengaturan umum"
@@ -64,15 +53,9 @@ copyRemoteLink: "Salin tautan renote"
 copyLinkRenote: "Salin tautan renote"
 delete: "Hapus"
 deleteAndEdit: "Hapus dan sunting"
-<<<<<<< HEAD
-deleteAndEditConfirm: "Apakah anda yakin ingin menghapus dan menyunting ulang note ini? Anda akan kehilangan semua reaksi, renote, dan balasan di note ini."
-addToList: "Tambahkan ke daftar"
-addToAntenna: "Tambahkan ke Antena"
-=======
 deleteAndEditConfirm: "Hapus catatan ini dan tulis ulang? Semua reaksi, renote, dan balasan pada catatan ini juga akan terhapus."
 addToList: "Tambah ke daftar"
 addToAntenna: "Tambahkan ke antena"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 sendMessage: "Kirim pesan"
 copyRSS: "Salin RSS"
 copyUsername: "Salin nama pengguna"
@@ -155,7 +138,7 @@ pinnedEmojisSettingDescription: "Atur emoji yang akan disematkan dan ditampilkan
 emojiPickerDisplay: "Tampilan palet emoji"
 overwriteFromPinnedEmojisForReaction: "Timpa dari pengaturan reaksi"
 overwriteFromPinnedEmojis: "Timpa dari pengaturan umum"
-reactionSettingDescription2: "Geser untuk memindah urutan emoji, klik untuk menghapus, tekan \"+\" untuk menambahkan"
+reactionSettingDescription2: 'Geser untuk memindah urutan emoji, klik untuk menghapus, tekan "+" untuk menambahkan'
 rememberNoteVisibility: "Ingat pengaturan visibilitas catatan"
 attachCancel: "Hapus lampiran"
 deleteFile: "Hapus berkas"
@@ -304,8 +287,8 @@ announcements: "Pengumuman"
 imageUrl: "URL Gambar"
 remove: "Hapus"
 removed: "Telah dihapus"
-removeAreYouSure: "Apakah kamu yakin ingin menghapus \"{x}\"?"
-deleteAreYouSure: "Apakah kamu yakin ingin menghapus \"{x}\"?"
+removeAreYouSure: 'Apakah kamu yakin ingin menghapus "{x}"?'
+deleteAreYouSure: 'Apakah kamu yakin ingin menghapus "{x}"?'
 resetAreYouSure: "Yakin mau atur ulang?"
 areYouSure: "Apakah kamu yakin?"
 saved: "Telah disimpan"
@@ -348,7 +331,7 @@ dark: "Gelap"
 lightThemes: "Tema Terang"
 darkThemes: "Tema gelap"
 syncDeviceDarkMode: "Sinkronkan mode gelap dengan pengaturan perangkat"
-switchDarkModeManuallyWhenSyncEnabledConfirm: "\"{x}\" sedang dinyalakan. Apa anda ingin untuk menghentikan sinkronisasi dan mengganti mode secara manual?"
+switchDarkModeManuallyWhenSyncEnabledConfirm: '"{x}" sedang dinyalakan. Apa anda ingin untuk menghentikan sinkronisasi dan mengganti mode secara manual?'
 drive: "Drive"
 fileName: "Nama berkas"
 selectFile: "Pilih berkas"
@@ -416,7 +399,7 @@ bannerUrl: "URL Banner"
 backgroundImageUrl: "URL Gambar latar"
 basicInfo: "Informasi Umum"
 pinnedUsers: "Pengguna yang disematkan"
-pinnedUsersDescription: "Tuliskan satu nama pengguna dalam satu baris. Pengguna yang dituliskan disini akan disematkan dalam bilah \"Jelajahi\"."
+pinnedUsersDescription: 'Tuliskan satu nama pengguna dalam satu baris. Pengguna yang dituliskan disini akan disematkan dalam bilah "Jelajahi".'
 pinnedPages: "Halaman yang disematkan"
 pinnedPagesDescription: "Masukkan tautan dari halaman yang kamu ingin sematkan ke halaman utama dari instansi ini, dipisah dengan membuat baris baru."
 pinnedClipId: "ID dari klip yang disematkan"
@@ -492,7 +475,7 @@ unregister: "Batalkan pendaftaran"
 passwordLessLogin: "Setel login tanpa kata sandi"
 passwordLessLoginDescription: "Bolehkan masuk tanpa kata sandi dengan menggunakan hanya security-key atau passkey"
 resetPassword: "Atur ulang kata sandi"
-newPasswordIs: "Kata sandi baru adalah \"{password}\""
+newPasswordIs: 'Kata sandi baru adalah "{password}"'
 reduceUiAnimation: "Kurangi animasi antarmuka"
 share: "Bagikan"
 notFound: "Tidak dapat ditemukan"
@@ -593,7 +576,7 @@ objectStorageUseSSL: "Gunakan SSL"
 objectStorageUseSSLDesc: "Matikan ini jika kamu tidak akan menggunakan HTTPS untuk koneksi API"
 objectStorageUseProxy: "Hubungkan melalui Proxy"
 objectStorageUseProxyDesc: "Matikan ini jika kamu tidak akan menggunakan Proxy untuk koneksi ObjectStorage"
-objectStorageSetPublicRead: "Setel \"public-read\" disaat mengunggah"
+objectStorageSetPublicRead: 'Setel "public-read" disaat mengunggah'
 s3ForcePathStyleDesc: "Jika s3ForcePathStyle dinyalakan, nama bucket harus dimasukkan dalam path URL dan bukan URL nama host tersebut. Kamu perlu menyalakan pengaturan ini jika menggunakan layanan seperti instansi Minio yang self-hosted."
 serverLogs: "Log Peladen"
 deleteAll: "Hapus semua"
@@ -722,7 +705,7 @@ regexpError: "Kesalahan ekspresi reguler"
 regexpErrorDescription: "Galat terjadi pada baris {line} ekspresi reguler dari {tab} kata yang dibisukan:"
 instanceMute: "Bisukan instansi"
 userSaysSomething: "{name} mengatakan sesuatu"
-userSaysSomethingAbout: "{name} menyebutkan sesuatu tentang \"{word}\""
+userSaysSomethingAbout: '{name} menyebutkan sesuatu tentang "{word}"'
 makeActive: "Aktifkan"
 display: "Tampilkan"
 copy: "Salin"
@@ -771,7 +754,7 @@ createNew: "Buat baru"
 optional: "Opsional"
 createNewClip: "Buat klip baru"
 unclip: "Batalkan klip"
-confirmToUnclipAlreadyClippedNote: "Catatan ini sudah disertakan di klip \"{name}\". Yakin ingin membatalkan catatan dari klip ini?"
+confirmToUnclipAlreadyClippedNote: 'Catatan ini sudah disertakan di klip "{name}". Yakin ingin membatalkan catatan dari klip ini?'
 removeFromAntenna: "Hapus dari antena ini"
 removeNoteFromAntennaConfirm: "Apa anda yakin ingin menghapus note dari {name} ini?"
 public: "Publik"
@@ -796,7 +779,7 @@ driveFilesCount: "Jumlah berkas drive"
 driveUsage: "Penggunaan ruang penyimpanan drive"
 noCrawle: "Tolak pengindeksan perayap web"
 noCrawleDescription: "Meminta mesin pencari untuk tidak mengindeks halaman profil kamu, catatan, Halaman, dll."
-lockedAccountInfo: "Kecuali kamu menyetel visibilitas catatan milikmu ke \"Hanya pengikut\", catatan milikmu akan dapat dilihat oleh siapa saja, bahkan jika kamu memerlukan pengikut untuk disetujui secara manual."
+lockedAccountInfo: 'Kecuali kamu menyetel visibilitas catatan milikmu ke "Hanya pengikut", catatan milikmu akan dapat dilihat oleh siapa saja, bahkan jika kamu memerlukan pengikut untuk disetujui secara manual.'
 alwaysMarkSensitive: "Tandai media dalam catatan sebagai media sensitif"
 loadRawImages: "Tampilkan lampiran gambar secara penuh daripada thumbnail"
 disableShowingAnimatedImages: "Jangan mainkan gambar bergerak"
@@ -815,8 +798,8 @@ experimentalFeatures: "Fitur eksperimental"
 experimental: "Eksperimental"
 thisIsExperimentalFeature: "Fitur ini eksperimental. Fungsionalitas dari fitur ini dapat berubah sewaktu-waktu dan mungkin tidak bekerja sesuai semestinya."
 developer: "Pengembang"
-makeExplorable: "Buat akun tampil di \"Jelajahi\""
-makeExplorableDescription: "Jika kamu mematikan ini, akun kamu tidak akan muncul di menu \"Jelajahi\""
+makeExplorable: 'Buat akun tampil di "Jelajahi"'
+makeExplorableDescription: 'Jika kamu mematikan ini, akun kamu tidak akan muncul di menu "Jelajahi"'
 duplicate: "Duplikat"
 left: "Kiri"
 center: "Tengah"
@@ -871,7 +854,7 @@ unlikeConfirm: "Yakin ingin hapus sukamu?"
 fullView: "Tampilan penuh"
 quitFullView: "Keluar tampilan penuh"
 addDescription: "Tambahkan deskripsi"
-userPagePinTip: "Kamu dapat membuat catatan untuk ditampilkan disini dengan memilih \"Sematkan ke profil\" dari menu pada catatan individu."
+userPagePinTip: 'Kamu dapat membuat catatan untuk ditampilkan disini dengan memilih "Sematkan ke profil" dari menu pada catatan individu.'
 notSpecifiedMentionWarning: "Catatan ini mengandung sebutan dari pengguna yang tidak dimuat sebagai penerima"
 info: "Informasi"
 userInfo: "Informasi pengguna"
@@ -1118,7 +1101,7 @@ nonSensitiveOnlyForLocalLikeOnlyForRemote: "Hanya non-sensitif (Hanya suka dari 
 rolesAssignedToMe: "Peran yang ditugaskan ke saya"
 resetPasswordConfirm: "Yakin untuk mereset kata sandimu?"
 sensitiveWords: "Kata sensitif"
-sensitiveWordsDescription: "Visibilitas dari semua catatan mengandung kata yang telah diatur akan dijadikan \"Beranda\" secara otomatis. Kamu dapat mendaftarkan kata tersebut lebih dari satu dengan menuliskannya di baris baru."
+sensitiveWordsDescription: 'Visibilitas dari semua catatan mengandung kata yang telah diatur akan dijadikan "Beranda" secara otomatis. Kamu dapat mendaftarkan kata tersebut lebih dari satu dengan menuliskannya di baris baru.'
 sensitiveWordsDescription2: "Menggunakan spasi akan membuat ekspresi AND dan kata kunci disekitarnya dengan garis miring akan mengubahnya menjadi ekspresi reguler."
 prohibitedWords: "Kata yang dilarang"
 prohibitedWordsDescription: "Menyalakan kesalahan ketika mencoba untuk memposting catatan dengan set kata-kata yang termasuk. Beberapa kata dapat diatur dan dipisahkan dengan baris baru."
@@ -1137,7 +1120,7 @@ retryAllQueuesConfirmText: "Hal ini akan meningkatkan beban sementara ke peladen
 enableChartsForRemoteUser: "Buat bagan data pengguna instansi luar"
 enableChartsForFederatedInstances: "Buat bagan data peladen instansi luar"
 enableStatsForFederatedInstances: "Terima informasi peladen luar"
-showClipButtonInNoteFooter: "Tambahkan \"Klip\" ke menu aksi catatan"
+showClipButtonInNoteFooter: 'Tambahkan "Klip" ke menu aksi catatan'
 reactionsDisplaySize: "Ukuran tampilan reaksi"
 limitWidthOfReaction: "Batasi lebar maksimum reaksi dan tampilkan dalam ukuran terbatasi."
 noteIdOrUrl: "ID catatan atau URL"
@@ -1181,7 +1164,7 @@ displayOfNote: "Tampilan catatan"
 initialAccountSetting: "Atur profil"
 youFollowing: "Mengikuti"
 preventAiLearning: "Tolak penggunaan Pembelajaran Mesin (AI Generatif)"
-preventAiLearningDescription: "Minta perayap web untuk tidak menggunakan materi teks atau gambar yang telah diposting ke dalam set data Pembelajaran Mesin (Prediktif / Generatif). Hal ini dicapai dengan menambahkan flag HTML-Response \"noai\" ke masing-masing konten. Pencegahan penuh mungkin tidak dapat dicapai dengan flag ini, karena juga dapat diabaikan begitu saja."
+preventAiLearningDescription: 'Minta perayap web untuk tidak menggunakan materi teks atau gambar yang telah diposting ke dalam set data Pembelajaran Mesin (Prediktif / Generatif). Hal ini dicapai dengan menambahkan flag HTML-Response "noai" ke masing-masing konten. Pencegahan penuh mungkin tidak dapat dicapai dengan flag ini, karena juga dapat diabaikan begitu saja.'
 options: "Opsi peran"
 specifyUser: "Pengguna spesifik"
 lookupConfirm: "Cari?"
@@ -1222,7 +1205,7 @@ used: "Digunakan"
 expired: "Kedaluwarsa"
 doYouAgree: "Apa kamu setuju?"
 beSureToReadThisAsItIsImportant: "Mohon baca informasi penting berikut."
-iHaveReadXCarefullyAndAgree: "Saya telah membaca \"{x}\" dan menyetujui."
+iHaveReadXCarefullyAndAgree: 'Saya telah membaca "{x}" dan menyetujui.'
 dialog: "Dialog"
 icon: "Avatar"
 forYou: "Untuk Anda"
@@ -1281,7 +1264,7 @@ refreshing: "Sedang memuat ulang..."
 pullDownToRefresh: "Tarik ke bawah untuk memuat ulang"
 useGroupedNotifications: "Tampilkan notifikasi secara dikelompokkan"
 emailVerificationFailedError: "Ada masalah saat memverifikasi alamat surel anda. Tautannya mungkin sudah kadaluarsa."
-cwNotationRequired: "Jika \"Sembunyikan konten\" diaktifkan, deskripsi harus disediakan."
+cwNotationRequired: 'Jika "Sembunyikan konten" diaktifkan, deskripsi harus disediakan.'
 doReaction: "Tambahkan reaksi"
 code: "Kode"
 reloadRequiredToApplySettings: "Muat ulang diperlukan untuk menerapkan pengaturan."
@@ -1340,10 +1323,6 @@ messageToFollower: "Pesan kepada pengikut"
 target: "Target"
 testCaptchaWarning: "Fitur ini untuk menguji CAPTCHA. <strong>Jangan dipakai di lingkungan produksi.</strong>"
 prohibitedWordsForNameOfUser: "Kata yang dilarang untuk nama pengguna"
-<<<<<<< HEAD
-yourNameContainsProhibitedWordsDescription: "Jika anda ingin menggunakan nama ini, mohon hubungi admin peladen."
-lockdown: "Kuncitara"
-=======
 prohibitedWordsForNameOfUserDescription: "Jika nama pengguna memuat kata dalam daftar ini, perubahan nama ditolak. Moderator tidak terkena pembatasan ini. Nama pengguna (username) juga diperiksa dalam huruf kecil."
 yourNameContainsProhibitedWords: "Nama yang ingin dipakai memuat kata terlarang"
 yourNameContainsProhibitedWordsDescription: "Jika anda ingin menggunakan nama ini, mohon hubungi admin peladen."
@@ -1352,15 +1331,11 @@ lockdown: "Kuncitara"
 pleaseSelectAccount: "Pilih akun"
 availableRoles: "Peran tersedia"
 acknowledgeNotesAndEnable: "Aktifkan setelah memahami catatan penting."
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 federationSpecified: "Peladen ini dioperasikan dalam federasi daftar putih. Interaksi dengan peladen selain yang telah dikelola oleh admin tidak diperbolehkan."
 federationDisabled: "Federasi dimatikan di peladen ini. Anda tidak dapat berinteraksi dengan pengguna di peladen lain."
 draft: "Draf"
 draftsAndScheduledNotes: "Draf dan note terjadwal"
-<<<<<<< HEAD
-=======
 confirmOnReact: "Konfirmasi saat memberi reaksi"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 preferencesProfile: "Pengaturan profil"
 noName: "Tidak ada nama"
 skip: "Lewati"
@@ -1413,10 +1388,10 @@ _settings:
 _preferencesProfile:
   profileName: "Nama profil"
   profileNameDescription: "Tulis nama untuk mengidentifikasi perangkat ini."
-  profileNameDescription2: "Contoh: \"PC Utama\", \"Smartphone\""
+  profileNameDescription2: 'Contoh: "PC Utama", "Smartphone"'
   manageProfiles: "Kelola Profil"
   shareSameProfileBetweenDevicesIsNotRecommended: "Kami tidak menyarankan menggunakan profil yang sama diantara beberapa perangkat yang berbeda."
-  useSyncBetweenDevicesOptionIfYouWantToSyncSetting: "Jika terdapat pengaturan yang ingin anda sinkronkan diantara beberapa perangkat yang berbeda, nyalakan opsi \"Sinkronisasi pada perangkat yang berbeda\" satu per satu untuk setiap perangkat."
+  useSyncBetweenDevicesOptionIfYouWantToSyncSetting: 'Jika terdapat pengaturan yang ingin anda sinkronkan diantara beberapa perangkat yang berbeda, nyalakan opsi "Sinkronisasi pada perangkat yang berbeda" satu per satu untuk setiap perangkat.'
 _preferencesBackup:
   autoBackup: "Pencadangan otomatis"
   restoreFromBackup: "Kembalikan dari pencadangan"
@@ -1457,11 +1432,11 @@ _announcement:
   forExistingUsers: "Hanya pengguna yang telah ada"
   forExistingUsersDescription: "Pengumuman ini akan dimunculkan ke pengguna yang sudah ada dari titik waktu publikasi jika dinyalakan. Apabila dimatikan, mereka yang baru mendaftar setelah publikasi ini akan juga melihatnya."
   needConfirmationToRead: "Membutuhkan konfirmasi terpisah bahwa telah dibaca"
-  needConfirmationToReadDescription: "Permintaan terpisah untuk mengonfirmasi menandai pengumuman ini telah dibaca akan ditampilkan apabila fitur ini dinyalakan. Pengumuman ini juga akan dikecualikan dari fungsi \"Tandai semua telah dibaca\"."
+  needConfirmationToReadDescription: 'Permintaan terpisah untuk mengonfirmasi menandai pengumuman ini telah dibaca akan ditampilkan apabila fitur ini dinyalakan. Pengumuman ini juga akan dikecualikan dari fungsi "Tandai semua telah dibaca".'
   end: "Arsipkan pengumuman"
   tooManyActiveAnnouncementDescription: "Terlalu banyak pengumuman dapat memperburuk pengalaman pengguna. Mohon pertimbangkan untuk mengarsipkan pengumuman yang sudah usang/tidak relevan."
   readConfirmTitle: "Tandai telah dibaca?"
-  readConfirmText: "Aksi ini akan menandai konten dari \"{title}\" telah dibaca."
+  readConfirmText: 'Aksi ini akan menandai konten dari "{title}" telah dibaca.'
   shouldNotBeUsedToPresentPermanentInfo: "Karena dapat berdampak pada pengalaman pengguna untuk pengguna baru, sangat direkomendasikan untuk menggunakan notifikasi secara mengalir daripada tetap."
   dialogAnnouncementUxWarn: "Memiliki dua atau lebih gaya dialog notifikasi secara bersamaan dapat berdampak signifikan pada pengalaman pengguna, mohon untuk menggunakannya dengan hati-hati."
   silence: "Tiada notifikasi"
@@ -1473,7 +1448,7 @@ _initialAccountSetting:
   profileSetting: "Pengaturan profil"
   privacySetting: "Pengaturan privasi"
   theseSettingsCanEditLater: "Kamu selalu bisa mengganti pengaturan ini lain kali."
-  youCanEditMoreSettingsInSettingsPageLater: "Ada banyak pengaturan yang dapat kamu atur dari halaman \"Pengaturan\". Pastikan untuk mengunjungi halaman tersebut nanti."
+  youCanEditMoreSettingsInSettingsPageLater: 'Ada banyak pengaturan yang dapat kamu atur dari halaman "Pengaturan". Pastikan untuk mengunjungi halaman tersebut nanti.'
   followUsers: "Coba ikuti beberapa pengguna yang menarik bagimu untuk membangun lini masa akunmu."
   pushNotificationDescription: "Menyalakan notifikasi dorong akan membuatmu menerima notifikasi dari {name} secara langsung ke perangkatmu."
   initialAccountSettingCompleted: "Pengaturan profil selesai!"
@@ -1499,7 +1474,7 @@ _initialTutorial:
     menu: "Kamu dapat melihat detil catatan, menyalin tautan, dan melakukan aksi lainnya."
   _reaction:
     title: "Apa itu Reaksi?"
-    description: "Catatan dapat direaksi dengan berbagai emoji. Reaksi memperbolehkan kamu untuk mengekspresikan nuansa yang tidak dapat disampaikan hanya dengan sebuah \"suka\"."
+    description: 'Catatan dapat direaksi dengan berbagai emoji. Reaksi memperbolehkan kamu untuk mengekspresikan nuansa yang tidak dapat disampaikan hanya dengan sebuah "suka".'
     letsTryReacting: "Reaksi dapat ditambahkan dengan mengklik tombol '+' pada catatan. Coba lakukan mereaksi contoh catatan ini!"
     reactToContinue: "Tambahkan reaksi untuk melanjutkan."
     reactNotification: "Kamu akan menerima notifikasi real0time ketika seseorang mereaksi catatan kamu."
@@ -1534,11 +1509,11 @@ _initialTutorial:
       useCases: "Fungsi ini digunakan ketika mengikutik panduan peladen untuk catatan yang dibutuhkan atau untuk membatasi diri dari teks sensitif atau spoiler."
   _howToMakeAttachmentsSensitive:
     title: "Bagaimana menandai lampiran sebagai sensitif?"
-    description: "Fungsi ini digunakan untuk lampiran yang dibutuhkan oleh panduan peladen atau sesuatu yang seharusnya tidak boleh dibiarkan begitu saja dengan cara menambahkan penanda \"sensitif\"."
+    description: 'Fungsi ini digunakan untuk lampiran yang dibutuhkan oleh panduan peladen atau sesuatu yang seharusnya tidak boleh dibiarkan begitu saja dengan cara menambahkan penanda "sensitif".'
     tryThisFile: "Coba tandai gambar yang dilampirkan pada form ini sebagai sensitif!"
     _exampleNote:
       note: "Ups, kesalahan banget buka penutup wadah natto..."
-    method: "Untuk menandai lampiran sebagai sensitif, klik gambar pada berkas, buka menu, lalu klik \"Tandai sebagai sensitif\"."
+    method: 'Untuk menandai lampiran sebagai sensitif, klik gambar pada berkas, buka menu, lalu klik "Tandai sebagai sensitif".'
     sensitiveSucceeded: "Ketika melampirkan berkas, mohon atur sensitifitas sesuai dengan panduan peladen."
     doItToContinue: "Tandai berkas terlampir sebagai sensitif untuk melanjutkan."
   _done:
@@ -1746,7 +1721,7 @@ _achievements:
       description: "Lugat daftar pencapaianmu setidaknya 3 menit"
     _iLoveMisskey:
       title: "I Love Misskey"
-      description: "Catat \"I ❤ #Misskey\""
+      description: 'Catat "I ❤ #Misskey"'
       flavor: "Tim pengembang misskey sangat mengapresiasi dukungan kamu!"
     _foundTreasure:
       title: "Berburu Harta Karun"
@@ -1755,7 +1730,7 @@ _achievements:
       title: "Istirahat pendek"
       description: "Habiskan waktu 30 menit di Misskey"
     _client60min:
-      title: "Tidak ada \"Miss\" dalam Misskey"
+      title: 'Tidak ada "Miss" dalam Misskey'
       description: "Biarkan Misskey tetap terbuka setidaknya selama 60 menit"
     _noteDeletedWithin1min:
       title: "Eh, salah coy!"
@@ -1779,7 +1754,7 @@ _achievements:
       description: "Lihat bagan instansimu"
     _outputHelloWorldOnScratchpad:
       title: "Halo, dunia!"
-      description: "Munculkan \"hello world\" di Scratchpad"
+      description: 'Munculkan "hello world" di Scratchpad'
     _open3windows:
       title: "Jendela ganda"
       description: "Memiliki setidaknya 3 jendela yang terbuka secara bersamaan"
@@ -1797,7 +1772,7 @@ _achievements:
       description: "Mendapatkan kesempatan dengan kemungkinan 0.01% setiap 10 detik"
     _setNameToSyuilo:
       title: "God Complex"
-      description: "Atur namamu jadi \"syuilo\""
+      description: 'Atur namamu jadi "syuilo"'
     _passedSinceAccountCreated1:
       title: "Perayaan Satu Tahun"
       description: "Satu tahun telah lewat sejak akunmu dibuat"
@@ -1992,12 +1967,12 @@ _preferencesBackups:
   save: "Simpan perubahan"
   inputName: "Mohon masukkan nama untuk cadangan ini"
   cannotSave: "Gagal menyimpan"
-  nameAlreadyExists: "Cadangan bernama \"{name}\" sudah ada. Mohon gunakan nama lain."
-  applyConfirm: "Apakah kamu yakin untuk menerapkan cadangan \"{name}\" ke perangkat ini? Pengaturan yang sudah ada di perangkat ini nantinya akan ditimpa."
+  nameAlreadyExists: 'Cadangan bernama "{name}" sudah ada. Mohon gunakan nama lain.'
+  applyConfirm: 'Apakah kamu yakin untuk menerapkan cadangan "{name}" ke perangkat ini? Pengaturan yang sudah ada di perangkat ini nantinya akan ditimpa.'
   saveConfirm: "Simpan cadangan sebagai {name}?"
   deleteConfirm: "Hapus cadangan {name}?"
-  renameConfirm: "Ganti cadangan ini dari \"{old}\" ke \"{new}\"?"
-  noBackups: "Tidak ada cadangan. Kamu dapat mencadangkan pengaturanmu di peladen ini dengan menggunakan \"Buat cadangan baru\"."
+  renameConfirm: 'Ganti cadangan ini dari "{old}" ke "{new}"?'
+  noBackups: 'Tidak ada cadangan. Kamu dapat mencadangkan pengaturanmu di peladen ini dengan menggunakan "Buat cadangan baru".'
   createdAt: "Dibuat pada: {date} {time}"
   updatedAt: "Diperbarui pada: {date} {time}"
   cannotLoad: "Gagal memuat"
@@ -2279,7 +2254,7 @@ _permissions:
   "write:chat": "Buat atau hapus obrolan"
 _auth:
   shareAccessTitle: "Mendapatkan ijin akses aplikasi"
-  shareAccess: "Apakah kamu ingin mengijinkan \"{name}\" untuk mengakses akun ini?"
+  shareAccess: 'Apakah kamu ingin mengijinkan "{name}" untuk mengakses akun ini?'
   shareAccessAsk: "Apakah kamu ingin mengijinkan aplikasi ini untuk mengakses akun kamu?"
   permission: "{name} meminta ijin berikut"
   permissionAsk: "Aplikasi ini membutuhkan beberapa ijin, yaitu:"
@@ -2550,7 +2525,7 @@ _notification:
   exportOfXCompleted: "Berhasil mengekspor {x}"
   login: "Seseorang telah masuk"
   createToken: "Token akses berhasil dibuat"
-  createTokenDescription: "Jika anda tidak tahu apa-apa, hapus token akses melalui \"{text}\"."
+  createTokenDescription: 'Jika anda tidak tahu apa-apa, hapus token akses melalui "{text}".'
   _types:
     all: "Semua"
     note: "Catatan baru"
@@ -2593,10 +2568,10 @@ _deck:
   newProfile: "Profil baru"
   deleteProfile: "Hapus profil"
   introduction: "Buat antarmuka sempurna untukmu dengan menata kolom secara bebas!"
-  introduction2: "Klik \"+\" pada kanan layar untuk menambahkan kolom baru kapanpun yang kamu mau."
-  widgetsIntroduction: "Mohon pilih \"Sunting gawit\" pada menu kolom dan tambahkan gawit."
+  introduction2: 'Klik "+" pada kanan layar untuk menambahkan kolom baru kapanpun yang kamu mau.'
+  widgetsIntroduction: 'Mohon pilih "Sunting gawit" pada menu kolom dan tambahkan gawit.'
   useSimpleUiForNonRootPages: "Gunakan antarmuka sederhana ke halaman yang dituju"
-  usedAsMinWidthWhenFlexible: "Lebar minimum akan digunakan untuk ini ketika opsi \"Atur-otomatis lebar\" dinyalakan"
+  usedAsMinWidthWhenFlexible: 'Lebar minimum akan digunakan untuk ini ketika opsi "Atur-otomatis lebar" dinyalakan'
   flexible: "Atur-otomatis lebar"
   _howToUse:
     settings_title: "Pengaturan UI"

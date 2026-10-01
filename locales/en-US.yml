@@ -2,7 +2,7 @@
 _lang_: "English"
 headlineMisskey: "A network connected by notes"
 introMisskey: "Welcome! Misskey is an open source, decentralized microblogging service.\nCreate \"notes\" to share your thoughts with everyone around you. 📡\nWith \"reactions\", you can also quickly express your feelings about everyone's notes. 👍\nLet's explore a new world! 🚀"
-poweredByMisskeyDescription: "{name} is one of the services powered by the open source platform <b>Misskey</b> (referred to as a \"Misskey instance\")."
+poweredByMisskeyDescription: '{name} is one of the services powered by the open source platform <b>Misskey</b> (referred to as a "Misskey instance").'
 monthAndDay: "{month}/{day}"
 search: "Search"
 reset: "Reset"
@@ -81,7 +81,7 @@ import: "Import"
 export: "Export"
 files: "Files"
 download: "Download"
-driveFileDeleteConfirm: "Are you sure you want to delete \"{name}\"? All notes with this file attached will also be deleted."
+driveFileDeleteConfirm: 'Are you sure you want to delete "{name}"? All notes with this file attached will also be deleted.'
 unfollowConfirm: "Are you sure you want to unfollow {name}?"
 cancelFollowRequestConfirm: "Are you sure that you want to cancel your follow request to {name}?"
 rejectFollowRequestConfirm: "Are you sure that you want to reject the follow request from {name}?"
@@ -138,7 +138,7 @@ pinnedEmojisSettingDescription: "Set the emojis to be pinned and displayed when 
 emojiPickerDisplay: "Emoji picker display"
 overwriteFromPinnedEmojisForReaction: "Override from reaction settings"
 overwriteFromPinnedEmojis: "Override from general settings"
-reactionSettingDescription2: "Drag to reorder, click to delete, press \"+\" to add."
+reactionSettingDescription2: 'Drag to reorder, click to delete, press "+" to add.'
 rememberNoteVisibility: "Remember note visibility settings"
 attachCancel: "Remove attachment"
 deleteFile: "Delete file"
@@ -287,8 +287,8 @@ announcements: "Announcements"
 imageUrl: "Image URL"
 remove: "Delete"
 removed: "Successfully deleted"
-removeAreYouSure: "Are you sure that you want to remove \"{x}\"?"
-deleteAreYouSure: "Are you sure that you want to delete \"{x}\"?"
+removeAreYouSure: 'Are you sure that you want to remove "{x}"?'
+deleteAreYouSure: 'Are you sure that you want to delete "{x}"?'
 resetAreYouSure: "Really reset?"
 areYouSure: "Are you sure?"
 saved: "Saved"
@@ -331,7 +331,7 @@ dark: "Dark"
 lightThemes: "Light themes"
 darkThemes: "Dark themes"
 syncDeviceDarkMode: "Sync Dark Mode with your device settings"
-switchDarkModeManuallyWhenSyncEnabledConfirm: "\"{x}\" is turned on. Would you like to turn off synchronization and switch modes manually?"
+switchDarkModeManuallyWhenSyncEnabledConfirm: '"{x}" is turned on. Would you like to turn off synchronization and switch modes manually?'
 drive: "Drive"
 fileName: "Filename"
 selectFile: "Select a file"
@@ -399,7 +399,7 @@ bannerUrl: "Banner image URL"
 backgroundImageUrl: "Background image URL"
 basicInfo: "Basic info"
 pinnedUsers: "Pinned users"
-pinnedUsersDescription: "List usernames separated by line breaks to be pinned in the \"Explore\" tab."
+pinnedUsersDescription: 'List usernames separated by line breaks to be pinned in the "Explore" tab.'
 pinnedPages: "Pinned Pages"
 pinnedPagesDescription: "Enter the paths of the Pages you want to pin to the top page of this instance, separated by line breaks."
 pinnedClipId: "ID of the clip to pin"
@@ -475,7 +475,7 @@ unregister: "Unregister"
 passwordLessLogin: "Password-less login"
 passwordLessLoginDescription: "Allows password-less login using a security- or passkey only"
 resetPassword: "Reset password"
-newPasswordIs: "The new password is \"{password}\""
+newPasswordIs: 'The new password is "{password}"'
 reduceUiAnimation: "Reduce UI animations"
 share: "Share"
 notFound: "Not found"
@@ -576,7 +576,7 @@ objectStorageUseSSL: "Use SSL"
 objectStorageUseSSLDesc: "Turn this off if you are not going to use HTTPS for API connections"
 objectStorageUseProxy: "Connect over Proxy"
 objectStorageUseProxyDesc: "Turn this off if you are not going to use a Proxy for API connections"
-objectStorageSetPublicRead: "Set \"public-read\" on upload"
+objectStorageSetPublicRead: 'Set "public-read" on upload'
 s3ForcePathStyleDesc: "If s3ForcePathStyle is enabled, the bucket name has to included in the path of the URL as opposed to the hostname of the URL. You may need to enable this setting when using services such as a self-hosted Minio instance."
 serverLogs: "Server logs"
 deleteAll: "Delete all"
@@ -705,7 +705,7 @@ regexpError: "Regular Expression error"
 regexpErrorDescription: "An error occurred in the regular expression on line {line} of your {tab} word mutes:"
 instanceMute: "Instance Mutes"
 userSaysSomething: "{name} said something"
-userSaysSomethingAbout: "{name} said something about \"{word}\""
+userSaysSomethingAbout: '{name} said something about "{word}"'
 makeActive: "Activate"
 display: "Display"
 copy: "Copy"
@@ -754,7 +754,7 @@ createNew: "Create new"
 optional: "Optional"
 createNewClip: "Create new clip"
 unclip: "Unclip"
-confirmToUnclipAlreadyClippedNote: "This note is already part of the \"{name}\" clip. Do you want to remove it from this clip instead?"
+confirmToUnclipAlreadyClippedNote: 'This note is already part of the "{name}" clip. Do you want to remove it from this clip instead?'
 removeFromAntenna: "Remove from this antenna"
 removeNoteFromAntennaConfirm: "Are you sure you want to remove this note from {name}?"
 public: "Public"
@@ -779,7 +779,7 @@ driveFilesCount: "Number of Drive files"
 driveUsage: "Drive space usage"
 noCrawle: "Reject crawler indexing"
 noCrawleDescription: "Ask search engines to not index your profile page, notes, Pages, etc."
-lockedAccountInfo: "Unless you set your note visiblity to \"Followers only\", your notes will be visible to anyone, even if you require followers to be manually approved."
+lockedAccountInfo: 'Unless you set your note visiblity to "Followers only", your notes will be visible to anyone, even if you require followers to be manually approved.'
 alwaysMarkSensitive: "Mark as sensitive by default"
 loadRawImages: "Load original images instead of showing thumbnails"
 disableShowingAnimatedImages: "Don't play animated images"
@@ -798,8 +798,8 @@ experimentalFeatures: "Experimental features"
 experimental: "Experimental"
 thisIsExperimentalFeature: "This is an experimental feature. Its functionality is subject to change, and it may not operate as intended."
 developer: "Developer"
-makeExplorable: "Make account visible in \"Explore\""
-makeExplorableDescription: "If you turn this off, your account will not show up in the \"Explore\" section."
+makeExplorable: 'Make account visible in "Explore"'
+makeExplorableDescription: 'If you turn this off, your account will not show up in the "Explore" section.'
 duplicate: "Duplicate"
 left: "Left"
 center: "Center"
@@ -854,7 +854,7 @@ unlikeConfirm: "Really remove your like?"
 fullView: "Full view"
 quitFullView: "Exit full view"
 addDescription: "Add description"
-userPagePinTip: "You can display notes here by selecting \"Pin to profile\" from the menu of individual notes."
+userPagePinTip: 'You can display notes here by selecting "Pin to profile" from the menu of individual notes.'
 notSpecifiedMentionWarning: "This note contains mentions of users not included as recipients"
 info: "About"
 userInfo: "User information"
@@ -944,7 +944,7 @@ continueThread: "View thread continuation"
 deleteAccountConfirm: "This will irreversibly delete your account. Proceed?"
 incorrectPassword: "Incorrect password."
 incorrectTotp: "The one-time password is incorrect or has expired."
-voteConfirm: "Confirm your vote for \"{choice}\"?"
+voteConfirm: 'Confirm your vote for "{choice}"?'
 hide: "Hide"
 useDrawerReactionPickerForMobile: "Display reaction picker as drawer on mobile"
 welcomeBackWithName: "Welcome back, {name}"
@@ -1101,7 +1101,7 @@ nonSensitiveOnlyForLocalLikeOnlyForRemote: "Non-sensitive only (Only likes from 
 rolesAssignedToMe: "Roles assigned to me"
 resetPasswordConfirm: "Really reset your password?"
 sensitiveWords: "Sensitive words"
-sensitiveWordsDescription: "The visibility of all notes containing any of the configured words will be set to \"Home\" automatically. You can list multiple by separating them via line breaks."
+sensitiveWordsDescription: 'The visibility of all notes containing any of the configured words will be set to "Home" automatically. You can list multiple by separating them via line breaks.'
 sensitiveWordsDescription2: "Using spaces will create AND expressions and surrounding keywords with slashes will turn them into a regular expression."
 prohibitedWords: "Prohibited words"
 prohibitedWordsDescription: "Enables an error when attempting to post a note containing the set word(s). Multiple words can be set, separated by a new line."
@@ -1120,7 +1120,7 @@ retryAllQueuesConfirmText: "This will temporarily increase the server load."
 enableChartsForRemoteUser: "Generate remote user data charts"
 enableChartsForFederatedInstances: "Generate remote instance data charts"
 enableStatsForFederatedInstances: "Receive remote server stats"
-showClipButtonInNoteFooter: "Add \"Clip\" to note action menu"
+showClipButtonInNoteFooter: 'Add "Clip" to note action menu'
 reactionsDisplaySize: "Reaction display size"
 limitWidthOfReaction: "Limit the maximum width of reactions and display them in reduced size."
 noteIdOrUrl: "Note ID or URL"
@@ -1164,7 +1164,7 @@ displayOfNote: "Note display"
 initialAccountSetting: "Profile setup"
 youFollowing: "Followed"
 preventAiLearning: "Reject usage in Machine Learning (Generative AI)"
-preventAiLearningDescription: "Requests crawlers to not use posted text or image material etc. in machine learning (Predictive / Generative AI) data sets. This is achieved by adding a \"noai\" HTML-Response flag to the respective content. A complete prevention can however not be achieved through this flag, as it may simply be ignored."
+preventAiLearningDescription: 'Requests crawlers to not use posted text or image material etc. in machine learning (Predictive / Generative AI) data sets. This is achieved by adding a "noai" HTML-Response flag to the respective content. A complete prevention can however not be achieved through this flag, as it may simply be ignored.'
 options: "Options"
 specifyUser: "Specific user"
 lookupConfirm: "Do you want to look up?"
@@ -1205,7 +1205,7 @@ used: "Used"
 expired: "Expired"
 doYouAgree: "Agree?"
 beSureToReadThisAsItIsImportant: "Please read this important information."
-iHaveReadXCarefullyAndAgree: "I have read the text \"{x}\" and agree."
+iHaveReadXCarefullyAndAgree: 'I have read the text "{x}" and agree.'
 dialog: "Dialog"
 icon: "Icon"
 forYou: "For you"
@@ -1264,7 +1264,7 @@ refreshing: "Refreshing..."
 pullDownToRefresh: "Pull down to refresh"
 useGroupedNotifications: "Display grouped notifications"
 emailVerificationFailedError: "A problem occurred while verifying your email address. The link may have expired."
-cwNotationRequired: "If \"Hide content\" is enabled, a description must be provided."
+cwNotationRequired: 'If "Hide content" is enabled, a description must be provided.'
 doReaction: "Add reaction"
 code: "Code"
 reloadRequiredToApplySettings: "Reloading is required to apply the settings."
@@ -1336,7 +1336,7 @@ federationDisabled: "Federation is disabled on this server. You cannot interact 
 draft: "Drafts"
 draftsAndScheduledNotes: "Drafts and scheduled notes"
 confirmOnReact: "Confirm when reacting"
-reactAreYouSure: "Would you like to add a \"{emoji}\" reaction?"
+reactAreYouSure: 'Would you like to add a "{emoji}" reaction?'
 markAsSensitiveConfirm: "Do you want to set this media as sensitive?"
 unmarkAsSensitiveConfirm: "Do you want to remove the sensitive designation for this media?"
 preferences: "Preferences"
@@ -1385,7 +1385,7 @@ unmuteX: "Unmute {x}"
 abort: "Abort"
 tip: "Tips & Tricks"
 redisplayAllTips: "Show all “Tips & Tricks” again"
-hideAllTips: "Hide all \"Tips & Tricks\""
+hideAllTips: 'Hide all "Tips & Tricks"'
 defaultImageCompressionLevel: "Default image compression level"
 defaultImageCompressionLevel_description: "Lower level preserves image quality but increases file size.<br>Higher level reduce file size, but reduce image quality."
 defaultCompressionLevel: "Default compression level"
@@ -1422,10 +1422,7 @@ append: "Append to end"
 prepend: "Append to beginning"
 urlPreviewSensitiveList: "URL to restrict thumbnail display"
 urlPreviewSensitiveListDescription: "Use spaces to specify AND conditions, and line breaks to specify OR conditions. Enclose text in slashes to use regular expressions. If a match is found, the thumbnail will be hidden."
-<<<<<<< HEAD
-=======
 pixelatedZoom: "Pixelated Zoom"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 _imageEditing:
   _vars:
     caption: "File caption"
@@ -1579,7 +1576,7 @@ _settings:
 _preferencesProfile:
   profileName: "Profile name"
   profileNameDescription: "Set a name that identifies this device."
-  profileNameDescription2: "Example: \"Main PC\", \"Smartphone\""
+  profileNameDescription2: 'Example: "Main PC", "Smartphone"'
   manageProfiles: "Manage Profiles"
   shareSameProfileBetweenDevicesIsNotRecommended: "We do not recommend sharing the same profile across multiple devices."
   useSyncBetweenDevicesOptionIfYouWantToSyncSetting: "If there are settings you wish to synchronize across multiple devices, enable the “Synchronize across multiple devices” option individually for each device."
@@ -1642,11 +1639,11 @@ _announcement:
   forExistingUsers: "Existing users only"
   forExistingUsersDescription: "This announcement will only be shown to users existing at the point of publishment if enabled. If disabled, those newly signing up after it has been posted will also see it."
   needConfirmationToRead: "Require separate read confirmation"
-  needConfirmationToReadDescription: "A separate prompt to confirm marking this announcement as read will be displayed if enabled. This announcement will also be excluded from any \"Mark all as read\" functionality."
+  needConfirmationToReadDescription: 'A separate prompt to confirm marking this announcement as read will be displayed if enabled. This announcement will also be excluded from any "Mark all as read" functionality.'
   end: "Archive announcement"
   tooManyActiveAnnouncementDescription: "Having too many active announcements may worsen the user experience. Please consider archiving announcements that have become obsolete."
   readConfirmTitle: "Mark as read?"
-  readConfirmText: "This will mark the contents of \"{title}\" as read."
+  readConfirmText: 'This will mark the contents of "{title}" as read.'
   shouldNotBeUsedToPresentPermanentInfo: "It's best to use announcements to publish fresh and time-bound information, not for information that will be relevant in the long term."
   dialogAnnouncementUxWarn: "Having two or more dialog-style notifications simultaneously can significantly impact the user experience, so please use them carefully."
   silence: "No notification"
@@ -1658,7 +1655,7 @@ _initialAccountSetting:
   profileSetting: "Profile settings"
   privacySetting: "Privacy settings"
   theseSettingsCanEditLater: "You can always change these settings later."
-  youCanEditMoreSettingsInSettingsPageLater: "There are many more settings you can configure from the \"Settings\" page. Be sure to visit it later."
+  youCanEditMoreSettingsInSettingsPageLater: 'There are many more settings you can configure from the "Settings" page. Be sure to visit it later.'
   followUsers: "Try following some users that interest you to build up your timeline."
   pushNotificationDescription: "Enabling push notifications will allow you to receive notifications from {name} directly on your device."
   initialAccountSettingCompleted: "Profile setup complete!"
@@ -1712,18 +1709,18 @@ _initialTutorial:
       localOnly: "Posting with this flag will not federate the note to other servers. Users on other servers will not be able to view these notes directly, regardless of the display settings above."
     _cw:
       title: "Content Warning"
-      description: "Instead of the body, the content written in 'comments' field will be displayed. Pressing \"read more\" will reveal the body."
+      description: 'Instead of the body, the content written in ''comments'' field will be displayed. Pressing "read more" will reveal the body.'
       _exampleNote:
         cw: "This will surely make you hungry!"
         note: "Just had a chocolate-glazed donut 🍩😋"
       useCases: "This is used when following the server guidelines, for necessary notes, or for self-restriction of spoiler or sensitive text."
   _howToMakeAttachmentsSensitive:
     title: "How to Mark Attachments as Sensitive?"
-    description: "For attachments that are required by server guidelines or that should not be left intact, add a \"sensitive\" flag."
+    description: 'For attachments that are required by server guidelines or that should not be left intact, add a "sensitive" flag.'
     tryThisFile: "Try marking the image attached in this form as sensitive!"
     _exampleNote:
       note: "Oops, messed up opening the natto lid..."
-    method: "To mark an attachment as sensitive, click the file thumbnail, open the menu, and click \"Mark as Sensitive.\""
+    method: 'To mark an attachment as sensitive, click the file thumbnail, open the menu, and click "Mark as Sensitive."'
     sensitiveSucceeded: "When attaching files, please set sensitivities in accordance with the server guidelines."
     doItToContinue: "Mark the attachment file as sensitive to proceed."
   _done:
@@ -1958,7 +1955,7 @@ _achievements:
       description: "Look at your list of achievements for at least 3 minutes"
     _iLoveMisskey:
       title: "I Love Misskey"
-      description: "Post \"I ❤ #Misskey\""
+      description: 'Post "I ❤ #Misskey"'
       flavor: "Misskey's development team greatly appreciates your support!"
     _foundTreasure:
       title: "Treasure Hunt"
@@ -1967,7 +1964,7 @@ _achievements:
       title: "Short break"
       description: "Keep Misskey opened for at least 30 minutes"
     _client60min:
-      title: "No \"Miss\" in Misskey"
+      title: 'No "Miss" in Misskey'
       description: "Keep Misskey opened for at least 60 minutes"
     _noteDeletedWithin1min:
       title: "Nevermind"
@@ -1991,7 +1988,7 @@ _achievements:
       description: "View your instance's charts"
     _outputHelloWorldOnScratchpad:
       title: "Hello, world!"
-      description: "Output \"hello world\" in the Scratchpad"
+      description: 'Output "hello world" in the Scratchpad'
     _open3windows:
       title: "Multi-Window"
       description: "Have at least 3 windows open at the same time"
@@ -2009,7 +2006,7 @@ _achievements:
       description: "Has a chance to be obtained with a probability of 0.005% every 10 seconds"
     _setNameToSyuilo:
       title: "God Complex"
-      description: "Set your name to \"syuilo\""
+      description: 'Set your name to "syuilo"'
     _passedSinceAccountCreated1:
       title: "One Year Anniversary"
       description: "One year has passed since your account was created"
@@ -2138,7 +2135,7 @@ _role:
     isBot: "Bot Users"
     isSuspended: "Suspended user"
     isLocked: "Private accounts"
-    isExplorable: "Effective user of \"make an account discoverable\""
+    isExplorable: 'Effective user of "make an account discoverable"'
     createdLessThan: "Less than X has passed since account creation"
     createdMoreThan: "More than X has passed since account creation"
     followersLessThanOrEq: "Has X or fewer followers"
@@ -2226,12 +2223,12 @@ _preferencesBackups:
   save: "Save changes"
   inputName: "Please enter a name for this backup"
   cannotSave: "Saving failed"
-  nameAlreadyExists: "A backup called \"{name}\" already exists. Please enter a different name."
-  applyConfirm: "Do you really want to apply the \"{name}\" backup to this device? Existing settings of this device will be overwritten."
+  nameAlreadyExists: 'A backup called "{name}" already exists. Please enter a different name.'
+  applyConfirm: 'Do you really want to apply the "{name}" backup to this device? Existing settings of this device will be overwritten.'
   saveConfirm: "Save backup as {name}?"
   deleteConfirm: "Delete the {name} backup?"
-  renameConfirm: "Rename this backup from \"{old}\" to \"{new}\"?"
-  noBackups: "No backups exist. You may backup your client settings on this server by using \"Create new backup\"."
+  renameConfirm: 'Rename this backup from "{old}" to "{new}"?'
+  noBackups: 'No backups exist. You may backup your client settings on this server by using "Create new backup".'
   createdAt: "Created at: {date} {time}"
   updatedAt: "Updated at: {date} {time}"
   cannotLoad: "Loading failed"
@@ -2518,7 +2515,7 @@ _permissions:
   "read:chat": "Browse Chat"
 _auth:
   shareAccessTitle: "Granting application permissions"
-  shareAccess: "Would you like to authorize \"{name}\" to access this account?"
+  shareAccess: 'Would you like to authorize "{name}" to access this account?'
   shareAccessAsk: "Are you sure you want to authorize this application to access your account?"
   permission: "{name} requests the following permissions"
   permissionAsk: "This application requests the following permissions"
@@ -2837,7 +2834,7 @@ _notification:
   exportOfXCompleted: "Export of {x} has been completed"
   login: "Someone logged in"
   createToken: "An access token has been created"
-  createTokenDescription: "If you did not create this, delete it in \"{text}\"."
+  createTokenDescription: 'If you did not create this, delete it in "{text}".'
   _types:
     all: "All"
     note: "New notes"
@@ -2884,9 +2881,9 @@ _deck:
   deleteProfile: "Delete profile"
   introduction: "Create the perfect interface for you by arranging columns freely!"
   introduction2: "Click on the + on the right of the screen to add new columns whenever you want."
-  widgetsIntroduction: "Please select \"Edit widgets\" in the column menu and add a widget."
+  widgetsIntroduction: 'Please select "Edit widgets" in the column menu and add a widget.'
   useSimpleUiForNonRootPages: "Use simple UI for navigated pages"
-  usedAsMinWidthWhenFlexible: "Minimum width will be used for this when the \"Auto-adjust width\" option is enabled"
+  usedAsMinWidthWhenFlexible: 'Minimum width will be used for this when the "Auto-adjust width" option is enabled'
   flexible: "Auto-adjust width"
   enableSyncBetweenDevicesForProfiles: "Enable profile information sync between devices"
   showHowToUse: ""
@@ -3201,8 +3198,8 @@ _customEmojisManager:
     _register:
       uploadSettingTitle: "Upload settings"
       uploadSettingDescription: "On this screen, you can configure the behavior when uploading Emojis."
-      directoryToCategoryLabel: "Enter the directory name in the \"category\" field"
-      directoryToCategoryCaption: "When you drag and drop a directory, enter the directory name in the \"category\" field."
+      directoryToCategoryLabel: 'Enter the directory name in the "category" field'
+      directoryToCategoryCaption: 'When you drag and drop a directory, enter the directory name in the "category" field.'
       confirmRegisterEmojisDescription: "Register the Emojis from the list as new custom Emojis. Are you sure to continue? (To avoid overload, only {count} Emoji(s) can be registered in a single operation)"
       confirmClearEmojisDescription: "Discard the edits and clear the Emojis from the list. Are you sure to continue?"
       confirmUploadEmojisDescription: "Upload the dragged and dropped {count} file(s) to the drive. Are you sure to continue?"
@@ -3222,7 +3219,7 @@ _embedCodeGen:
   codeGeneratedDescription: "Paste the generated code into your website to embed the content."
 _selfXssPrevention:
   warning: "WARNING"
-  title: "\"Paste something on this screen\" is all a scam."
+  title: '"Paste something on this screen" is all a scam.'
   description1: "If you paste something here, a malicious user could hijack your account or steal your personal information."
   description2: "If you do not understand exactly what you are trying to paste, %cstop working right now and close this window."
   description3: "For more information, please refer to this. {link}"
@@ -3307,7 +3304,7 @@ _serverSetupWizard:
   largeScaleServerAdvice: "Large servers may require advanced infrastructure knowledge, such as load balancing and database replication."
   doYouConnectToFediverse: "Do you want to connect to the Fediverse?"
   doYouConnectToFediverse_description1: "When connected to a network of distributed servers (Fediverse) content can be exchanged with other servers."
-  doYouConnectToFediverse_description2: "Connecting with the Fediverse is also called \"federation\""
+  doYouConnectToFediverse_description2: 'Connecting with the Fediverse is also called "federation"'
   youCanConfigureMoreFederationSettingsLater: "Advanced settings such as specifying federated servers can be configured later."
   remoteContentsCleaning: "Automatic cleanup of received contents"
   remoteContentsCleaning_description: "Federation may result in a continuous inflow of content. Enabling automatic cleanup will remove outdated and unreferenced content from the server to save storage."

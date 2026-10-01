@@ -81,7 +81,7 @@ import: "Importar"
 export: "Exporta"
 files: "Fitxers"
 download: "Descarregar"
-driveFileDeleteConfirm: "Estàs segur que vols suprimir el fitxer \"{name}\"? Les notes associades a aquest fitxer també seran esborrades."
+driveFileDeleteConfirm: 'Estàs segur que vols suprimir el fitxer "{name}"? Les notes associades a aquest fitxer també seran esborrades.'
 unfollowConfirm: "Segur que vols deixar de seguir a {name}?"
 cancelFollowRequestConfirm: "Vols cancel·lar la teva sol·licitud de seguiment a {name}?"
 rejectFollowRequestConfirm: "Vols rebutjar la sol·licitud de seguiment de {name}?"
@@ -138,7 +138,7 @@ pinnedEmojisSettingDescription: "Selecciona quins emojis vols deixar fixats i es
 emojiPickerDisplay: "Mostrar el selector d'emojis"
 overwriteFromPinnedEmojisForReaction: "Reemplaça els emojis de la reacció"
 overwriteFromPinnedEmojis: "Sobreescriu els emojis fixats al panel de reaccions"
-reactionSettingDescription2: "Arrossega per reordenar, fes clic per suprimir, prem \"+\" per afegir."
+reactionSettingDescription2: 'Arrossega per reordenar, fes clic per suprimir, prem "+" per afegir.'
 rememberNoteVisibility: "Recorda la configuració de visibilitat de les notes"
 attachCancel: "Eliminar el fitxer adjunt"
 deleteFile: "Esborrar l'arxiu "
@@ -331,7 +331,7 @@ dark: "Fosc"
 lightThemes: "Temes clars"
 darkThemes: "Temes foscos"
 syncDeviceDarkMode: "Sincronitza el mode fosc amb la configuració del dispositiu"
-switchDarkModeManuallyWhenSyncEnabledConfirm: "\"{x}\" es troba activat. Vols desactivar la sincronització i canviar de mode manualment?"
+switchDarkModeManuallyWhenSyncEnabledConfirm: '"{x}" es troba activat. Vols desactivar la sincronització i canviar de mode manualment?'
 drive: "Disc"
 fileName: "Nom del Fitxer"
 selectFile: "Selecciona un fitxer"
@@ -399,7 +399,7 @@ bannerUrl: "Adreça URL del bàner"
 backgroundImageUrl: "Adreça URL de la imatge de fons"
 basicInfo: "Informació bàsica"
 pinnedUsers: "Usuaris fixats"
-pinnedUsersDescription: "Llista d'usuaris, separats per salts de línia, que seran fixats a la pestanya \"Explorar\"."
+pinnedUsersDescription: 'Llista d''usuaris, separats per salts de línia, que seran fixats a la pestanya "Explorar".'
 pinnedPages: "Pàgines fixades"
 pinnedPagesDescription: "Escriu les adreces de les pàgines que vols fixar a la pàgina d'inici d'aquesta instància. Separades per salts de línia."
 pinnedClipId: "ID del retall fixat"
@@ -507,7 +507,7 @@ invitationCode: "Codi d'invitació"
 checking: "Comprovació en curs..."
 available: "Disponible"
 unavailable: "No és disponible"
-usernameInvalidFormat: "Pots fer servir lletres (majúscules i minúscules), números i barres baixes (\"_\")"
+usernameInvalidFormat: 'Pots fer servir lletres (majúscules i minúscules), números i barres baixes ("_")'
 tooShort: "Massa curt"
 tooLong: "Massa llarg"
 weakPassword: "Contrasenya insegura"
@@ -705,7 +705,7 @@ regexpError: "Error de l'expressió regular "
 regexpErrorDescription: "S'ha produït un error a l'expressió regular a la línia {line} de les paraules silenciades {tab}:"
 instanceMute: "Silenciar servidor"
 userSaysSomething: "{name} n'ha dit alguna cosa"
-userSaysSomethingAbout: "{name} està parlant sobre \"{word}\""
+userSaysSomethingAbout: '{name} està parlant sobre "{word}"'
 makeActive: "Activar"
 display: "Veure"
 copy: "Copiar"
@@ -754,7 +754,7 @@ createNew: "Crear"
 optional: "Opcional"
 createNewClip: "Crear un nou Retall"
 unclip: "Treure Retall"
-confirmToUnclipAlreadyClippedNote: "Aquesta nota ja és inclosa al Retall \"{name}\". Vols treure-la d'aquest retall?"
+confirmToUnclipAlreadyClippedNote: 'Aquesta nota ja és inclosa al Retall "{name}". Vols treure-la d''aquest retall?'
 removeFromAntenna: "Elimina d'aquesta Antena"
 removeNoteFromAntennaConfirm: "Vols eliminar aquesta nota de '{name}'?"
 public: "Públic "
@@ -779,7 +779,7 @@ driveFilesCount: "Nombre de fitxers al Disc"
 driveUsage: "Utilització de l'espai del Disc"
 noCrawle: "Rebutjar la indexació dels buscadors"
 noCrawleDescription: "No permetis que els buscadors indexin el teu perfil, notes, pàgines, etc."
-lockedAccountInfo: "Tret que establiu la visibilitat de la nota a \"Només seguidors\", les vostres notes seran visibles per qualsevol persona, fins i tot si heu d'aprovar els seguidors manualment"
+lockedAccountInfo: 'Tret que establiu la visibilitat de la nota a "Només seguidors", les vostres notes seran visibles per qualsevol persona, fins i tot si heu d''aprovar els seguidors manualment'
 alwaysMarkSensitive: "Marcar com a sensible per defecte"
 loadRawImages: "Carregar les imatges originals en comptes de miniatures "
 disableShowingAnimatedImages: "No reproduir imatges animades"
@@ -798,8 +798,8 @@ experimentalFeatures: "Característiques experimentals"
 experimental: "Experimental"
 thisIsExperimentalFeature: "Aquesta és una característica experimental. La seva funcionalitat pot canviar, i pot ser que no funcioni degudament."
 developer: "Programador"
-makeExplorable: "Fes que el compte sigui visible a la secció \"Explorar\""
-makeExplorableDescription: "Si desactives aquesta opció, el teu compte no sortirà a la secció \"Explorar\""
+makeExplorable: 'Fes que el compte sigui visible a la secció "Explorar"'
+makeExplorableDescription: 'Si desactives aquesta opció, el teu compte no sortirà a la secció "Explorar"'
 duplicate: "Duplicat"
 left: "Esquerra"
 center: "Centre"
@@ -854,7 +854,7 @@ unlikeConfirm: "Vols esborrar el teu m'agrada?"
 fullView: "Vista completa."
 quitFullView: "Sortir de la vista completa"
 addDescription: "Afegeix una descripció "
-userPagePinTip: "Podeu seleccionar \"Fixar al perfil\" del menú de notes individuals per mostrar les notes aquí."
+userPagePinTip: 'Podeu seleccionar "Fixar al perfil" del menú de notes individuals per mostrar les notes aquí.'
 notSpecifiedMentionWarning: "Aquesta nota esmenta usuaris que no es troben com a destinataris"
 info: "Informació"
 userInfo: "Informació de l'usuari"
@@ -944,7 +944,7 @@ continueThread: "Veure la continuació del fil"
 deleteAccountConfirm: "Això eliminarà el teu compte irreversiblement. Procedir?"
 incorrectPassword: "Contrasenya incorrecta."
 incorrectTotp: "La contrasenya no és correcta, o ha caducat."
-voteConfirm: "Confirma el teu vot \"{choice}\""
+voteConfirm: 'Confirma el teu vot "{choice}"'
 hide: "Amagar"
 useDrawerReactionPickerForMobile: "Mostrar el selector de reaccions com un calaix al mòbil "
 welcomeBackWithName: "Benvingut de nou, {name}"
@@ -1101,13 +1101,13 @@ nonSensitiveOnlyForLocalLikeOnlyForRemote: "Només contingut no sensible (Només
 rolesAssignedToMe: "Rols assignats "
 resetPasswordConfirm: "Vols canviar la teva contrasenya?"
 sensitiveWords: "Paraules sensibles"
-sensitiveWordsDescription: "La visibilitat de totes les notes que continguin qualsevol de les paraules configurades seran, automàticament, afegides a \"Inici\". Pots llistar diferents paraules separant les per línies noves."
+sensitiveWordsDescription: 'La visibilitat de totes les notes que continguin qualsevol de les paraules configurades seran, automàticament, afegides a "Inici". Pots llistar diferents paraules separant les per línies noves.'
 sensitiveWordsDescription2: "Fent servir espais crearà expressions AND si l'expressió s'envolta amb barres inclinades es converteix en una expressió regular."
 prohibitedWords: "Paraules prohibides"
 prohibitedWordsDescription: "Quan intenteu publicar una Nota que conté una paraula prohibida, feu que es converteixi en un error. Es poden dividir i establir múltiples línies."
 prohibitedWordsDescription2: "Fent servir espais crearà expressions AND si l'expressió s'envolta amb barres inclinades es converteix en una expressió regular."
 hiddenTags: "Etiquetes ocultes"
-hiddenTagsDescription: "La visibilitat de totes les notes que continguin qualsevol de les paraules configurades seran, automàticament, afegides a \"Inici\". Pots llistar diferents paraules separant les per línies noves."
+hiddenTagsDescription: 'La visibilitat de totes les notes que continguin qualsevol de les paraules configurades seran, automàticament, afegides a "Inici". Pots llistar diferents paraules separant les per línies noves.'
 notesSearchNotAvailable: "La cerca de notes no es troba disponible."
 usersSearchNotAvailable: "La cerca d'usuaris no està disponible."
 license: "Llicència"
@@ -1120,7 +1120,7 @@ retryAllQueuesConfirmText: "Això farà que la càrrega del servidor augmenti te
 enableChartsForRemoteUser: "Generar gràfiques d'usuaris remots"
 enableChartsForFederatedInstances: "Generar gràfiques d'instàncies remotes"
 enableStatsForFederatedInstances: "Activa les estadístiques de les instàncies remotes federades"
-showClipButtonInNoteFooter: "Afegir \"Retall\" al menú d'acció de la nota"
+showClipButtonInNoteFooter: 'Afegir "Retall" al menú d''acció de la nota'
 reactionsDisplaySize: "Mida de les reaccions"
 limitWidthOfReaction: "Limitar l'amplada màxima de la reacció i mostrar-les en una mida reduïda "
 noteIdOrUrl: "ID o URL de la nota"
@@ -1164,7 +1164,7 @@ displayOfNote: "Mostrar notes"
 initialAccountSetting: "Configuració del perfil"
 youFollowing: "Segueixes "
 preventAiLearning: "Descartar l'ús d'aprenentatge automàtic (IA Generativa)"
-preventAiLearningDescription: "Demanar els indexadors no fer servir els texts, imatges, etc. en cap conjunt de dades per alimentar l'aprenentatge automàtic (IA Predictiva/ Generativa). Això s'aconsegueix afegint la etiqueta \"noai\" com a resposta HTML al contingut corresponent. Prevenir aquest ús totalment pot ser que no sigui aconseguit, ja que molts indexadors poden obviar aquesta etiqueta."
+preventAiLearningDescription: 'Demanar els indexadors no fer servir els texts, imatges, etc. en cap conjunt de dades per alimentar l''aprenentatge automàtic (IA Predictiva/ Generativa). Això s''aconsegueix afegint la etiqueta "noai" com a resposta HTML al contingut corresponent. Prevenir aquest ús totalment pot ser que no sigui aconseguit, ja que molts indexadors poden obviar aquesta etiqueta.'
 options: "Opcions"
 specifyUser: "Especificar usuari"
 lookupConfirm: "Vols fer una cerca?"
@@ -1264,7 +1264,7 @@ refreshing: "Recarregant..."
 pullDownToRefresh: "Llisca cap a baix per recarregar"
 useGroupedNotifications: "Mostrar les notificacions agrupades "
 emailVerificationFailedError: "Hem tingut un problema en verificar la teva adreça de correu electrònic. És probable que l'enllaç estigui caducat."
-cwNotationRequired: "Si està activat \"Amagar contingut\" s'ha d'escriure una descripció "
+cwNotationRequired: 'Si està activat "Amagar contingut" s''ha d''escriure una descripció '
 doReaction: "Afegeix una reacció "
 code: "Codi"
 reloadRequiredToApplySettings: "És necessari recarregar la pàgina per aplicar els canvis."
@@ -1336,7 +1336,7 @@ federationDisabled: "La unió es troba deshabilitada en aquest servidor. No es p
 draft: "Esborrany "
 draftsAndScheduledNotes: "Esborranys i publicacions programades"
 confirmOnReact: "Confirmar en reaccionar"
-reactAreYouSure: "Vols reaccionar amb \"{emoji}\"?"
+reactAreYouSure: 'Vols reaccionar amb "{emoji}"?'
 markAsSensitiveConfirm: "Vols marcar aquest contingut com a sensible?"
 unmarkAsSensitiveConfirm: "Vols deixar de marcar com a sensible aquest contingut?"
 preferences: "Preferències "
@@ -1422,10 +1422,7 @@ append: "Afegeix al final"
 prepend: "Afegeix al principi"
 urlPreviewSensitiveList: "Llista d'URLs per restringir la visualització de miniatures"
 urlPreviewSensitiveListDescription: "Si separeu els termes amb un espai, s'interpretarà com una condició 'AND'; si els separeu amb un salt de línia, s'interpretarà com una condició 'OR'. Si envolupeu els termes amb barres obliqües, s'interpretarà com una expressió regular. Si es troba una coincidència, la miniatura ja no es mostrarà."
-<<<<<<< HEAD
-=======
 pixelatedZoom: "Mode de zoom d'art pixelat"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 _imageEditing:
   _vars:
     caption: "Títol de l'arxiu"
@@ -1579,10 +1576,10 @@ _settings:
 _preferencesProfile:
   profileName: "Nom del perfil"
   profileNameDescription: "Estableix un nom que identifiqui aquest dispositiu."
-  profileNameDescription2: "Per exemple: \"PC Principal\", \"Smartphone\", etc"
+  profileNameDescription2: 'Per exemple: "PC Principal", "Smartphone", etc'
   manageProfiles: "Gestionar perfils"
   shareSameProfileBetweenDevicesIsNotRecommended: "No recomanem compartir el mateix perfil en diferents dispositius."
-  useSyncBetweenDevicesOptionIfYouWantToSyncSetting: "Si hi ha ajustos que vols sincronitzar entre diferents dispositius activa l'opció \"Sincronitza entre diferents dispositius\" individualment per cada una de les diferents opcions."
+  useSyncBetweenDevicesOptionIfYouWantToSyncSetting: 'Si hi ha ajustos que vols sincronitzar entre diferents dispositius activa l''opció "Sincronitza entre diferents dispositius" individualment per cada una de les diferents opcions.'
 _preferencesBackup:
   autoBackup: "Còpia de seguretat automàtica "
   restoreFromBackup: "Restaurar des d'una còpia de seguretat"
@@ -1612,7 +1609,7 @@ _abuseUserReport:
   resolve: "Solució "
   accept: "Acceptar "
   reject: "Rebutjar"
-  resolveTutorial: "Si l'informe és legítim selecciona \"Acceptar\" per resoldre'l positivament. Però si l'informe no és legítim selecciona \"Rebutjar\" per resoldre'l negativament."
+  resolveTutorial: 'Si l''informe és legítim selecciona "Acceptar" per resoldre''l positivament. Però si l''informe no és legítim selecciona "Rebutjar" per resoldre''l negativament.'
 _delivery:
   status: "Estat d'entrega "
   stop: "Anul·lar subscripció "
@@ -1642,11 +1639,11 @@ _announcement:
   forExistingUsers: "Anunci per usuaris registrats"
   forExistingUsersDescription: "Aquest avís només es mostrarà als usuaris existents fins al moment de la publicació. Si no també es mostrarà als usuaris que es registrin després de la publicació."
   needConfirmationToRead: "Es necessita confirmació de lectura de la notificació "
-  needConfirmationToReadDescription: "Si s'activa es mostrarà un diàleg per confirmar la lectura d'aquesta notificació. A més aquesta notificació serà exclosa de qualsevol funcionalitat com \"Marcar tot com a llegit\"."
+  needConfirmationToReadDescription: 'Si s''activa es mostrarà un diàleg per confirmar la lectura d''aquesta notificació. A més aquesta notificació serà exclosa de qualsevol funcionalitat com "Marcar tot com a llegit".'
   end: "Final de la notificació "
   tooManyActiveAnnouncementDescription: "Tenir masses notificacions actives pot empitjorar l'experiència de l'usuari. Considera finalitzar els avisos que siguin antics."
   readConfirmTitle: "Marcar com llegida?"
-  readConfirmText: "Això marcarà el contingut de \"{title}\" com llegit."
+  readConfirmText: 'Això marcarà el contingut de "{title}" com llegit.'
   shouldNotBeUsedToPresentPermanentInfo: "Ja que l'ús de notificacions pot impactar l'experiència dels nous usuaris, és recomanable fer servir les notificacions amb el flux d'informació en comptes de fer-les servir en un únic bloc."
   dialogAnnouncementUxWarn: "Tenir dues o més notificacions amb l'estil de finestres pot impactar l'experiència de l'usuari, és per això que és recomana fer-lo servir amb cura."
   silence: "Sense notificacions"
@@ -1958,7 +1955,7 @@ _achievements:
       description: "Mira la teva llista d'assoliments durant més de 3 minuts"
     _iLoveMisskey:
       title: "Estimo Misskey"
-      description: "Publica \"I ❤ #Misskey\""
+      description: 'Publica "I ❤ #Misskey"'
       flavor: "L'equip de desenvolupament de Misskey agraeix el vostre suport!"
     _foundTreasure:
       title: "A la Recerca del Tresor"
@@ -1991,7 +1988,7 @@ _achievements:
       description: "Mira els gràfics de la teva instància "
     _outputHelloWorldOnScratchpad:
       title: "Hola, món!"
-      description: "Escriu \"hola, món\" al bloc de notes"
+      description: 'Escriu "hola, món" al bloc de notes'
     _open3windows:
       title: "Multi finestres"
       description: "I va obrir més de tres finestres"
@@ -2009,7 +2006,7 @@ _achievements:
       description: "Oportunitat de guanyar-lo amb una probabilitat d'un 0.005% cada 10 segons"
     _setNameToSyuilo:
       title: "soc millor"
-      description: "Posat \"siuylo\" com a nom"
+      description: 'Posat "siuylo" com a nom'
     _passedSinceAccountCreated1:
       title: "Primer aniversari"
       description: "Ja ha passat un any d'ençà que vas crear el teu compte"
@@ -2226,12 +2223,12 @@ _preferencesBackups:
   save: "Desar els canvis"
   inputName: "Escriu un nom per aquesta còpia de seguretat"
   cannotSave: "No s'ha pogut desar"
-  nameAlreadyExists: "Ja existeix una còpia de seguretat anomenada \"{name}\". Escriu un nom diferent."
-  applyConfirm: "Vols aplicar la còpia de seguretat \"{name}\" a aquest dispositiu? La configuració actual del dispositiu serà esborrada."
+  nameAlreadyExists: 'Ja existeix una còpia de seguretat anomenada "{name}". Escriu un nom diferent.'
+  applyConfirm: 'Vols aplicar la còpia de seguretat "{name}" a aquest dispositiu? La configuració actual del dispositiu serà esborrada.'
   saveConfirm: "Desar còpia de seguretat com {name}?"
   deleteConfirm: "Esborrar la còpia de seguretat {name}?"
-  renameConfirm: "Vols canvia el nom de la còpia de seguretat de \"{old}\" a \"{new}\"?"
-  noBackups: "No hi ha còpies de seguretat. Pots fer una còpia de seguretat de la configuració d'aquest dispositiu al servidor fent servir \"Crear nova còpia de seguretat\""
+  renameConfirm: 'Vols canvia el nom de la còpia de seguretat de "{old}" a "{new}"?'
+  noBackups: 'No hi ha còpies de seguretat. Pots fer una còpia de seguretat de la configuració d''aquest dispositiu al servidor fent servir "Crear nova còpia de seguretat"'
   createdAt: "Creat el: {date} {time}"
   updatedAt: "Actualitzat el: {date} {time}"
   cannotLoad: "Hi ha hagut un error al carregar"
@@ -2884,9 +2881,9 @@ _deck:
   deleteProfile: "Elimina el perfil"
   introduction: "Crea la interfície perfecta posant les columnes allà on vulguis!"
   introduction2: "Fes clic al botó + de la dreta per afegir noves columnes sempre que vulguis."
-  widgetsIntroduction: "Selecciona \"Editar ginys\" a la columna del menú i afegeix un."
+  widgetsIntroduction: 'Selecciona "Editar ginys" a la columna del menú i afegeix un.'
   useSimpleUiForNonRootPages: "Usa una interfície senzilla per a les pàgines navegades"
-  usedAsMinWidthWhenFlexible: "L'amplada mínima es farà servir quan \"Ajust automàtic de l'amplada\" estigui activat"
+  usedAsMinWidthWhenFlexible: 'L''amplada mínima es farà servir quan "Ajust automàtic de l''amplada" estigui activat'
   flexible: "Ajust automàtic de l'amplada"
   enableSyncBetweenDevicesForProfiles: "Activar la sincronització de la informació de perfils de dispositiu a dispositiu"
   showHowToUse: "Veure la descripció de la interfície d'usuari "
@@ -3201,7 +3198,7 @@ _customEmojisManager:
     _register:
       uploadSettingTitle: "Actualitza la configuració "
       uploadSettingDescription: "En aquesta pantalla pots configurar el que s'ha de fer quan es puja un Emoji."
-      directoryToCategoryLabel: "Escriu el nom del directori al camp de \"categoria\""
+      directoryToCategoryLabel: 'Escriu el nom del directori al camp de "categoria"'
       directoryToCategoryCaption: "Quan arrossegues un directori, escriu el nom del directori al camp categoria."
       confirmRegisterEmojisDescription: "Registrar els Emojis de la llista com a nous Emojis personalitzats. Vols continuar? (Per evitar una sobrecàrrega només {count} Emojis es poden registrar d'una sola vegada)"
       confirmClearEmojisDescription: "Descartar els canvis i esborrar els Emojis de la llista. Vols continuar?"
@@ -3222,7 +3219,7 @@ _embedCodeGen:
   codeGeneratedDescription: "Si us plau, enganxeu el codi generat al lloc web."
 _selfXssPrevention:
   warning: "Advertència "
-  title: "\"Enganxa qualsevol cosa en aquesta finestra\"  És tot un engany."
+  title: '"Enganxa qualsevol cosa en aquesta finestra"  És tot un engany.'
   description1: "Si posa alguna cosa al seu compte, un usuari malintencionat podria segrestar-la o robar-li les dades."
   description2: "Si no entens que estàs fent %cpara ara mateix i tanca la finestra."
   description3: "Per obtenir més informació. {link}"
@@ -3307,7 +3304,7 @@ _serverSetupWizard:
   largeScaleServerAdvice: "Els grans servidors poden requerir coneixements avançats d'infraestructures, com balanceig de càrregues i replicació de base de dades."
   doYouConnectToFediverse: "Desitges connectar-te amb el Fedivers?"
   doYouConnectToFediverse_description1: "Quan es connecta amb una xarxa de servidors distribuïts (Fedivers), els continguts poden intercanviar-se amb altres servidors i entre ells."
-  doYouConnectToFediverse_description2: "La connexió amb el Fedivers també es coneix com a \"federació\"."
+  doYouConnectToFediverse_description2: 'La connexió amb el Fedivers també es coneix com a "federació".'
   youCanConfigureMoreFederationSettingsLater: "Les configuracions avançades, com especificar els servidors amb els quals es pot federar, es poden fer més tard."
   remoteContentsCleaning: "Neteja automàtica del contingut rebut"
   remoteContentsCleaning_description: "Quan es comença a federar es rep un munt de contingut, quan s'activa la neteja automàtica el contingut antic que no es consulta serà eliminat del servidor, el que permet estalviar espai d'emmagatzematge."
@@ -3319,7 +3316,7 @@ _serverSetupWizard:
   skipSettings: "Saltar la configuració "
   settingsCompleted: "Configuració finalitzada "
   settingsCompleted_description: "Gràcies per la teva ajuda. Ara que ja està tot llest, pots començar a fer servir el servidor immediatament."
-  settingsCompleted_description2: "La configuració avançada del servidor també poden fer-se des del \"Tauler de control\"."
+  settingsCompleted_description2: 'La configuració avançada del servidor també poden fer-se des del "Tauler de control".'
   donationRequest: "Una donació, si us plau"
   _donationRequest:
     text1: "Misskey és un programari gratuït fet per voluntaris."
@@ -3333,7 +3330,7 @@ _uploader:
   doneConfirm: "Hi han fitxers no pujats, vols completar-los?"
   maxFileSizeIsX: "La mida màxima d'arxiu que es pot pujar és {x}."
   allowedTypes: "Tipus de fitxers que en podeu pujar"
-  tip: "L'arxiu encara no s'ha carregat. En aquest quadre de diàleg, pots comprovar, canviar el nom, comprimir i retallar l'arxiu abans de pujar-lo. Quan estigui llest pots iniciar la càrrega polsant el boto \"Pujar\""
+  tip: 'L''arxiu encara no s''ha carregat. En aquest quadre de diàleg, pots comprovar, canviar el nom, comprimir i retallar l''arxiu abans de pujar-lo. Quan estigui llest pots iniciar la càrrega polsant el boto "Pujar"'
 _clientPerformanceIssueTip:
   title: "Si creus que el consum de bateria és molt alt"
   makeSureDisabledAdBlocker: "Desactiva els bloquejadors de publicitat"

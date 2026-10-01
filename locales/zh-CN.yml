@@ -153,13 +153,8 @@ block: "屏蔽"
 unblock: "取消屏蔽"
 suspend: "冻结"
 unsuspend: "解除冻结"
-<<<<<<< HEAD
-blockConfirm: "确定要禁止对方与我互动吗？"
-unblockConfirm: "确认解除对方的互动限制吗？"
-=======
 blockConfirm: "确定要屏蔽吗？"
 unblockConfirm: "确定要取消屏蔽吗？"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 suspendConfirm: "要冻结吗？"
 unsuspendConfirm: "要解除冻结吗？"
 selectList: "选择列表"
@@ -461,13 +456,8 @@ about: "关于"
 aboutMisskey: "关于 Misskey"
 administrator: "管理员"
 token: "Token (令牌)"
-<<<<<<< HEAD
-2fa: "双重验证"
-setupOf2fa: "设置双重验证"
-=======
 2fa: "双重认证"
 setupOf2fa: "设置双重认证"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 totp: "验证器"
 totpDescription: "使用验证器输入一次性密码"
 moderator: "监察员"
@@ -629,13 +619,8 @@ output: "输出"
 script: "脚本"
 disablePagesScript: "禁用页面脚本"
 updateRemoteUser: "更新远程用户信息"
-<<<<<<< HEAD
-unsetMfa: "解除双重验证"
-unsetMfaConfirm: "确认解除双重验证吗？"
-=======
 unsetMfa: "解除双重认证"
 unsetMfaConfirm: "确认解除双重认证吗？"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 unsetUserAvatar: "清除头像"
 unsetUserAvatarConfirm: "要清除头像吗？"
 unsetUserBanner: "清除横幅"
@@ -814,7 +799,7 @@ experimental: "实验性的"
 thisIsExperimentalFeature: "这是一项实验性功能。规范可能会变更，或者可能无法正常工作。"
 developer: "开发者"
 makeExplorable: "使账号可见。"
-makeExplorableDescription: "关闭时，账号不会显示在\"发现\"中。"
+makeExplorableDescription: '关闭时，账号不会显示在"发现"中。'
 duplicate: "复制"
 left: "左"
 center: "居中"
@@ -1437,10 +1422,7 @@ append: "加到最后"
 prepend: "加到最前"
 urlPreviewSensitiveList: "限制显示缩略图的 URL"
 urlPreviewSensitiveListDescription: "AND 条件用空格分隔，OR 条件用换行符分隔，正则表达式用斜线包裹。成功匹配则不再显示缩略图。"
-<<<<<<< HEAD
-=======
 pixelatedZoom: "像素画放大模式"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 _imageEditing:
   _vars:
     caption: "文件标题"
@@ -1594,7 +1576,7 @@ _settings:
 _preferencesProfile:
   profileName: "配置文件名"
   profileNameDescription: "请指定用于识别此设备的名称"
-  profileNameDescription2: "例如：“PC\"、“手机” 等"
+  profileNameDescription2: '例如：“PC"、“手机” 等'
   manageProfiles: "管理配置文件"
   shareSameProfileBetweenDevicesIsNotRecommended: "不建议在多个设备间共用同一个配置文件。"
   useSyncBetweenDevicesOptionIfYouWantToSyncSetting: "若想在多个设备间同步某些设置，请为每个设置打开 “多设备间同步” 选项。"
@@ -1973,7 +1955,7 @@ _achievements:
       description: "盯着成就看三分钟"
     _iLoveMisskey:
       title: "I Love Misskey"
-      description: "发布 \"I ❤ #Misskey\" 帖子"
+      description: '发布 "I ❤ #Misskey" 帖子'
       flavor: "感谢您使用 Misskey ！ by 开发团队"
     _foundTreasure:
       title: "寻宝"
@@ -2242,7 +2224,7 @@ _preferencesBackups:
   inputName: "请输入备份的名称"
   cannotSave: "无法保存"
   nameAlreadyExists: "备份名称 “{name}” 已经存在，请指定其他名称。"
-  applyConfirm: "您是否要将备份 \"{name}\" 应用到当前设备上？当前设备现有配置将被丢弃。"
+  applyConfirm: '您是否要将备份 "{name}" 应用到当前设备上？当前设备现有配置将被丢弃。'
   saveConfirm: "您确定要覆盖保存 {name} 吗？"
   deleteConfirm: "您确定要删除 {name} 吗？"
   renameConfirm: "确定要把 “{old}” 改为 “{new}” 吗？"
@@ -2494,11 +2476,7 @@ _permissions:
   "read:admin:show-moderation-log": "查看管理日志"
   "read:admin:show-user": "查看用户的非公开信息"
   "write:admin:suspend-user": "冻结用户"
-<<<<<<< HEAD
-  "write:admin:unset-mfa": "解除用户的双重验证"
-=======
   "write:admin:unset-mfa": "解除用户的双重认证"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
   "write:admin:unset-user-avatar": "删除用户头像"
   "write:admin:unset-user-banner": "删除用户横幅"
   "write:admin:unsuspend-user": "解除用户冻结"
@@ -3014,11 +2992,7 @@ _moderationLogTypes:
   createAvatarDecoration: "新建头像挂件"
   updateAvatarDecoration: "更新头像挂件"
   deleteAvatarDecoration: "删除头像挂件"
-<<<<<<< HEAD
-  unsetMfa: "解除用户的双重验证"
-=======
   unsetMfa: "解除用户的双重认证"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
   unsetUserAvatar: "清除用户头像"
   unsetUserBanner: "清除用户横幅"
   createSystemWebhook: "新建了 SystemWebhook"

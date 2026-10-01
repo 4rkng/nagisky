@@ -85,7 +85,7 @@ driveFileDeleteConfirm: "‘{name}’ 파일을 삭제하시겠습니까? 이 �
 unfollowConfirm: "{name}님을 언팔로우하시겠습니까?"
 cancelFollowRequestConfirm: "{name}(으)로의 팔로우 신청을 취소하시겠습니까?"
 rejectFollowRequestConfirm: "{name}(으)로부터의 팔로우 신청을 거부하시겠습니까?"
-exportRequested: "내보내기를 요청하였습니다. 이 작업은 시간이 걸릴 수 있습니다. 내보내기가 완료되면 \"드라이브\"에 추가됩니다."
+exportRequested: '내보내기를 요청하였습니다. 이 작업은 시간이 걸릴 수 있습니다. 내보내기가 완료되면 "드라이브"에 추가됩니다.'
 importRequested: "가져오기를 요청하였습니다. 이 작업에는 시간이 걸릴 수 있습니다."
 lists: "리스트"
 noLists: "리스트가 없습니다"
@@ -287,8 +287,8 @@ announcements: "공지사항"
 imageUrl: "이미지 URL"
 remove: "삭제"
 removed: "삭제했습니다"
-removeAreYouSure: "\"{x}\" 을(를) 삭제하시겠습니까?"
-deleteAreYouSure: "\"{x}\" 을(를) 삭제하시겠습니까?"
+removeAreYouSure: '"{x}" 을(를) 삭제하시겠습니까?'
+deleteAreYouSure: '"{x}" 을(를) 삭제하시겠습니까?'
 resetAreYouSure: "초기화 하시겠습니까?"
 areYouSure: "계속 진행하시겠습니까?"
 saved: "저장했습니다"
@@ -399,7 +399,7 @@ bannerUrl: "배너 이미지 URL"
 backgroundImageUrl: "배경 이미지 URL"
 basicInfo: "기본 정보"
 pinnedUsers: "고정한 유저"
-pinnedUsersDescription: "\"발견하기\" 페이지 등에 고정하고 싶은 유저를 한 줄에 한 명씩 적습니다."
+pinnedUsersDescription: '"발견하기" 페이지 등에 고정하고 싶은 유저를 한 줄에 한 명씩 적습니다.'
 pinnedPages: "고정한 페이지"
 pinnedPagesDescription: "서버의 대문에 고정하고 싶은 페이지의 경로를 한 줄에 하나씩 적습니다."
 pinnedClipId: "고정할 클립의 ID"
@@ -475,7 +475,7 @@ unregister: "등록 해제"
 passwordLessLogin: "비밀번호 없이 로그인"
 passwordLessLoginDescription: "비밀번호 없이 보안 키 또는 패스키만 사용해서 로그인합니다."
 resetPassword: "비밀번호 재설정"
-newPasswordIs: "새로운 비밀번호는 \"{password}\" 입니다"
+newPasswordIs: '새로운 비밀번호는 "{password}" 입니다'
 reduceUiAnimation: "UI의 애니메이션을 줄이기"
 share: "공유"
 notFound: "찾을 수 없습니다"
@@ -705,7 +705,7 @@ regexpError: "정규 표현식 오류"
 regexpErrorDescription: "{tab}단어 뮤트 {line}행의 정규 표현식에 오류가 발생했습니다:"
 instanceMute: "서버 뮤트"
 userSaysSomething: "{name}님이 무언가를 말했습니다"
-userSaysSomethingAbout: "{name}님이 \"{word}\"를 언급했습니다."
+userSaysSomethingAbout: '{name}님이 "{word}"를 언급했습니다.'
 makeActive: "활성화"
 display: "보기"
 copy: "복사"
@@ -799,7 +799,7 @@ experimental: "실험실"
 thisIsExperimentalFeature: "이 기능은 실험적인 기능입니다. 사양이 변경되거나 정상적으로 동작하지 않을 가능성이 있습니다."
 developer: "개발자"
 makeExplorable: "계정을 쉽게 발견하도록 하기"
-makeExplorableDescription: "비활성화하면 \"발견하기\"에 나의 계정을 표시하지 않습니다."
+makeExplorableDescription: '비활성화하면 "발견하기"에 나의 계정을 표시하지 않습니다.'
 duplicate: "복제"
 left: "왼쪽"
 center: "가운데"
@@ -944,7 +944,7 @@ continueThread: "글타래 더 보기"
 deleteAccountConfirm: "계정이 삭제되고 되돌릴 수 없게 됩니다. 계속하시겠습니까? "
 incorrectPassword: "비밀번호가 올바르지 않습니다."
 incorrectTotp: "OTP 번호가 틀렸거나 유효기간이 만료되어 있을 수 있습니다."
-voteConfirm: "\"{choice}\"에 투표하시겠습니까?"
+voteConfirm: '"{choice}"에 투표하시겠습니까?'
 hide: "숨기기"
 useDrawerReactionPickerForMobile: "모바일에서 드로어 메뉴로 표시"
 welcomeBackWithName: "{name}님, 환영합니다."
@@ -1205,7 +1205,7 @@ used: "사용됨"
 expired: "만료됨"
 doYouAgree: "동의하십니까?"
 beSureToReadThisAsItIsImportant: "중요하므로 반드시 읽어주십시오."
-iHaveReadXCarefullyAndAgree: "\"{x}\"의 내용을 읽고 동의합니다."
+iHaveReadXCarefullyAndAgree: '"{x}"의 내용을 읽고 동의합니다.'
 dialog: "다이얼로그"
 icon: "아바타"
 forYou: "나에게"
@@ -1336,7 +1336,7 @@ federationDisabled: "이 서버는 연합을 하지 않고 있습니다. 리모�
 draft: "초안"
 draftsAndScheduledNotes: "초안과 예약 게시물"
 confirmOnReact: "리액션할 때 확인"
-reactAreYouSure: "\" {emoji} \"로 리액션하시겠습니까?"
+reactAreYouSure: '" {emoji} "로 리액션하시겠습니까?'
 markAsSensitiveConfirm: "이 미디어를 민감한 미디어로 설정하시겠습니까?"
 unmarkAsSensitiveConfirm: "이 미디어의 민감한 미디어 지정을 해제하시겠습니까?"
 preferences: "환경설정"
@@ -1422,10 +1422,7 @@ append: "맨뒤에 추가"
 prepend: "맨앞에 추가"
 urlPreviewSensitiveList: "썸네일 표시 제한 URL"
 urlPreviewSensitiveListDescription: "공백으로 구분하면 AND 지정으로 되고, 줄내림으로 구분하면 OR 지정으로 됩니다. 슬래시로 감싸면 정규 표현으로 됩니다. 일치한 경우에 썸네일이 표시되지 않게 됩니다."
-<<<<<<< HEAD
-=======
 pixelatedZoom: "픽셀 아트 확대 모드"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 _imageEditing:
   _vars:
     caption: "파일 설명"
@@ -1958,7 +1955,7 @@ _achievements:
       description: "도전 과제 목록을 3분 이상 쳐다봤다"
     _iLoveMisskey:
       title: "I Love Misskey"
-      description: "\"I ❤ #Misskey\"를 게시했다"
+      description: '"I ❤ #Misskey"를 게시했다'
       flavor: "Misskey를 이용해 주셔서 감사합니다! ― 개발 팀"
     _foundTreasure:
       title: "보물찾기"
@@ -1967,7 +1964,7 @@ _achievements:
       title: "잠시 쉬어요"
       description: "클라이언트를 시작하고 30분이 경과했다"
     _client60min:
-      title: "No \"Miss\" in Misskey"
+      title: 'No "Miss" in Misskey'
       description: "클라이언트를 시작하고 60분이 경과했다"
     _noteDeletedWithin1min:
       title: "있었는데요 없었습니다"
@@ -2226,12 +2223,12 @@ _preferencesBackups:
   save: "현재 설정으로 덮어쓰기"
   inputName: "백업 이름을 입력하세요"
   cannotSave: "저장하지 못했습니다"
-  nameAlreadyExists: "\"{name}\" 백업이 이미 존재합니다. 다른 이름을 설정하여 주십시오."
-  applyConfirm: "\"{name}\" 백업을 현재 기기에 적용하시겠습니까? 현재 설정은 덮어 씌워집니다."
+  nameAlreadyExists: '"{name}" 백업이 이미 존재합니다. 다른 이름을 설정하여 주십시오.'
+  applyConfirm: '"{name}" 백업을 현재 기기에 적용하시겠습니까? 현재 설정은 덮어 씌워집니다.'
   saveConfirm: "{name} 백업을 덮어쓰시겠습니까?"
   deleteConfirm: "{name} 백업을 삭제하시겠습니까?"
   renameConfirm: "‘{old}’ 백업을 ‘{new}’ 백업으로 바꾸시겠습니까?"
-  noBackups: "저장된 백업이 없습니다. \"새 백업 만들기\"를 눌러 현재 클라이언트 설정을 서버에 백업할 수 있습니다."
+  noBackups: '저장된 백업이 없습니다. "새 백업 만들기"를 눌러 현재 클라이언트 설정을 서버에 백업할 수 있습니다.'
   createdAt: "만든 날짜: {date} {time}"
   updatedAt: "고친 날짜: {date} {time}"
   cannotLoad: "가져오기에 실패했습니다"
@@ -2884,7 +2881,7 @@ _deck:
   deleteProfile: "프로파일 삭제"
   introduction: "칼럼을 조합해서 나만의 인터페이스를 구성해 보아요!"
   introduction2: "나중에라도 화면 우측의 + 버튼을 눌러 새 칼럼을 추가할 수 있습니다."
-  widgetsIntroduction: "칼럼 메뉴의 \"위젯 편집\"에서 위젯을 추가해 주세요"
+  widgetsIntroduction: '칼럼 메뉴의 "위젯 편집"에서 위젯을 추가해 주세요'
   useSimpleUiForNonRootPages: "루트 이외의 페이지로 접속한 경우 UI 간략화하기"
   usedAsMinWidthWhenFlexible: "'폭 자동 조정'이 활성화된 경우 최소 폭으로 사용됩니다"
   flexible: "폭 자동 조정"
@@ -3201,8 +3198,8 @@ _customEmojisManager:
     _register:
       uploadSettingTitle: "업로드 설정"
       uploadSettingDescription: "여기서 이모지를 업로드 할 때의 동작을 설정할 수 있습니다."
-      directoryToCategoryLabel: "디렉토리 이름을 \"category\"로 입력하기"
-      directoryToCategoryCaption: "디렉토리를 드래그 앤 드롭한 경우, 디렉토리 이름을 \"category\"로 입력합니다."
+      directoryToCategoryLabel: '디렉토리 이름을 "category"로 입력하기'
+      directoryToCategoryCaption: '디렉토리를 드래그 앤 드롭한 경우, 디렉토리 이름을 "category"로 입력합니다.'
       confirmRegisterEmojisDescription: "리스트에 표시되어진 이모지를 새로운 커스텀 이모지로 등록합니다. 실행할까요? (부하를 피하기 위해, 한 번에 등록할 수 있는 이모지는 {count}건까지 입니다.)"
       confirmClearEmojisDescription: "편집 내용을 지우고, 목록에 표시되어진 이모지를 지웁니다. 실행할까요?"
       confirmUploadEmojisDescription: "드래그 앤 드롭한 {count}개의 파일을 드라이브에 업로드 합니다. 실행할까요?"
@@ -3222,7 +3219,7 @@ _embedCodeGen:
   codeGeneratedDescription: "만들어진 코드를 웹 사이트에 붙여서 사용하세요."
 _selfXssPrevention:
   warning: "경고"
-  title: "“이 화면에 뭔가를 붙여넣어라\"는 것은 모두 사기입니다."
+  title: '“이 화면에 뭔가를 붙여넣어라"는 것은 모두 사기입니다.'
   description1: "여기에 무언가를 붙여넣으면 악의적인 유저에게 계정을 탈취당하거나 개인정보를 도용당할 수 있습니다."
   description2: "붙여 넣으려는 항목이 무엇인지 정확히 이해하지 못하는 경우, %c지금 바로 작업을 중단하고 이 창을 닫으십시오."
   description3: "자세한 내용은 여기를 확인해 주세요.  {link}"

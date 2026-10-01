@@ -1420,12 +1420,9 @@ addToEmojiPalette: "增加表情符號調色盤"
 emojiPaletteAlreadyAddedConfirm: "此表情符號在這個表情符號調色盤裡已經有了。確定要增加嗎？"
 append: "加在最後"
 prepend: "加在前面"
-<<<<<<< HEAD
-=======
 urlPreviewSensitiveList: "限制縮圖顯示的 URL"
 urlPreviewSensitiveListDescription: "以空格指定為 AND，以換行指定為 OR。若以斜線（/）包圍則視為正規表達式。符合條件時，將不再顯示縮圖。"
 pixelatedZoom: "像素藝術縮放模式"
->>>>>>> 8f438a8a00ba7f08dfe5fe8db3394c86d82572f3
 _imageEditing:
   _vars:
     caption: "檔案標題"
