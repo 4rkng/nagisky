@@ -4,112 +4,62 @@ SPDX-License-Identifier: AGPL-3.0-only
 -->
 
 <template>
-	<div class="_selectable">
-		<div :class="$style.label" @click="focus"><slot name="label"></slot></div>
-		<div
-			:class="[
-				$style.input,
-				{
-					[$style.inline]: inline,
-					[$style.disabled]: disabled,
-					[$style.focused]: focused,
-				},
-			]"
+<div class="_selectable">
+	<div :class="$style.label" @click="focus"><slot name="label"></slot></div>
+	<div :class="[$style.input, { [$style.inline]: inline, [$style.disabled]: disabled, [$style.focused]: focused }]">
+		<div ref="prefixEl" :class="$style.prefix"><slot name="prefix"></slot></div>
+		<input
+			ref="inputEl"
+			v-model="v"
+			v-adaptive-border
+			:class="$style.inputCore"
+			:type="type"
+			:disabled="disabled"
+			:required="required"
+			:readonly="readonly"
+			:placeholder="placeholder"
+			:pattern="pattern"
+			:autocomplete="autocomplete"
+			:autocapitalize="autocapitalize"
+			:spellcheck="spellcheck"
+			:inputmode="inputmode"
+			:step="step"
+			:list="id"
+			:min="min"
+			:max="max"
+			@focus="focused = true"
+			@blur="focused = false"
+			@keydown="onKeydown($event)"
+			@input="onInput"
 		>
-			<div ref="prefixEl" :class="$style.prefix">
-				<slot name="prefix"></slot>
-			</div>
-			<input
-				ref="inputEl"
-				v-model="v"
-				v-adaptive-border
-				:class="$style.inputCore"
-				:type="type"
-				:disabled="disabled"
-				:required="required"
-				:readonly="readonly"
-				:placeholder="placeholder"
-				:pattern="pattern"
-				:autocomplete="autocomplete"
-				:autocapitalize="autocapitalize"
-				:spellcheck="spellcheck"
-				:inputmode="inputmode"
-				:step="step"
-				:list="id"
-				:min="min"
-				:max="max"
-				@focus="focused = true"
-				@blur="focused = false"
-				@keydown="onKeydown($event)"
-				@input="onInput"
-			/>
-			<datalist v-if="datalist" :id="id">
-				<option v-for="data in datalist" :key="data" :value="data"></option>
-			</datalist>
-			<div ref="suffixEl" :class="$style.suffix">
-				<slot name="suffix"></slot>
-			</div>
-		</div>
-		<div :class="$style.caption"><slot name="caption"></slot></div>
-
-		<MkButton
-			v-if="manualSave && changed"
-			primary
-			:class="$style.save"
-			@click="updated"
-			><i class="ti ti-check"></i> {{ i18n.ts.save }}</MkButton
-		>
+		<datalist v-if="datalist" :id="id">
+			<option v-for="data in datalist" :key="data" :value="data"></option>
+		</datalist>
+		<div ref="suffixEl" :class="$style.suffix"><slot name="suffix"></slot></div>
 	</div>
+	<div :class="$style.caption"><slot name="caption"></slot></div>
+
+	<MkButton v-if="manualSave && changed" primary :class="$style.save" @click="updated"><i class="ti ti-check"></i> {{ i18n.ts.save }}</MkButton>
+</div>
 </template>
 
 <script lang="ts">
-type SupportedTypes =
-	| "text"
-	| "password"
-	| "email"
-	| "url"
-	| "tel"
-	| "number"
-	| "search"
-	| "date"
-	| "time"
-	| "datetime-local"
-	| "color";
-type ModelValueType<T extends SupportedTypes> = T extends "number"
-	? number
-	: T extends
-				| "text"
-				| "password"
-				| "email"
-				| "url"
-				| "tel"
-				| "search"
-				| "date"
-				| "time"
-				| "datetime-local"
-				| "color"
-		? string
-		: never;
+type SupportedTypes = 'text' | 'password' | 'email' | 'url' | 'tel' | 'number' | 'search' | 'date' | 'time' | 'datetime-local' | 'color';
+type ModelValueType<T extends SupportedTypes> =
+	T extends 'number' ? number :
+	T extends 'text' | 'password' | 'email' | 'url' | 'tel' | 'search' | 'date' | 'time' | 'datetime-local' | 'color' ? string :
+	never;
 </script>
 
 <script lang="ts" setup generic="T extends SupportedTypes = 'text'">
-import {
-	onMounted,
-	onUnmounted,
-	nextTick,
-	ref,
-	useTemplateRef,
-	watch,
-	computed,
-	toRefs,
-} from "vue";
-import { throttle, debounce } from "throttle-debounce";
-import type { InputHTMLAttributes } from "vue";
-import type { SuggestionType } from "@/utility/autocomplete.js";
-import MkButton from "@/components/MkButton.vue";
-import { i18n } from "@/i18n.js";
-import { Autocomplete } from "@/utility/autocomplete.js";
-import { genId } from "@/utility/id.js";
+import { onMounted, onUnmounted, nextTick, ref, useTemplateRef, watch, computed, toRefs } from 'vue';
+import { throttle, debounce } from 'throttle-debounce';
+import type { InputHTMLAttributes } from 'vue';
+import type { SuggestionType } from '@/utility/autocomplete.js';
+import MkButton from '@/components/MkButton.vue';
+import { i18n } from '@/i18n.js';
+import { Autocomplete } from '@/utility/autocomplete.js';
+import { genId } from '@/utility/id.js';
 
 const props = defineProps<{
 	modelValue: ModelValueType<T> | null;
@@ -121,11 +71,11 @@ const props = defineProps<{
 	placeholder?: string;
 	autofocus?: boolean;
 	autocomplete?: string;
-	mfmAutocomplete?: boolean | SuggestionType[];
+	mfmAutocomplete?: boolean | SuggestionType[],
 	autocapitalize?: string;
 	spellcheck?: boolean;
-	inputmode?: InputHTMLAttributes["inputmode"];
-	step?: InputHTMLAttributes["step"];
+	inputmode?: InputHTMLAttributes['inputmode'];
+	step?: InputHTMLAttributes['step'];
 	datalist?: string[];
 	min?: number;
 	max?: number;
@@ -138,11 +88,11 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-	(ev: "change", _ev: InputEvent): void;
-	(ev: "keydown", _ev: KeyboardEvent): void;
-	(ev: "enter", _ev: KeyboardEvent): void;
-	(ev: "update:modelValue", value: ModelValueType<T>): void;
-	(ev: "savingStateChange", saved: boolean, invalid: boolean): void;
+	(ev: 'change', _ev: InputEvent): void;
+	(ev: 'keydown', _ev: KeyboardEvent): void;
+	(ev: 'enter', _ev: KeyboardEvent): void;
+	(ev: 'update:modelValue', value: ModelValueType<T>): void;
+	(ev: 'savingStateChange', saved: boolean, invalid: boolean): void;
 }>();
 
 const { modelValue } = toRefs(props);
@@ -151,60 +101,52 @@ const id = genId();
 const focused = ref(false);
 const changed = ref(false);
 const invalid = ref(false);
-const filled = computed(() => v.value !== "" && v.value != null);
-const inputEl = useTemplateRef("inputEl");
-const prefixEl = useTemplateRef("prefixEl");
-const suffixEl = useTemplateRef("suffixEl");
-const height = props.small ? 33 : props.large ? 39 : 36;
+const filled = computed(() => v.value !== '' && v.value != null);
+const inputEl = useTemplateRef('inputEl');
+const prefixEl = useTemplateRef('prefixEl');
+const suffixEl = useTemplateRef('suffixEl');
+const height =
+	props.small ? 33 :
+	props.large ? 39 :
+	36;
 let autocompleteWorker: Autocomplete | null = null;
 
 const focus = () => inputEl.value?.focus();
 const onInput = (event: InputEvent) => {
 	changed.value = true;
-	emit("change", event);
+	emit('change', event);
 };
 const onKeydown = (ev: KeyboardEvent) => {
-	if (ev.isComposing || ev.key === "Process" || ev.keyCode === 229) return;
+	if (ev.isComposing || ev.key === 'Process' || ev.keyCode === 229) return;
 
-	emit("keydown", ev);
+	emit('keydown', ev);
 
-	if (ev.code === "Enter") {
-		emit("enter", ev);
+	if (ev.code === 'Enter') {
+		emit('enter', ev);
 	}
 };
 
 const updated = () => {
 	changed.value = false;
-	if (props.type === "number") {
-		emit(
-			"update:modelValue",
-			typeof v.value === "number"
-				? (v.value as ModelValueType<T>)
-				: (parseFloat(v.value ?? "0") as ModelValueType<T>),
-		);
+	if (props.type === 'number') {
+		emit('update:modelValue', typeof v.value === 'number' ? v.value as ModelValueType<T> : parseFloat(v.value ?? '0') as ModelValueType<T>);
 	} else {
-		emit("update:modelValue", v.value ?? "");
+		emit('update:modelValue', v.value ?? '');
 	}
 };
 
-const throttledUpdated = throttle(
-	typeof props.throttle === "number" ? props.throttle : 1000,
-	updated,
-);
-const debouncedUpdated = debounce(
-	typeof props.debounce === "number" ? props.debounce : 1000,
-	updated,
-);
+const throttledUpdated = throttle(typeof props.throttle === 'number' ? props.throttle : 1000, updated);
+const debouncedUpdated = debounce(typeof props.debounce === 'number' ? props.debounce : 1000, updated);
 
-watch(modelValue, (newValue) => {
+watch(modelValue, newValue => {
 	v.value = newValue;
 });
 
 watch(v, () => {
 	if (!props.manualSave) {
-		if (props.throttle === true || typeof props.throttle === "number") {
+		if (props.throttle === true || typeof props.throttle === 'number') {
 			throttledUpdated();
-		} else if (props.debounce === true || typeof props.debounce === "number") {
+		} else if (props.debounce === true || typeof props.debounce === 'number') {
 			debouncedUpdated();
 		} else {
 			updated();
@@ -214,13 +156,9 @@ watch(v, () => {
 	invalid.value = inputEl.value?.validity.badInput ?? true;
 });
 
-watch(
-	[changed, invalid],
-	([newChanged, newInvalid]) => {
-		emit("savingStateChange", newChanged, newInvalid);
-	},
-	{ immediate: true },
-);
+watch([changed, invalid], ([newChanged, newInvalid]) => {
+	emit('savingStateChange', newChanged, newInvalid);
+}, { immediate: true });
 
 // このコンポーネントが作成された時、非表示状態である場合がある
 // 非表示状態だと要素の幅などは0になってしまうので、ResizeObserverでサイズの変化を監視して計算する
@@ -231,9 +169,9 @@ const updatePadding = (entries: ResizeObserverEntry[]) => {
 		const width = entry.borderBoxSize[0].inlineSize;
 		if (width === 0) continue;
 		if (entry.target === prefixEl.value) {
-			inputEl.value.style.paddingLeft = width + "px";
+			inputEl.value.style.paddingLeft = width + 'px';
 		} else if (entry.target === suffixEl.value) {
-			inputEl.value.style.paddingRight = width + "px";
+			inputEl.value.style.paddingRight = width + 'px';
 		}
 	}
 };
@@ -252,11 +190,7 @@ onMounted(() => {
 	});
 
 	if (props.mfmAutocomplete && inputEl.value) {
-		autocompleteWorker = new Autocomplete(
-			inputEl.value,
-			v,
-			props.mfmAutocomplete === true ? undefined : props.mfmAutocomplete,
-		);
+		autocompleteWorker = new Autocomplete(inputEl.value, v, props.mfmAutocomplete === true ? undefined : props.mfmAutocomplete);
 	}
 });
 

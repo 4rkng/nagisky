@@ -11,6 +11,15 @@ import ipaddr from 'ipaddr.js';
 import fastifyCors from '@fastify/cors';
 import { verifyChallenge } from 'pkce-challenge';
 import { permissions as kinds } from 'misskey-js';
+import {
+	AccessDeniedError,
+	InvalidGrantError,
+	InvalidRequestError,
+	InvalidScopeError,
+	OAuthProviderError,
+	UnsupportedGrantTypeError,
+	UnsupportedResponseTypeError,
+} from './errors.js';
 import { secureRndstr } from '@/misc/secure-rndstr.js';
 import { HttpRequestService } from '@/core/HttpRequestService.js';
 import type { Config } from '@/config.js';
@@ -26,15 +35,6 @@ import Logger from '@/logger.js';
 import { StatusError } from '@/misc/status-error.js';
 import { HtmlTemplateService } from '@/server/web/HtmlTemplateService.js';
 import { OAuthPage } from '@/server/web/views/oauth.js';
-import {
-	AccessDeniedError,
-	InvalidGrantError,
-	InvalidRequestError,
-	InvalidScopeError,
-	OAuthProviderError,
-	UnsupportedGrantTypeError,
-	UnsupportedResponseTypeError,
-} from './errors.js';
 import type { FastifyInstance, FastifyReply } from 'fastify';
 
 // TODO: Consider migrating to @node-oauth/oauth2-server once
@@ -539,7 +539,7 @@ export class OAuth2ProviderService implements OnApplicationShutdown {
 		fastify.addHook('onRequest', (request, reply, done) => {
 			// クリックジャッキング防止のためiFrameの中に入れられないようにする
 			reply.header('X-Frame-Options', 'DENY');
-			reply.header('Content-Security-Policy', 'frame-ancestors \'none\'');
+			reply.header('Content-Security-Policy', "frame-ancestors 'none'");
 			done();
 		});
 

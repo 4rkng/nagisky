@@ -901,7 +901,7 @@ export class ChatService {
 
 		await this.chatMessagesRepository.createQueryBuilder().update()
 			.set({
-				reactions: () => 'array_append("reactions", :pair)',
+				reactions: () => `array_append("reactions", :pair)`,
 			})
 			.where('id = :id', { id: message.id })
 			.setParameter('pair', `${userId}/${reaction}`)
@@ -953,7 +953,7 @@ export class ChatService {
 
 		await this.chatMessagesRepository.createQueryBuilder().update()
 			.set({
-				reactions: () => 'array_remove("reactions", :pair)',
+				reactions: () => `array_remove("reactions", :pair)`,
 			})
 			.where('id = :id', { id: message.id })
 			.setParameter('pair', `${userId}/${reaction}`)
